@@ -1,0 +1,20 @@
+/* Card Login */
+.card-form-user {
+    border-radius: 25px 25px 25px 25px;
+    -moz-border-radius: 25px 25px 25px 25px;
+    -webkit-border-radius: 25px 25px 25px 25px;
+    border: 0px solid var(--black-color);
+    background-color: var(--light-gray-two-color);
+}
+
+.card-details {
+  margin: 0 auto;
+  float: none;
+  margin-bottom: 10px;
+}
+
+/* Container */
+.container-form {
+  margin-top: 50px;
+  width: 500px;
+}

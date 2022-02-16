@@ -1,0 +1,59 @@
+/* Card */
+.card-radius {
+    width: 18rem;
+    border-radius: 18px;
+    text-align: start;
+    border: none;
+    background-color: var(--white-color);
+}
+
+.card-ratings {
+  position: absolute;
+  top: 0;
+  left: 0;
+  font-size: large;
+  border-radius: 18px 0px 18px 0px;
+  padding: 0.4em 1.3em;
+}
+
+.card-category {
+    position: absolute;
+    right: 0;
+    font-size: large;
+    border-radius: 0px 0px 18px 18px;
+    padding: 0.4em 1.3em;
+    width: 100%;
+    text-align: center;
+}
+
+/* Card Content */
+.text-length {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+}
+
+.text-length:hover {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+}
+
+.side-by-side {
+    margin-top:15px; 
+    display: flex; 
+    justify-content: space-evenly;
+    margin-bottom: 10px;
+}
+
+.row .card img {
+    border-radius: 18px;
+}
+
+.prod-info {
+    background-color: var(--light-blue-color);
+}
