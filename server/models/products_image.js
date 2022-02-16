@@ -11,14 +11,45 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      products_image.belongsTo(models.products)
     }
   }
   products_image.init({
-    prim_filename: DataTypes.STRING,
-    prim_filesize: DataTypes.STRING,
-    prim_filetype: DataTypes.STRING,
-    prim_primary: DataTypes.BOOLEAN,
-    prim_prod_id: DataTypes.INTEGER
+    prim_filename: {
+      type: DataTypes.STRING,
+    validate:{
+      notEmpty:{
+        message: "Product image file name must be not empty!"
+      }
+      }},
+    prim_filesize: {
+      type: DataTypes.STRING,
+    validate:{
+      notEmpty:{
+        message: "Product image file size must be not empty!"
+      }
+      }},
+    prim_filetype: {
+      type: DataTypes.STRING,
+    validate:{
+      notEmpty:{
+        message: "Product image file type must be not empty!"
+      }
+      }},
+    prim_primary: {
+      type: DataTypes.BOOLEAN,
+    validate:{
+      notEmpty:{
+        message: "Product image primary must be not empty!"
+      }
+      }},
+    productId: {
+      type: DataTypes.INTEGER,
+    validate:{
+      notEmpty:{
+        message: "Product id must be not empty!"
+      }
+      }}
   }, {
     sequelize,
     modelName: 'products_image',

@@ -2,7 +2,7 @@
 module.exports = {
   async up(queryInterface, Sequelize) {
     await queryInterface.createTable('products_images', {
-      prim_id: {
+      id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
@@ -20,7 +20,7 @@ module.exports = {
       prim_primary: {
         type: Sequelize.BOOLEAN
       },
-      prim_prod_id: {
+      productId: {
         type: Sequelize.INTEGER
       },
       createdAt: {

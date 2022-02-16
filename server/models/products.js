@@ -11,25 +11,100 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      products.belongsTo(models.users)
+      products.hasMany(models.products_image)
     }
   }
   products.init({
-    prod_name: DataTypes.STRING,
-    prod_desc: DataTypes.STRING,
-    prod_price: DataTypes.INTEGER,
-    prod_stock: DataTypes.INTEGER,
+    prod_name: {
+      type:DataTypes.STRING,
+    validate:{
+      notEmpty:{
+        message: "Product name must be not empty!"
+      }
+    }},
+    prod_desc: {
+      type:DataTypes.STRING,
+    validate:{
+      notEmpty:{
+        message: "Product description must be not empty!"
+      }
+    }},
+    prod_price: {
+      type:DataTypes.INTEGER,
+    validate:{
+      notEmpty:{
+        message: "Product price must be not empty!"
+      }
+      }},
+    prod_stock: {
+      type:DataTypes.INTEGER,
+    validate:{
+      notEmpty:{
+        message: "Product stock must be not empty!"
+      }
+      }},
     prod_expire: DataTypes.DATE,
-    prod_weight: DataTypes.INTEGER,
-    prod_category: DataTypes.STRING,
-    prod_brand: DataTypes.STRING,
-    prod_condition: DataTypes.STRING,
-    prod_total_sold: DataTypes.INTEGER,
-    prod_rating: DataTypes.INTEGER,
-    prod_views: DataTypes.INTEGER,
-    prod_user_id: DataTypes.INTEGER
+    prod_weight: {
+      type:DataTypes.INTEGER,
+    validate:{
+      notEmpty:{
+        message: "Product weight must be not empty!"
+      }
+      }},
+    prod_category: {
+      type:DataTypes.STRING,
+    validate:{
+      notEmpty:{
+        message: "Product category must be not empty!"
+      }
+    }},
+    prod_brand: {
+      type:DataTypes.STRING,
+    validate:{
+      notEmpty:{
+        message: "Product brand must be not empty!"
+      }
+    }},
+    prod_condition: {
+      type:DataTypes.STRING,
+    validate:{
+      notEmpty:{
+        message: "Product condition must be not empty!"
+      }
+    }},
+    prod_total_sold: {
+      type:DataTypes.INTEGER,
+    validate:{
+      notEmpty:{
+        message: "Product total sold must be not empty!"
+      }
+      }},
+    prod_rating: {
+      type:DataTypes.INTEGER,
+    validate:{
+      notEmpty:{
+        message: "Product rating must be not empty!"
+      }
+      }},
+    prod_views: {
+      type:DataTypes.INTEGER,
+    validate:{
+      notEmpty:{
+        message: "Product views must be not empty!"
+      }
+      }},
+    userId: {
+      type:DataTypes.INTEGER,
+    validate:{
+      notEmpty:{
+        message: "Product user id must be not empty!"
+      }
+      }}
   }, {
     sequelize,
     modelName: 'products',
   });
   return products;
 };
+

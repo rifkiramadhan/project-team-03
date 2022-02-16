@@ -11,11 +11,31 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      shopping_cart.belongsTo(models.users);
     }
   }
   shopping_cart.init({
-    shop_status: DataTypes.STRING,
-    shop_user_id: DataTypes.INTEGER
+    shop_status: {
+      type:DataTypes.STRING,
+    validate:{
+      notEmpty:{
+        message:"Shop Status must be not empty!"
+      }
+    }},
+    shop_created_on: {
+      type:DataTypes.DATE,
+    validate:{
+      notEmpty:{
+        message:"Shop Created on must be not empty!"
+      }
+    }},
+    userId: {
+      type: DataTypes.INTEGER,
+      validate:{
+        notEmpty:{
+          message:"Shop User Id must be not empty!"
+        }
+    }}
   }, {
     sequelize,
     modelName: 'shopping_cart',

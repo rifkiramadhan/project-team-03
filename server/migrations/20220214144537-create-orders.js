@@ -1,48 +1,42 @@
 'use strict';
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('products', {
+    await queryInterface.createTable('orders', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      prod_name: {
+      order_name: {
         type: Sequelize.STRING
       },
-      prod_desc: {
-        type: Sequelize.STRING
-      },
-      prod_price: {
-        type: Sequelize.INTEGER
-      },
-      prod_stock: {
-        type: Sequelize.INTEGER
-      },
-      prod_expire: {
+      order_created_on: {
         type: Sequelize.DATE
       },
-      prod_weight: {
+      order_subtotal: {
         type: Sequelize.INTEGER
       },
-      prod_category: {
+      order_discount: {
         type: Sequelize.STRING
       },
-      prod_brand: {
+      order_tax: {
+        type: Sequelize.DATEONLY
+      },
+      order_total_due: {
         type: Sequelize.STRING
       },
-      prod_condition: {
+      order_payt_trx_number: {
         type: Sequelize.STRING
       },
-      prod_total_sold: {
-        type: Sequelize.INTEGER
+      order_city: {
+        type: Sequelize.STRING
       },
-      prod_rating: {
-        type: Sequelize.INTEGER
+      order_address: {
+        type: Sequelize.STRING
       },
-      prod_views: {
-        type: Sequelize.INTEGER
+      order_status: {
+        type: Sequelize.STRING
       },
       userId: {
         type: Sequelize.INTEGER
@@ -58,6 +52,6 @@ module.exports = {
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('products');
+    await queryInterface.dropTable('orders');
   }
 };

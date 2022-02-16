@@ -68,22 +68,16 @@ npx sequelize-cli model:generate --name shopping_cart --attributes shop_created_
 
 npx sequelize-cli model:generate --name products --attributes prod_name:string,prod_desc:string,prod_price:integer,prod_stock:integer,prod_expire:timestamp,prod_weight:integer,prod_category:string,prod_brand:string,prod_condition:string,prod_total_sold:integer,prod_rating:integer,prod_views:integer,prod_user_id:integer
 
-npx sequelize-cli model:generate --name orders --attributes order_subtotal:integer,order_discount:string,order_tax:dateonly,order_total_due:string,order_payt_trx_number:string,order_city:string,order_address:string,order_status:string,order_user_id:integer
+npx sequelize-cli model:generate --name orders --attributes order_name:string,order_subtotal:integer,order_discount:string,order_tax:dateonly,order_total_due:string,order_payt_trx_number:string,order_city:string,order_address:string,order_status:string,order_user_id:integer
 
-order_name:string,
+
 
 
 npx sequelize-cli model:generate --name products_image --attributes prim_filename:string,prim_filesize:string,prim_filetype:string,prim_primary:boolean,prim_prod_id:integer
 
 
 line_items
-npx sequelize-cli model:generate --name line_items --attributes 
+npx sequelize-cli model:generate --name line_items --attributes lite_qty:integer,lite_status:string,lite_prod_id:integer,lite_shop_id:integer,lite_order_name:string,lite_shop_id:integer,lite_prod_id:integer
 
 lite_id
-lire_qty:integer,
-lite_status:string,
-lite_prod_id:integer,
-lite_shop_id:integer,
-lite_order_name:string,
-lite_shop_id:,lite_prod_id:,
 
