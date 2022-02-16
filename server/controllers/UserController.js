@@ -122,7 +122,7 @@ class UserController {
           user_avatar,
           user_type,
         },
-        { where: { id }, }
+        { where: { id } }
       );
 
       res.status(200).json(user);

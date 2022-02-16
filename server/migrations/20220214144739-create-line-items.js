@@ -14,19 +14,13 @@ module.exports = {
       lite_status: {
         type: Sequelize.STRING
       },
-      lite_prod_id: {
+      productId: {
         type: Sequelize.INTEGER
       },
-      lite_shop_id: {
+      shopingCartId: {
         type: Sequelize.INTEGER
       },
-      lite_order_name: {
-        type: Sequelize.STRING
-      },
-      lite_shop_id: {
-        type: Sequelize.INTEGER
-      },
-      lite_prod_id: {
+      orderId: {
         type: Sequelize.INTEGER
       },
       createdAt: {

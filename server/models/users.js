@@ -1,9 +1,7 @@
-'use strict';
-const {
-  Model
-} = require('sequelize');
+"use strict";
+const { Model } = require("sequelize");
 
-const {encrypter} = require('../helpers/bcrypt')
+const { encrypter } = require("../helpers/bcrypt");
 module.exports = (sequelize, DataTypes) => {
   class users extends Model {
     /**
@@ -18,74 +16,85 @@ module.exports = (sequelize, DataTypes) => {
       users.hasMany(models.orders);
     }
   }
-  users.init({
-    user_name: {
-      type: DataTypes.STRING,
-    validate:{
-      notEmpty:{
-        message:"User Name has not be empty!"
-      }
-    }},
-    user_email: {
-      type: DataTypes.STRING,
-    validate:{
-      notEmpty:{
-        message:"User Email has not be empty!"
+  users.init(
+    {
+      user_name: {
+        type: DataTypes.STRING,
+        validate: {
+          notEmpty: {
+            message: "User Name has not be empty!",
+          },
+        },
       },
-      isEmail:{
-        message:"Must be email!"
-      }
-    }},
-    user_password: {
-      type: DataTypes.STRING,
-    validate:{
-      notEmpty:{
-        message:"User Password has not be empty!"
-      }
-    }},
-    user_salt: {
-      type: DataTypes.STRING,
-    validate:{
-      notEmpty:{
-        message:"User Salt has not be empty!"
-      }
-    }},
-    user_birthdate: {
-      type: DataTypes.DATEONLY,
-    validate:{
-      notEmpty:{
-        message:"User Birthdate has not be empty!"
-      }
-    }},
-    user_gender: {
-      type: DataTypes.STRING,
-    validate:{
-      notEmpty:{
-        message:"User Gender has not be empty!"
-      }
-    }},
-    user_avatar: {
-      type: DataTypes.STRING,
-    validate:{
-      notEmpty:{
-        message:"User Name has not be empty!"
-      }
-    }},
-    user_type: {
-      type: DataTypes.STRING,
-    validate:{
-      notEmpty:{
-        message:"User Name has not be empty!"
-      }
-    }}
-  }, {
-    hooks :{
-      beforeCreate : function(users,options) {
-        users.user_password = encrypter(users.user_password);
-      }
+      user_email: {
+        type: DataTypes.STRING,
+        validate: {
+          notEmpty: {
+            message: "User Email has not be empty!",
+          },
+          isEmail: {
+            message: "Must be email!",
+          },
+        },
+      },
+      user_password: {
+        type: DataTypes.STRING,
+        validate: {
+          notEmpty: {
+            message: "User Password has not be empty!",
+          },
+        },
+      },
+      user_salt: {
+        type: DataTypes.STRING,
+        validate: {
+          notEmpty: {
+            message: "User Salt has not be empty!",
+          },
+        },
+      },
+      user_birthdate: {
+        type: DataTypes.DATEONLY,
+        validate: {
+          notEmpty: {
+            message: "User Birthdate has not be empty!",
+          },
+        },
+      },
+      user_gender: {
+        type: DataTypes.STRING,
+        validate: {
+          notEmpty: {
+            message: "User Gender has not be empty!",
+          },
+        },
+      },
+      user_avatar: {
+        type: DataTypes.STRING,
+        validate: {
+          notEmpty: {
+            message: "User Name has not be empty!",
+          },
+        },
+      },
+      user_type: {
+        type: DataTypes.STRING,
+        validate: {
+          notEmpty: {
+            message: "User Name has not be empty!",
+          },
+        },
+      },
     },
-    sequelize,
-    modelName: 'users',
-  });
+    {
+      hooks: {
+        beforeCreate: function (users, options) {
+          users.user_password = encrypter(users.user_password);
+        },
+      },
+      sequelize,
+      modelName: "users",
+    }
+  );
   return users;
 };

@@ -22,12 +22,13 @@ const authentication = (req, res, next) => {
   }
 };
 
-const authorization = (req,res,next) => {
-    console.log("On Middleware Authorization");
-    const id = +req.params.id;
-    const userId = req.userData.id;
+const authorization = (req, res, next) => {
+  console.log("On Middleware Authorization");
+  const id = +req.params.id;
+  const userId = req.userData.id;
 
-  products.findByPk(id)
+  products
+    .findByPk(id)
     .then((product) => {
       if (!product) {
         res.status(404).json({
@@ -44,6 +45,6 @@ const authorization = (req,res,next) => {
     .catch((err) => {
       res.status(500).json(err);
     });
-}
+};
 
-module.exports = {authentication, authorization};
+module.exports = { authentication, authorization };

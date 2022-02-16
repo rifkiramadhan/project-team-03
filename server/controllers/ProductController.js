@@ -1,10 +1,10 @@
-const {users, products,products_image } = require("../models");
+const { users, products, products_image } = require("../models");
 
 class ProductController {
   static async showProduct(req, res) {
     try {
       let product = await products.findAll({
-        order:[["id","ASC"]]
+        order: [["id", "ASC"]],
       });
       res.status(200).json(product);
     } catch (err) {
@@ -27,7 +27,7 @@ class ProductController {
       const id = +req.params.id;
       let product = await products.findOne({
         where: { id },
-        include:[users]
+        include: [users],
       });
       res.status(200).json(product);
     } catch (err) {
@@ -52,23 +52,21 @@ class ProductController {
       } = req.body;
 
       const userId = req.userData.id;
-      let product = await products.create(
-        {
-          prod_name,
-          prod_desc,
-          prod_price,
-          prod_stock,
-          prod_expire,
-          prod_weight,
-          prod_category,
-          prod_brand,
-          prod_condition,
-          prod_total_sold,
-          prod_rating,
-          prod_views,
-          userId,
-        }
-      );
+      let product = await products.create({
+        prod_name,
+        prod_desc,
+        prod_price,
+        prod_stock,
+        prod_expire,
+        prod_weight,
+        prod_category,
+        prod_brand,
+        prod_condition,
+        prod_total_sold,
+        prod_rating,
+        prod_views,
+        userId,
+      });
       res.status(201).json(product);
     } catch (err) {
       res.status(500).json(err);
@@ -136,6 +134,30 @@ class ProductController {
         : res.status(403).json({
             message: `${id} has been not deleted!`,
           });
+    } catch (err) {
+      res.status(500).json(err);
+    }
+  }
+  static async updateViews(req, res) {
+    try {
+      const id = +req.params.id;
+      let product = await products.increment(
+        { prod_views: +1 },
+        { where: { id } }
+      );
+      res.status(200).json(product);
+    } catch (err) {
+      res.status(500).json(err);
+    }
+  }
+  static async updateSold(req, res) {
+    try {
+      const id = +req.params.id;
+      let product = await products.increment(
+        { prod_total_sold: +1 },
+        { where: { id } }
+      );
+      res.status(200).json(product);
     } catch (err) {
       res.status(500).json(err);
     }
