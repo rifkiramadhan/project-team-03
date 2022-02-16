@@ -1,6 +1,20 @@
-const { orders } = require("../models");
+const { users, orders } = require("../models");
 
 class OrderController {
+  static async showOrders(req, res) {
+    try {
+      let order = await orders.findAll({
+        order: [["userId", "ASC"]],
+            include: 
+              [
+                users
+              ] 
+      });
+      res.status(200).json(order);
+    } catch (err) {
+      res.status(500).json(err);
+    }
+  }
   static async showOrdersByUser(req, res) {
     try {
       const { id } = req.userData;
@@ -28,31 +42,31 @@ class OrderController {
     try {
       const {
         order_name,
-        /**order_created_on,
-                order_subtotal,
-                order_discount,
-                order_tax,
-                order_total_due,
-                order_total_qty,
-                order_payt_trx_number,
-                order_city,
-                order_address,
-                order_status,*/
+        order_created_on,
+        order_subtotal,
+        order_discount,
+        order_tax,
+        order_total_due,
+        order_total_qty,
+        order_payt_trx_number,
+        order_city,
+        order_address,
+        order_status,
       } = req.body;
 
       const userId = req.userData.id;
       let order = await orders.create({
         order_name,
-        /**order_created_on,
-                order_subtotal,
-                order_discount,
-                order_tax,
-                order_total_due,
-                order_total_qty,
-                order_payt_trx_number,
-                order_city,
-                order_address,
-                order_status,*/
+        order_created_on: new Date(),
+        order_subtotal,
+        order_discount,
+        order_tax,
+        order_total_due,
+        order_total_qty,
+        order_payt_trx_number,
+        order_city,
+        order_address,
+        order_status,
         userId,
       });
       res.status(201).json(order);
@@ -76,11 +90,11 @@ class OrderController {
         order_address,
         order_status,
       } = req.body;
-      //const userId = req.userData.id;
+
       let result = await orders.update(
         {
           order_name,
-          order_created_on,
+          order_created_on: new Date(),
           order_subtotal,
           order_discount,
           order_tax,
@@ -124,7 +138,24 @@ class OrderController {
       res.status(500).json(err);
     }
   }
-  static async updateStatusOrder(req, res) {}
+  static async updateStatusOrder(req, res) {
+    try {
+      const id = +req.params.id;
+      const { order_status } = req.body;
+      let order = await orders.update(
+        { order_status },
+        {
+          where: { id },
+        }
+      );
+
+      res.status(200).json({
+        message: "Status Has Been Update",
+      });
+    } catch (err) {
+      res.status(500).json(err);
+    }
+  }
 }
 
 module.exports = OrderController;

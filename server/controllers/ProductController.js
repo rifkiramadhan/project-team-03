@@ -89,7 +89,7 @@ class ProductController {
         prod_rating,
         prod_views,
       } = req.body;
-      //const userId = req.userData.id;
+      
       let result = await products.update(
         {
           prod_name,

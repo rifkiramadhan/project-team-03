@@ -5,6 +5,7 @@ class ShoppingCartController {
     try {
       let cart = await shopping_cart.findAll({
         order: [["id", "ASC"]],
+        include: { users },
       });
       res.status(200).json(cart);
     } catch (err) {
