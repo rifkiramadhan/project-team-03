@@ -47,12 +47,12 @@ function ModalUserEdit({ setOpenModal, username, gender, birthdate, type, avatar
                 'success'
             );
 
-            history.push('/')
+            history.push('/');
             setOpenModal(false);
         } catch (err){
             Swal.fire(
-                'Profile Gagal Diperbaharui',
-                `Profile Anda gagal diperbaharui.`,
+                'Profile Gagal Diperbaharui!',
+                `Profile Anda gagal diperbaharui!.`,
                 'error'
             );
         };

@@ -38,8 +38,8 @@ function UserProfile() {
             setUser(result.data);
         } catch(err){
             Swal.fire(
-                'Gagal Melihat Profile',
-                `Anda gagal melihat halaman Profile`,
+                'Gagal Melihat Profile!',
+                `Anda gagal melihat halaman Profile!`,
                 'error'
             );
         };

@@ -32,8 +32,8 @@ function LineItem() {
             // console.log(orders.data)
         } catch (err) {
             Swal.fire(
-                'Gagal Melihat Order',
-                `${err}`,
+                'Gagal Melihat Order Produk!',
+                `Anda gagal melihat Order Produk!`,
                 'error'
             );
         };
@@ -51,8 +51,8 @@ function LineItem() {
             // console.log(carts.data)
         } catch (err) {
             Swal.fire(
-                'Gagal Melihat Cart',
-                `Anda gagal melihat Cart Item`,
+                'Gagal Melihat Cart!',
+                `Anda gagal melihat Cart Order Produk!`,
                 'error'
             );
         };
@@ -70,8 +70,8 @@ function LineItem() {
             // console.log(products.data);
         } catch (err) {
             Swal.fire(
-                'Gagal Melihat Produk',
-                `Anda gagal melihat Produk`,
+                'Gagal Melihat Produk!',
+                `Anda gagal melihat Produk!`,
                 'error'
             );
         };

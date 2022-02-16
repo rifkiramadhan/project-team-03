@@ -41,8 +41,8 @@ function UserLogin({userLogin, getToken}) {
             // console.log(access_token)
         } catch (err) {
             Swal.fire(
-                'Username atau password salah',
-                `Username atau password Anda salah, silahkan Daftar atau Login kembali`,
+                'Username atau password salah!',
+                `Username atau password Anda salah, silahkan Daftar atau Login kembali!`,
                 'error'
             );
         };

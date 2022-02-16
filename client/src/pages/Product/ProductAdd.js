@@ -42,17 +42,17 @@ function ProductAdd() {
 
             Swal.fire(
                 `Produk Diitambahkan!`,
-                `Produk Anda berhasil ditambahkan!`,
+                `Produk Anda berhasil ditambahkan`,
                 'success'
             );
 
-            history.push("/");
+            history.push('/');
 
             // console.log(access_token)
         } catch (error) {
             Swal.fire(
-                `Produk Anda gagal ditambahkan!!`,
-                `${error}`,
+                `Produk Gagal Ditambahkan!!`,
+                `Anda gagal menambahkan Produk!`,
                 'error'
             );
         };

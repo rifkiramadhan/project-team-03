@@ -50,7 +50,7 @@ function UserRegister({userLogin, getToken}) {
             userLogin(true);
 
             Swal.fire(
-                `Selamat Datang ${user.name}!`,
+                `Selamat Datang ${user.name}`,
                 'Anda berhasil mendaftar, selamat berbelanja',
                 'success'
             );
@@ -58,8 +58,8 @@ function UserRegister({userLogin, getToken}) {
             history.push('/');
         } catch (err) {
             Swal.fire(
-                'Daftar Akun terlebih dahulu',
-                `Silahkan Anda mendaftar Akun terlebih dahulu`,
+                'Daftar Akun terlebih dahulu!',
+                `Silahkan Anda mendaftar Akun terlebih dahulu!`,
                 'error'
             );
         };

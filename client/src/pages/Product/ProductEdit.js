@@ -37,8 +37,8 @@ function ProductEdit() {
             setProduct(product.data);
         } catch(err){
             Swal.fire(
-                'Gagal Melihat Produk',
-                `Anda gagal melihat Produk`,
+                'Gagal Melihat Produk!',
+                `Anda gagal melihat Produk!`,
                 'error'
             );
         };
@@ -47,10 +47,6 @@ function ProductEdit() {
     const submitHandler = (e) => {
         e.preventDefault();
         let item = product;
-
-        // if () {
-        //     productImages.primary === true;
-        // }
         
         editProduct(item);
     };

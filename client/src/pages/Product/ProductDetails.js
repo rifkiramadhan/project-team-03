@@ -71,7 +71,7 @@ function ProductDetails({ login }) {
         } catch (error) {
             Swal.fire(
                 `Foto Gagal Diperbaharui!`,
-                `Foto Produk Anda gagal diperbaharu`,
+                `Foto Produk Anda gagal diperbaharui!`,
                 'error'
             );
         };

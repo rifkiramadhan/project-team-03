@@ -34,8 +34,8 @@ function ModalOrder({ setOpenModal, productName, productId, productPrice, produc
             });
         } catch (err){
             Swal.fire(
-                'Silahkan isi data terlebih dahulu',
-                `${err}`,
+                'Silahkan isi data terlebih dahulu!',
+                `Anda gagal update Sold, silahkan isi data terlebih dahulu!`,
                 'error'
             );
         };
@@ -58,7 +58,7 @@ function ModalOrder({ setOpenModal, productName, productId, productPrice, produc
             
             Swal.fire(
                 'Berhasil Order',
-                `${productName} Anda telah berhasil melakukan order pembelian`,
+                `${productName} Anda telah berhasil melakukan Order pembelian Produk`,
                 'success'
             );
 
@@ -66,7 +66,7 @@ function ModalOrder({ setOpenModal, productName, productId, productPrice, produc
         } catch(err) {
             Swal.fire(
                 'Gagal Order!',
-                `${err}`,
+                `Anda gagal melakukan Order pembelian Produk!`,
                 'error'
             );
         };
@@ -87,8 +87,8 @@ function ModalOrder({ setOpenModal, productName, productId, productPrice, produc
             console.log(access_token)
         } catch(err) {
             Swal.fire(
-                'Anda gagal melakukan penambahan cart!',
-                `${err}`,
+                'Gagal Menambahkan Cart!',
+                `Anda gagal menambahkan Produk ke Cart!`,
                 'error'
             )
         }
@@ -121,8 +121,8 @@ function ModalOrder({ setOpenModal, productName, productId, productPrice, produc
             );
         } catch(err) {
             Swal.fire(
-                'Order Gagal Ditambahkan',
-                `Anda gagal menambahkan order pembelian`,
+                'Order Gagal Ditambahkan!',
+                `Anda gagal menambahkan order pembelian!`,
                 'error'
             );
         };

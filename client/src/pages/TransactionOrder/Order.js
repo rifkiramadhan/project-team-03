@@ -29,8 +29,8 @@ function Order() {
             // console.log(access_token)
         } catch (err) {
             Swal.fire(
-                'Gagal Melihat Order Id',
-                `Anda gagal melihat Order Id`,
+                'Gagal Melihat Order Id!',
+                `Anda gagal melihat Order Id!`,
                 'error'
             );
         };

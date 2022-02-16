@@ -30,9 +30,9 @@ function Cart() {
             // console.log(access_token)
         } catch (err) {
             Swal.fire(
-                'Oops',
+                'Gagal Melihat Order!',
                 `${err}`,
-                'error'
+                'Anda gagal melihat Order Produk!'
             );
         };
     };

@@ -20,7 +20,7 @@ function Navbar({ login, userLogin }) {
 
         Swal.fire(
             'Gagal Order!',
-            `Anda gagal Order Produk, silahkan Login terlebih dahulu!`,
+            `Anda gagal melakukan Order Produk, silahkan Login terlebih dahulu!`,
             'error'
         );
     };

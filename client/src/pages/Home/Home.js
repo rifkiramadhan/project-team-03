@@ -27,7 +27,7 @@ function Home({login}) {
             // console.log(products.data);
         } catch (err) {
             Swal.fire(
-                'Gagal Melihat Produk',
+                'Gagal Melihat Produk!',
                 `Anda gagal melihat Produk!`,
                 'error'
             );
