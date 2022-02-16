@@ -27,13 +27,27 @@
 }
   
 /* Button */
-#btn-buy {
-    padding-left: 10px;
-    width: 19rem;
-    background-color: var(light-gray-three-color);
-}
-
 #btn-upload {
     margin-bottom: 10px;
     margin-top: 10px;
+}
+
+.rating-button {
+    font-size: 18px;
+    border: 0;
+    border-radius: 50%;
+    width: 55px;
+    height: 55px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    bottom: 16px;
+    right: 16px;
+    z-index: 1;
+  }
+  
+.rating-button:hover {
+    background-color: var(--light-blue-color);
 }

@@ -39,7 +39,7 @@ function Cart() {
 
     return (
         <div className="container mt-20">
-            <h1 className="text-center text-light">Cart</h1>
+            <h1 className="text-center fw-bold">Cart</h1>
             <table className="table table-light mt-20">
                 <thead>
                     <tr>

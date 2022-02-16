@@ -13,7 +13,7 @@ function ProductAdd() {
         weight: 0,
         category: '',
         brand: '',
-        condition: '',
+        condition: ''
     });
 
     const URL = 'http://localhost:3000';

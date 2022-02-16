@@ -146,11 +146,11 @@ function ModalOrder({ setOpenModal, productName, productId, productPrice, produc
                     <form>
                         <div className="row mb-3">
                             <label className="form-label modal-form">Address: </label>
-                            <textarea type="text" className="form-control" id="address" onChange={(e) => setOrder({...order, address: e.target.value})}/>
+                            <textarea type="text" className="form-control rounded-pill" id="address" onChange={(e) => setOrder({...order, address: e.target.value})}/>
                         </div>
                         <div className="row mb-3">
                             <label className="form-label modal-form">City: </label>
-                            <select className="form-select" id="city" onChange={(e) => setOrder({...order, city: e.target.value})}>
+                            <select className="form-select rounded-pill" id="city" onChange={(e) => setOrder({...order, city: e.target.value})}>
                                 <option disabled selected value> -- Select City -- </option>
                                 <option value="DKI Jakarta">DKI Jakarta</option>
                                 <option value="Depok">Depok</option>
@@ -161,7 +161,7 @@ function ModalOrder({ setOpenModal, productName, productId, productPrice, produc
                         </div>
                         <div className="row mb-3">
                             <label className="form-label modal-form">Total: </label>
-                            <input type="number" className="form-control" id="total_qty" onChange={(e) => setOrder({...order, total_qty: e.target.value, subtotal: productPrice * e.target.value})}/>
+                            <input type="number" className="form-control rounded-pill" id="total_qty" onChange={(e) => setOrder({...order, total_qty: e.target.value, subtotal: productPrice * e.target.value})}/>
                             <div className="form-text modal-form">Produk Stock: {productStock}</div>
                         </div>
                         <div className="footer">

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useParams, Link, useHistory, useLocation  } from 'react-router-dom';
+import { useParams, Link, useHistory } from 'react-router-dom';
 import axios from 'axios';
 import Swal from 'sweetalert2';
 import { ModalOrder } from '../../components';
@@ -10,7 +10,6 @@ function ProductDetails({ login }) {
     const id = +params.id;
     const URL = 'http://localhost:3000';
     const history = useHistory();
-    const location = useLocation();
 
     const [ product, setProduct ] = useState({
         name: '',
@@ -102,7 +101,7 @@ function ProductDetails({ login }) {
                 'success'
             );
 
-            history.push(location.pathname);
+            history.push('/');
         } catch (error) {
             Swal.fire(
                 `Foto Gagal Diperbaharui!!`,
@@ -129,6 +128,29 @@ function ProductDetails({ login }) {
             Swal.fire(
                 'Views Gagal Ditambahkan',
                 `Anda gagal menambahkan Views`,
+                'error'
+            );
+        };
+    };
+
+    const addRatings = async () => {
+        try {
+            await axios ({
+                method: 'PUT',
+                url: `${URL}/products/updateRating/${id}`
+            });
+
+            Swal.fire(
+                'Rating Berhasil Ditambahkan',
+                `Anda barhasil menambahkan <b>Rating Produk:</b> <i>"${product.name}"</i>`,
+                'success'
+            );
+
+            history.push('/');
+        } catch (err){
+            Swal.fire(
+                'Rating Gagal Ditambahkan',
+                `Anda gagal menambahkan Rating`,
                 'error'
             );
         };
@@ -299,7 +321,7 @@ function ProductDetails({ login }) {
                             &&
                             <ModalOrder setOpenModal={setOpenModal} productName={product.name} productId={product.id} productPrice={product.price} productStock={product.stock}/>
                         }
-                        <div id="btn-buy" className="col-sm-12 card-details">
+                        <div id="btn-buy" className="prod-img">
                             <button 
                                 className="btn btn-success fw-bold rounded-pill w-100 openModal" 
                                 onClick={() => setOpenModal(true)}
@@ -307,6 +329,11 @@ function ProductDetails({ login }) {
                                 Order
                             </button>
                         </div>
+                        <button 
+                            className="btn btn-secondary fw-bold rating-button text-warning rounded-pill fas fa-star" 
+                            onClick={() => addRatings()}
+                        >
+                        </button>
                     </div>
                 </div>
             </div>

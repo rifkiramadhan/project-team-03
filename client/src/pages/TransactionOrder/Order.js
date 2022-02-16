@@ -38,7 +38,7 @@ function Order() {
 
     return (
         <div className="mt-20">
-            <h1 className="text-center text-light">Order</h1>
+            <h1 className="text-center fw-bold">Order</h1>
             <table className="table table-light mt-20 text-center">
                 <thead>
                     <tr>

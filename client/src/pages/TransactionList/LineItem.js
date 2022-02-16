@@ -150,9 +150,9 @@ function LineItem() {
     };
     
     return (
-        <div className="container space-enter mb-5">
-            <h1 className="text-center text-light">Line Item</h1>
-            <table className="table table-light space-enter">
+        <div className="container mt-20 mb-5">
+            <h1 className="text-center fw-bold">Line Item</h1>
+            <table className="table table-light mt-20">
                 <thead>
                     <tr>
                     <th className="table-light" scope="col">Line ID</th>

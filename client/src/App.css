@@ -1,6 +1,6 @@
 :root {
   --white-color: #ffffff;
-  --light-gray-one-color: #f8f9fa;
+  --light-gray-one-color: #e3e6e9;
   --light-gray-two-color: #dbdbdb;
   --light-gray-three-color: #e0e0e0;
   --black-color: #000000; 
@@ -23,6 +23,7 @@ html {
 body {
   font-family: 'Poppins', sans-serif;
   min-height: 100vh;
+  background: var(--light-gray-one-color);
 }
 
 .mt-20 {
