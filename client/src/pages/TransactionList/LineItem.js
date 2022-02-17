@@ -181,7 +181,7 @@ function LineItem() {
                 </tbody>
             </table>
             <br/>
-            <h4 className="text-center text-light space-enter">Insert Line Item Manually</h4>
+            <h4 className="text-center mt-20 fw-bold">Insert Line Item Manually</h4>
             <form className="row g-3 ">
                     <select className="mb-3 rounded-pill"
                     onChange={(e) => setCarts({...carts, id: e.target.value})}>

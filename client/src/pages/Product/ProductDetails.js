@@ -120,7 +120,7 @@ function ProductDetails({ login }) {
 
     const addViews = async () => {
         try {
-            await axios ({
+            await axios({
                 method: 'PUT',
                 url: `${URL}/products/updateViews/${id}`
             });
@@ -135,7 +135,7 @@ function ProductDetails({ login }) {
 
     const addRatings = async () => {
         try {
-            await axios ({
+            await axios({
                 method: 'PUT',
                 url: `${URL}/products/updateRating/${id}`
             });
@@ -158,7 +158,7 @@ function ProductDetails({ login }) {
 
     const getProductById = async () => {
         try{
-            let result = await axios ({
+            let result = await axios({
                 method: 'GET',
                 url: `${URL}/products/${id}`
             });

@@ -28,7 +28,7 @@ function ModalOrder({ setOpenModal, productName, productId, productPrice, produc
 
     const updateSold = async () => {
         try {
-            await axios ({
+            await axios({
                 method: 'PUT',
                 url: `${URL}/products/updateSold/${productId}`
             });

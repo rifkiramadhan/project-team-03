@@ -35,7 +35,7 @@ function UserRegister({userLogin, getToken}) {
             newUser.append('avatar', user.avatar);
             newUser.append('type', user.type);
 
-            let result = await axios ({
+            let result = await axios({
                 method: 'POST',
                 url: `${URL}/users/register`,
 

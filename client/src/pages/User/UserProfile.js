@@ -26,7 +26,7 @@ function UserProfile() {
         try {
             const access_token = localStorage.getItem('access_token');
 
-            let result = await axios ({
+            let result = await axios({
                 method: 'GET',
                 url: `${URL}/users/profile`,
                 

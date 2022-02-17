@@ -31,7 +31,7 @@ function ModalUserEdit({ setOpenModal, username, gender, birthdate, type, avatar
             newUser.append('avatar', user.avatar);
             newUser.append('type', user.type);
 
-            await axios ({
+            await axios({
                 method: 'PUT',
                 url: `http://localhost:3000/users/update/`,
 

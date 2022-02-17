@@ -29,7 +29,7 @@ function ProductEdit() {
 
     const getProductById = async () => {
         try{
-            let product = await axios ({
+            let product = await axios({
                 method: 'GET',
                 url: `${URL}/products/${id}`
             });
