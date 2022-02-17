@@ -8,16 +8,16 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      prim_filename: {
+      filename: {
         type: Sequelize.STRING
       },
-      prim_filesize: {
+      filesize: {
         type: Sequelize.STRING
       },
-      prim_filetype: {
+      filetype: {
         type: Sequelize.STRING
       },
-      prim_primary: {
+      primary: {
         type: Sequelize.BOOLEAN
       },
       productId: {

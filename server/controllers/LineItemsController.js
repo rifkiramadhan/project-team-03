@@ -36,12 +36,12 @@ class LineItemsController {
   }
   static async createLineItem(req, res) {
     try {
-      const { lite_qty, lite_status, productId, shoppingCartId, orderId } =
+      const { qty, status, productId, shoppingCartId, orderId } =
         req.body;
 
       let line_item = await line_items.create({
-        lite_qty,
-        lite_status,
+        qty,
+        status,
         productId,
         shoppingCartId,
         orderId,
@@ -54,11 +54,11 @@ class LineItemsController {
   static async updateLineItem(req, res) {
     try {
       const id = +req.params.id;
-      const { lite_qty, lite_status } = req.body;
+      const { qty, status } = req.body;
       let result = await line_items.update(
         {
-          lite_qty,
-          lite_status,
+          qty,
+          status,
         },
         {
           where: { id },

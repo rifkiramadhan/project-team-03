@@ -8,10 +8,10 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      lite_qty: {
+      qty: {
         type: Sequelize.INTEGER
       },
-      lite_status: {
+      status: {
         type: Sequelize.STRING
       },
       productId: {

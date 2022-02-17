@@ -16,7 +16,7 @@ module.exports = (sequelize, DataTypes) => {
   }
   products.init(
     {
-      prod_name: {
+      name: {
         type: DataTypes.STRING,
         validate: {
           notEmpty: {
@@ -24,7 +24,7 @@ module.exports = (sequelize, DataTypes) => {
           },
         },
       },
-      prod_desc: {
+      desc: {
         type: DataTypes.STRING,
         validate: {
           notEmpty: {
@@ -32,7 +32,7 @@ module.exports = (sequelize, DataTypes) => {
           },
         },
       },
-      prod_price: {
+      price: {
         type: DataTypes.INTEGER,
         validate: {
           notEmpty: {
@@ -40,7 +40,7 @@ module.exports = (sequelize, DataTypes) => {
           },
         },
       },
-      prod_stock: {
+      stock: {
         type: DataTypes.INTEGER,
         validate: {
           notEmpty: {
@@ -48,8 +48,8 @@ module.exports = (sequelize, DataTypes) => {
           },
         },
       },
-      prod_expire: DataTypes.DATE,
-      prod_weight: {
+      expire_date: DataTypes.DATE,
+      weight: {
         type: DataTypes.INTEGER,
         validate: {
           notEmpty: {
@@ -57,7 +57,7 @@ module.exports = (sequelize, DataTypes) => {
           },
         },
       },
-      prod_category: {
+      category: {
         type: DataTypes.STRING,
         validate: {
           notEmpty: {
@@ -65,7 +65,7 @@ module.exports = (sequelize, DataTypes) => {
           },
         },
       },
-      prod_brand: {
+      brand: {
         type: DataTypes.STRING,
         validate: {
           notEmpty: {
@@ -73,7 +73,7 @@ module.exports = (sequelize, DataTypes) => {
           },
         },
       },
-      prod_condition: {
+      condition: {
         type: DataTypes.STRING,
         validate: {
           notEmpty: {
@@ -81,7 +81,7 @@ module.exports = (sequelize, DataTypes) => {
           },
         },
       },
-      prod_total_sold: {
+      total_sold: {
         type: DataTypes.INTEGER,
         validate: {
           notEmpty: {
@@ -89,7 +89,7 @@ module.exports = (sequelize, DataTypes) => {
           },
         },
       },
-      prod_rating: {
+      rating: {
         type: DataTypes.INTEGER,
         validate: {
           notEmpty: {
@@ -97,7 +97,7 @@ module.exports = (sequelize, DataTypes) => {
           },
         },
       },
-      prod_views: {
+      views: {
         type: DataTypes.INTEGER,
         validate: {
           notEmpty: {

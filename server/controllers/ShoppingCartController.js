@@ -37,12 +37,12 @@ class ShoppingCartController {
   }
   static async createCart(req, res) {
     try {
-      const { shop_status, shop_created_on } = req.body;
+      const { status, created_on } = req.body;
 
       const userId = req.userData.id;
       let cart = await shopping_cart.create({
-        shop_status,
-        shop_created_on: new Date(),
+        status,
+        created_on: new Date(),
         userId,
       });
       res.status(201).json(cart);
@@ -70,12 +70,12 @@ class ShoppingCartController {
   static async updateCart(req, res) {
     try {
       const id = +req.params.id;
-      const { shop_status, shop_created_on } = req.body;
+      const { status, created_on } = req.body;
       //const userId = req.userData.id;
       let result = await shopping_cart.update(
         {
-          shop_status,
-          shop_created_on: new Date(),
+          status,
+          created_on: new Date(),
         },
         {
           where: { id },

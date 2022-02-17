@@ -14,7 +14,7 @@ module.exports = (sequelize, DataTypes) => {
   }
   products_image.init(
     {
-      prim_filename: {
+      filename: {
         type: DataTypes.STRING,
         validate: {
           notEmpty: {
@@ -22,7 +22,7 @@ module.exports = (sequelize, DataTypes) => {
           },
         },
       },
-      prim_filesize: {
+      filesize: {
         type: DataTypes.STRING,
         validate: {
           notEmpty: {
@@ -30,7 +30,7 @@ module.exports = (sequelize, DataTypes) => {
           },
         },
       },
-      prim_filetype: {
+      filetype: {
         type: DataTypes.STRING,
         validate: {
           notEmpty: {
@@ -38,7 +38,7 @@ module.exports = (sequelize, DataTypes) => {
           },
         },
       },
-      prim_primary: {
+      primary: {
         type: DataTypes.BOOLEAN,
         validate: {
           notEmpty: {

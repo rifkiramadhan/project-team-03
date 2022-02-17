@@ -15,7 +15,7 @@ module.exports = (sequelize, DataTypes) => {
   }
   orders.init(
     {
-      order_name: {
+      name: {
         type: DataTypes.STRING,
         validate: {
           notEmpty: {
@@ -23,7 +23,7 @@ module.exports = (sequelize, DataTypes) => {
           },
         },
       },
-      order_created_on: {
+      created_on: {
         type: DataTypes.DATE,
         validate: {
           notEmpty: {
@@ -31,7 +31,7 @@ module.exports = (sequelize, DataTypes) => {
           },
         },
       },
-      order_subtotal: {
+      subtotal: {
         type: DataTypes.INTEGER,
         validate: {
           notEmpty: {
@@ -39,7 +39,7 @@ module.exports = (sequelize, DataTypes) => {
           },
         },
       },
-      order_discount: {
+      discount: {
         type: DataTypes.STRING,
         validate: {
           notEmpty: {
@@ -47,7 +47,7 @@ module.exports = (sequelize, DataTypes) => {
           },
         },
       },
-      order_tax: {
+      tax: {
         type: DataTypes.DATEONLY,
         validate: {
           notEmpty: {
@@ -55,7 +55,7 @@ module.exports = (sequelize, DataTypes) => {
           },
         },
       },
-      order_total_due: {
+      total_due: {
         type: DataTypes.STRING,
         validate: {
           notEmpty: {
@@ -63,7 +63,7 @@ module.exports = (sequelize, DataTypes) => {
           },
         },
       },
-      order_payt_trx_number: {
+      payt_trx_number: {
         type: DataTypes.STRING,
         validate: {
           notEmpty: {
@@ -71,7 +71,7 @@ module.exports = (sequelize, DataTypes) => {
           },
         },
       },
-      order_city: {
+      city: {
         type: DataTypes.STRING,
         validate: {
           notEmpty: {
@@ -79,7 +79,7 @@ module.exports = (sequelize, DataTypes) => {
           },
         },
       },
-      order_address: {
+      address: {
         type: DataTypes.STRING,
         validate: {
           notEmpty: {
@@ -87,7 +87,7 @@ module.exports = (sequelize, DataTypes) => {
           },
         },
       },
-      order_status: {
+      status: {
         type: DataTypes.STRING,
         validate: {
           notEmpty: {

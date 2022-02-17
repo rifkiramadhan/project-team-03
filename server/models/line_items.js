@@ -16,7 +16,7 @@ module.exports = (sequelize, DataTypes) => {
   }
   line_items.init(
     {
-      lite_qty: {
+      qty: {
         type: DataTypes.INTEGER,
         validate: {
           notEmpty: {
@@ -24,7 +24,7 @@ module.exports = (sequelize, DataTypes) => {
           },
         },
       },
-      lite_status: DataTypes.STRING,
+      status: DataTypes.STRING,
       productId: {
         type: DataTypes.INTEGER,
         validate: {

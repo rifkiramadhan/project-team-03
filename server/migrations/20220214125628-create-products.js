@@ -8,40 +8,40 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      prod_name: {
+      name: {
         type: Sequelize.STRING
       },
-      prod_desc: {
+      desc: {
         type: Sequelize.STRING
       },
-      prod_price: {
+      price: {
         type: Sequelize.INTEGER
       },
-      prod_stock: {
+      stock: {
         type: Sequelize.INTEGER
       },
-      prod_expire: {
+      expire_date: {
         type: Sequelize.DATE
       },
-      prod_weight: {
+      weight: {
         type: Sequelize.INTEGER
       },
-      prod_category: {
+      category: {
         type: Sequelize.STRING
       },
-      prod_brand: {
+      brand: {
         type: Sequelize.STRING
       },
-      prod_condition: {
+      condition: {
         type: Sequelize.STRING
       },
-      prod_total_sold: {
+      total_sold: {
         type: Sequelize.INTEGER
       },
-      prod_rating: {
+      rating: {
         type: Sequelize.INTEGER
       },
-      prod_views: {
+      views: {
         type: Sequelize.INTEGER
       },
       userId: {

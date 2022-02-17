@@ -15,13 +15,13 @@ class UserController {
   }
   static async loginUser(req, res) {
     try {
-      const { user_email, user_password } = req.body;
+      const { email, password } = req.body;
       let user = await users.findOne({
-        where: { user_email },
+        where: { email },
       });
 
       if (user) {
-        if (decrypter(user_password, user.user_password)) {
+        if (decrypter(password, user.password)) {
           let access_token = tokenGenerator(user);
           res.status(200).json({
             access_token,
@@ -43,18 +43,18 @@ class UserController {
   static async registerUser(req, res) {
     try {
       const {
-        user_name,
-        user_email,
-        user_password,
-        user_salt,
-        user_birthdate,
-        user_gender,
-        user_avatar,
-        user_type,
+        name,
+        email,
+        password,
+        salt,
+        birthdate,
+        gender,
+        type,
       } = req.body;
 
+      let avatar = req.file.path;
       let findEmail = await users.findOne({
-        where: { user_email },
+        where: { email },
       });
       if (findEmail) {
         res.status(403).json({
@@ -62,14 +62,14 @@ class UserController {
         });
       } else {
         let user = await users.create({
-          user_name,
-          user_email,
-          user_password,
-          user_salt,
-          user_birthdate,
-          user_gender,
-          user_avatar,
-          user_type,
+          name,
+          email,
+          password,
+          salt,
+          birthdate,
+          gender,
+          avatar,
+          type,
         });
         res.status(201).json(user);
       }
@@ -100,27 +100,27 @@ class UserController {
   static async updateUser(req, res) {
     try {
       const id = req.userData.id;
+      let avatar = req.file.path;
       const {
-        user_name,
-        user_email,
-        user_password,
-        user_salt,
-        user_birthdate,
-        user_gender,
-        user_avatar,
-        user_type,
+        name,
+        email,
+        password,
+        salt,
+        birthdate,
+        gender,
+        type,
       } = req.body;
 
       let user = await users.update(
         {
-          user_name,
-          user_email,
-          user_password,
-          user_salt,
-          user_birthdate,
-          user_gender,
-          user_avatar,
-          user_type,
+          name,
+          email,
+          password,
+          salt,
+          birthdate,
+          gender,
+          avatar,
+          type,
         },
         { where: { id } }
       );

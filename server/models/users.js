@@ -18,7 +18,7 @@ module.exports = (sequelize, DataTypes) => {
   }
   users.init(
     {
-      user_name: {
+      name: {
         type: DataTypes.STRING,
         validate: {
           notEmpty: {
@@ -26,7 +26,7 @@ module.exports = (sequelize, DataTypes) => {
           },
         },
       },
-      user_email: {
+      email: {
         type: DataTypes.STRING,
         validate: {
           notEmpty: {
@@ -37,7 +37,7 @@ module.exports = (sequelize, DataTypes) => {
           },
         },
       },
-      user_password: {
+      password: {
         type: DataTypes.STRING,
         validate: {
           notEmpty: {
@@ -45,7 +45,7 @@ module.exports = (sequelize, DataTypes) => {
           },
         },
       },
-      user_salt: {
+      salt: {
         type: DataTypes.STRING,
         validate: {
           notEmpty: {
@@ -53,7 +53,7 @@ module.exports = (sequelize, DataTypes) => {
           },
         },
       },
-      user_birthdate: {
+      birthdate: {
         type: DataTypes.DATEONLY,
         validate: {
           notEmpty: {
@@ -61,7 +61,7 @@ module.exports = (sequelize, DataTypes) => {
           },
         },
       },
-      user_gender: {
+      gender: {
         type: DataTypes.STRING,
         validate: {
           notEmpty: {
@@ -69,7 +69,7 @@ module.exports = (sequelize, DataTypes) => {
           },
         },
       },
-      user_avatar: {
+      avatar: {
         type: DataTypes.STRING,
         validate: {
           notEmpty: {
@@ -77,7 +77,7 @@ module.exports = (sequelize, DataTypes) => {
           },
         },
       },
-      user_type: {
+      type: {
         type: DataTypes.STRING,
         validate: {
           notEmpty: {
@@ -89,7 +89,7 @@ module.exports = (sequelize, DataTypes) => {
     {
       hooks: {
         beforeCreate: function (users, options) {
-          users.user_password = encrypter(users.user_password);
+          users.password = encrypter(users.password);
         },
       },
       sequelize,

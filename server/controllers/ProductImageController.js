@@ -14,14 +14,14 @@ class ProductImageController {
   static async uploadProductImage(req, res) {
     try {
       const productId = +req.params.id;
-      let prim_filename = req.file.filename;
-      let prim_filesize = req.file.size;
-      let prim_filetype = req.file.mimetype;
+      let filename = req.file.filename;
+      let filesize = req.file.size;
+      let filetype = req.file.mimetype;
       let img = await products_image.create({
-        prim_filename,
-        prim_filesize,
-        prim_filetype,
-        prim_primary: true,
+        filename,
+        filesize,
+        filetype,
+        primary: true,
         productId,
       });
 
@@ -33,11 +33,11 @@ class ProductImageController {
   static async updateProductImage(req, res) {
     try {
       const productId = +req.params.id;
-      let prim_filename = req.file.filename;
-      let prim_filesize = req.file.size;
-      let prim_filetype = req.file.mimetype;
+      let filename = req.file.filename;
+      let filesize = req.file.size;
+      let filetype = req.file.mimetype;
       let result = await products_image.update(
-        { prim_filename, prim_filesize, prim_filetype },
+        { filename, filesize, filetype },
         {
           where: { productId },
         }

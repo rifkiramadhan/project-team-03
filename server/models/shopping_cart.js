@@ -15,7 +15,7 @@ module.exports = (sequelize, DataTypes) => {
   }
   shopping_cart.init(
     {
-      shop_status: {
+      status: {
         type: DataTypes.STRING,
         validate: {
           notEmpty: {
@@ -23,7 +23,7 @@ module.exports = (sequelize, DataTypes) => {
           },
         },
       },
-      shop_created_on: {
+      created_on: {
         type: DataTypes.DATE,
         validate: {
           notEmpty: {

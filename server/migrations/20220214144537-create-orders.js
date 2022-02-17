@@ -8,34 +8,34 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      order_name: {
+      name: {
         type: Sequelize.STRING
       },
-      order_created_on: {
+      created_on: {
         type: Sequelize.DATE
       },
-      order_subtotal: {
+      subtotal: {
         type: Sequelize.INTEGER
       },
-      order_discount: {
+      discount: {
         type: Sequelize.STRING
       },
-      order_tax: {
+      tax: {
         type: Sequelize.DATEONLY
       },
-      order_total_due: {
+      total_due: {
         type: Sequelize.STRING
       },
-      order_payt_trx_number: {
+      payt_trx_number: {
         type: Sequelize.STRING
       },
-      order_city: {
+      city: {
         type: Sequelize.STRING
       },
-      order_address: {
+      address: {
         type: Sequelize.STRING
       },
-      order_status: {
+      status: {
         type: Sequelize.STRING
       },
       userId: {

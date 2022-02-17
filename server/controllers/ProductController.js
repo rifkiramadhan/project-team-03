@@ -37,34 +37,34 @@ class ProductController {
   static async createProduct(req, res) {
     try {
       const {
-        prod_name,
-        prod_desc,
-        prod_price,
-        prod_stock,
-        prod_expire,
-        prod_weight,
-        prod_category,
-        prod_brand,
-        prod_condition,
-        prod_total_sold,
-        prod_rating,
-        prod_views,
+        name,
+        desc,
+        price,
+        stock,
+        expire,
+        weight,
+        category,
+        brand,
+        condition,
+        total_sold,
+        rating,
+        views,
       } = req.body;
 
       const userId = req.userData.id;
       let product = await products.create({
-        prod_name,
-        prod_desc,
-        prod_price,
-        prod_stock,
-        prod_expire,
-        prod_weight,
-        prod_category,
-        prod_brand,
-        prod_condition,
-        prod_total_sold,
-        prod_rating,
-        prod_views,
+        name,
+        desc,
+        price,
+        stock,
+        expire,
+        weight,
+        category,
+        brand,
+        condition,
+        total_sold,
+        rating,
+        views,
         userId,
       });
       res.status(201).json(product);
@@ -76,34 +76,34 @@ class ProductController {
     try {
       const id = +req.params.id;
       const {
-        prod_name,
-        prod_desc,
-        prod_price,
-        prod_stock,
-        prod_expire,
-        prod_weight,
-        prod_category,
-        prod_brand,
-        prod_condition,
-        prod_total_sold,
-        prod_rating,
-        prod_views,
+        name,
+        desc,
+        price,
+        stock,
+        expire,
+        weight,
+        category,
+        brand,
+        condition,
+        total_sold,
+        rating,
+        views,
       } = req.body;
-      
+
       let result = await products.update(
         {
-          prod_name,
-          prod_desc,
-          prod_price,
-          prod_stock,
-          prod_expire,
-          prod_weight,
-          prod_category,
-          prod_brand,
-          prod_condition,
-          prod_total_sold,
-          prod_rating,
-          prod_views,
+          name,
+          desc,
+          price,
+          stock,
+          expire,
+          weight,
+          category,
+          brand,
+          condition,
+          total_sold,
+          rating,
+          views,
         },
         {
           where: { id },
@@ -141,10 +141,7 @@ class ProductController {
   static async updateViews(req, res) {
     try {
       const id = +req.params.id;
-      let product = await products.increment(
-        { prod_views: +1 },
-        { where: { id } }
-      );
+      let product = await products.increment({ views: +1 }, { where: { id } });
       res.status(200).json(product);
     } catch (err) {
       res.status(500).json(err);
@@ -154,7 +151,7 @@ class ProductController {
     try {
       const id = +req.params.id;
       let product = await products.increment(
-        { prod_total_sold: +1 },
+        { total_sold: +1 },
         { where: { id } }
       );
       res.status(200).json(product);

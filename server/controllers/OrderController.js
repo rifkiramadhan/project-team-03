@@ -41,32 +41,32 @@ class OrderController {
   static async createOrder(req, res) {
     try {
       const {
-        order_name,
-        order_created_on,
-        order_subtotal,
-        order_discount,
-        order_tax,
-        order_total_due,
-        order_total_qty,
-        order_payt_trx_number,
-        order_city,
-        order_address,
-        order_status,
+        name,
+        created_on,
+        subtotal,
+        discount,
+        tax,
+        total_due,
+        total_qty,
+        payt_trx_number,
+        city,
+        address,
+        status,
       } = req.body;
 
       const userId = req.userData.id;
       let order = await orders.create({
-        order_name,
-        order_created_on: new Date(),
-        order_subtotal,
-        order_discount,
-        order_tax,
-        order_total_due,
-        order_total_qty,
-        order_payt_trx_number,
-        order_city,
-        order_address,
-        order_status,
+        name,
+        created_on: new Date(),
+        subtotal,
+        discount,
+        tax,
+        total_due,
+        total_qty,
+        payt_trx_number,
+        city,
+        address,
+        status,
         userId,
       });
       res.status(201).json(order);
@@ -78,32 +78,32 @@ class OrderController {
     try {
       const id = +req.params.id;
       const {
-        order_name,
-        order_created_on,
-        order_subtotal,
-        order_discount,
-        order_tax,
-        order_total_due,
-        order_total_qty,
-        order_payt_trx_number,
-        order_city,
-        order_address,
-        order_status,
+        name,
+        created_on,
+        subtotal,
+        discount,
+        tax,
+        total_due,
+        total_qty,
+        payt_trx_number,
+        city,
+        address,
+        status,
       } = req.body;
 
       let result = await orders.update(
         {
-          order_name,
-          order_created_on: new Date(),
-          order_subtotal,
-          order_discount,
-          order_tax,
-          order_total_due,
-          order_total_qty,
-          order_payt_trx_number,
-          order_city,
-          order_address,
-          order_status,
+          name,
+          created_on: new Date(),
+          subtotal,
+          discount,
+          tax,
+          total_due,
+          total_qty,
+          payt_trx_number,
+          city,
+          address,
+          status,
         },
         {
           where: { id },
@@ -141,9 +141,9 @@ class OrderController {
   static async updateStatusOrder(req, res) {
     try {
       const id = +req.params.id;
-      const { order_status } = req.body;
+      const { status } = req.body;
       let order = await orders.update(
-        { order_status },
+        { status },
         {
           where: { id },
         }

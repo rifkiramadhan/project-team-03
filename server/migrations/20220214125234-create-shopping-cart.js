@@ -8,10 +8,10 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      shop_created_on: {
+      created_on: {
         type: Sequelize.DATE
       },
-      shop_status: {
+      status: {
         type: Sequelize.STRING
       },
       userId: {
