@@ -42,15 +42,7 @@ class UserController {
   }
   static async registerUser(req, res) {
     try {
-      const {
-        name,
-        email,
-        password,
-        salt,
-        birthdate,
-        gender,
-        type,
-      } = req.body;
+      const { name, email, password, salt, birthdate, gender, type } = req.body;
 
       let avatar = req.file.path;
       let findEmail = await users.findOne({
@@ -101,15 +93,7 @@ class UserController {
     try {
       const id = req.userData.id;
       let avatar = req.file.path;
-      const {
-        name,
-        email,
-        password,
-        salt,
-        birthdate,
-        gender,
-        type,
-      } = req.body;
+      const { name, email, password, salt, birthdate, gender, type } = req.body;
 
       let user = await users.update(
         {
