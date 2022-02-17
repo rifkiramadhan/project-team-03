@@ -228,7 +228,7 @@ function ProductDetails({ login }) {
     var exp_date = tempExp[0];
     
     return (
-        <div>
+        <>
             <div className="container">
             <h1 className="mt-20 text-center fw-bold">Detail Product</h1>
                 <div className="middle d-flex justify-content-center align-items-center mb-3">
@@ -288,7 +288,7 @@ function ProductDetails({ login }) {
                                             <input type="file" className="form-control rounded-pill" id="image" name="image" 
                                             onChange={(e) => setProductImages(e.target.files[0])} 
                                                 accept="image/*"/>
-                                            <button type="submit" id="btn-upload" className="btn btn-sm btn-primary w-100 fw-bold rounded-pill" onClick={(e) => submitHandler(e)}>Submit</button>
+                                            <button type="submit" id="btn-upload" className="btn btn-lg btn-primary w-100 fw-bold rounded-pill" onClick={(e) => submitHandler(e)}>Submit</button>
                                         </div>
                                     </form>
                                     :
@@ -297,7 +297,7 @@ function ProductDetails({ login }) {
                                             <input type="file" className="form-control rounded-pill" id="image" name="image" 
                                             onChange={(e) => setProductImages(e.target.files[0])} 
                                                 accept="image/*"/>
-                                            <button type="submit" id="btn-upload" className="btn btn-sm btn-primary w-100 fw-bold rounded-pill" onClick={(e) => submitHandler(e)}>Submit</button>
+                                            <button type="submit" id="btn-upload" className="btn btn-lg btn-primary w-100 fw-bold rounded-pill" onClick={(e) => submitHandler(e)}>Submit</button>
                                         </div>
                                     </form>
                                 }
@@ -323,7 +323,7 @@ function ProductDetails({ login }) {
                         }
                         <div id="btn-buy" className="prod-img">
                             <button 
-                                className="btn btn-success fw-bold rounded-pill w-100 openModal" 
+                                className="btn btn-lg btn-success fw-bold rounded-pill w-100 openModal" 
                                 onClick={() => setOpenModal(true)}
                             >
                                 Order
@@ -337,7 +337,7 @@ function ProductDetails({ login }) {
                     </div>
                 </div>
             </div>
-        </div>
+        </>
     );
 };
 

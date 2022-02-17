@@ -4,7 +4,22 @@
     -moz-border-radius: 25px 25px 25px 25px;
     -webkit-border-radius: 25px 25px 25px 25px;
     border: 0px solid var(--black-color);
-    background-color: var(--light-gray-two-color);
+    background-color: var(--white-color);
+}
+
+.card-profile {
+  width: 28rem;
+  border-radius: 25px 25px 25px 25px;
+  -moz-border-radius: 25px 25px 25px 25px;
+  -webkit-border-radius: 25px 25px 25px 25px;
+  border: 0px solid #000000;
+}
+
+.image-profile {
+  border-radius: 50%;
+  width: 150px;
+  top: 0;
+  bottom: 100px;
 }
 
 .card-details {
@@ -17,4 +32,9 @@
 .container-form {
   margin-top: 50px;
   width: 500px;
+}
+
+.form-control {
+  height: 50px;
+  display: block;
 }

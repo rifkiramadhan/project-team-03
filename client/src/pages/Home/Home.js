@@ -57,7 +57,7 @@ function Home({login}) {
             <div className="container-fluid mt-20">
                 <form className="d-flex">
                     <input className="form-control me-2 rounded-pill" type="search" placeholder="Mau cari apa ?" onChange={(e) => {setSearch(e.target.value)}}/>
-                    <button className="btn btn-success fw-bold rounded-pill" type="submit">Search</button>
+                    <button className="btn btn-success fw-bold rounded-pill m-1" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
                 </form>
             </div>
             

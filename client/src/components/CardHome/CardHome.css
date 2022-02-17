@@ -1,10 +1,10 @@
 /* Card */
 .card-radius {
     width: 18rem;
-    border-radius: 18px;
+    border-radius: 24px;
     text-align: start;
     border: none;
-    background-color: var(--white-color);
+    box-shadow: none;
 }
 
 .card-ratings {
@@ -12,7 +12,7 @@
   top: 0;
   left: 0;
   font-size: large;
-  border-radius: 18px 0px 18px 0px;
+  border-radius: 24px 0px 24px 0px;
   padding: 0.4em 1.3em;
 }
 
@@ -20,7 +20,7 @@
     position: absolute;
     right: 0;
     font-size: large;
-    border-radius: 0px 0px 18px 18px;
+    border-radius: 0px 0px 24px 24px;
     padding: 0.4em 1.3em;
     width: 100%;
     text-align: center;
@@ -51,7 +51,7 @@
 }
 
 .row .card img {
-    border-radius: 18px;
+    border-radius: 24px;
 }
 
 .prod-info {

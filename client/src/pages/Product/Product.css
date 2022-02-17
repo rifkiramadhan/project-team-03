@@ -18,14 +18,22 @@
     -moz-border-radius: 25px 25px 25px 25px;
     -webkit-border-radius: 25px 25px 25px 25px;
     border: 0px solid var(--black-color);
+    background-color: var(--white-color);
+}
+
+.form-control {
     background-color: var(--light-gray-two-color);
+}
+
+.form-control:nth-child() {
+    border: 1px solid;
 }
 
 .prod-img {
     width: 90%;
     margin-left: 14.5px;
 }
-  
+
 /* Button */
 #btn-upload {
     margin-bottom: 10px;

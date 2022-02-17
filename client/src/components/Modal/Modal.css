@@ -28,8 +28,11 @@
 
 .modalContainer {
   width: 800px;
-  border-radius: 12px;
-  background-color: var(--light-gray-two-color);
+  border-radius: 26px 26px 26px 26px;
+  -moz-border-radius: 26px 26px 26px 26px;
+  -webkit-border-radius: 26px 26px 26px 26px;
+  border: 1px solid var(--black-color);  
+  background-color: var(--light-gray-one-color);
   box-shadow: var(light-gray-three-color) 0px 5px 15px;
   display: flex;
   flex-direction: column;
@@ -74,8 +77,9 @@
 }
 
 .modalContainer .footer button {
-  width: 150px;
-  height: 45px;
+  width: 100%;
+  height: 50px;
+  display: block;
   margin: 10px;
   border: none;
   color: var(--white-color);
@@ -90,3 +94,4 @@
 .left {
   text-align: left;
 }
+

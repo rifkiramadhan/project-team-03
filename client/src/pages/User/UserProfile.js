@@ -49,33 +49,33 @@ function UserProfile() {
     var birthdate = tempBirth[0];
 
     return (
-        <div className="container mt-20 mb-5">
+        <>
             <h1 className="mt-20 text-center text-dark fw-bold mb-5">Profile</h1>
-            <div className="middle">
-                <div className="card card-details bg-light">
-                    <img src={`http://localhost:3000/${user.avatar}`} className="card-img-top" alt="..."/>
+            <div className="container mt-20 mb-5">
+                <div className="card card-profile card-details bg-light">
+                <img src={`http://localhost:3000/${user.avatar}`} className="card-img-top mt-4 mb-5 img-thumbnail image-profile mx-auto d-block" alt="..."/>
                         <div className="card-body">
-                            <h5 className="card-title">{user.name}</h5>
+                            <h5 className="card-title text-center">{user.name}</h5>
                                 <ul className="list-group list-group-flush">
                                     <li className="list-group-item middle">Gender: {user.gender}</li>
                                     <li className="list-group-item middle">Birthdate: {birthdate}</li>
                                     <li className="list-group-item middle">Type: {user.type}</li>
-                                    {
-                                        openModal
-                                        &&
-                                        <ModalUserEdit setOpenModal={setOpenModal} username={user.name} gender={user.gender} birthdate={birthdate} type={user.type} avatar={user.avatar}/>
-                                    }
-                                    <Link 
-                                        className="btn btn-primary btn-sm fw-bold rounded-pill openModal" 
-                                        onClick={() => setOpenModal(true)}
-                                    >
-                                        Edit Profile
-                                    </Link>
                                 </ul>
+                            {
+                                openModal
+                                &&
+                                <ModalUserEdit setOpenModal={setOpenModal} username={user.name} gender={user.gender} birthdate={birthdate} type={user.type} avatar={user.avatar}/>
+                            }
+                            <Link 
+                                className="btn p-2 w-100 mt-5 btn-success btn-sm fw-bold rounded-pill openModal" 
+                                onClick={() => setOpenModal(true)}
+                            >
+                                Edit Profile
+                            </Link>
                         </div>
                 </div>
             </div>
-        </div>
+        </>
     );
 };
 

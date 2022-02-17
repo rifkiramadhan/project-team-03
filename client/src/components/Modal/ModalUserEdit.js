@@ -103,7 +103,7 @@ function ModalUserEdit({ setOpenModal, username, gender, birthdate, type, avatar
                         <div className="row mb-3">
                             <label className=" col-sm-2 col-form-label wrap">Avatar: </label>
                             <div className="col-sm-10">
-                            <input type="file" className="form-control rounded-pill" id="avatar" name="avatar" onChange={(e) => setUser({...user, avatar: e.target.files[0]})} accept="image/*"/>
+                                <input type="file" className="form-control rounded-pill" id="avatar" name="avatar" onChange={(e) => setUser({...user, avatar: e.target.files[0]})} accept="image/*"/>
                             </div>
                         </div>
                         <div className="footer">

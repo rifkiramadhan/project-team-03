@@ -103,7 +103,7 @@ function ProductEdit() {
     return (
             <div className="container">
                 <h1 className="mt-20 text-center fw-bold">Edit Produk</h1>
-                <form className="card-form mb-3 p-5 m-5 mt-4 row g-3 mt-20">
+                <form className="card-form mb-3 p-5 m-5 mt-4 row g-3 mt-20 align-items-center justify-content-center">
                     <div className="row mb-3">
                         <label className="col-sm-2 col-form-label">Name: </label>
                         <div className="col-sm-10">
@@ -176,7 +176,11 @@ function ProductEdit() {
                             </div>
                         </div>
                     </div>
-                    <button type="submit" className="btn btn-success fw-bold rounded-pill" onClick={(e) => submitHandler(e)}>Simpan</button>
+                    <div className="row">
+                        <div className="col-sm-12">
+                            <button type="submit" className="btn btn-lg btn-success w-100 fw-bold rounded-pill" onClick={(e) => submitHandler(e)}>Simpan</button>
+                        </div>
+                    </div>
                 </form>
             </div>
     );
