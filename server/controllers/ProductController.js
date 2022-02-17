@@ -5,6 +5,8 @@ class ProductController {
     try {
       let product = await products.findAll({
         order: [["id", "ASC"]],
+        include: 
+               [products_image] 
       });
       res.status(200).json(product);
     } catch (err) {
@@ -27,7 +29,7 @@ class ProductController {
       const id = +req.params.id;
       let product = await products.findOne({
         where: { id },
-        include: [users],
+        include: [users, products_image],
       });
       res.status(200).json(product);
     } catch (err) {
