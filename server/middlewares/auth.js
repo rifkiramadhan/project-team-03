@@ -1,4 +1,4 @@
-const { tokenVerifier } = require("../helpers/jwt");
+const { tokenVerifier } = require('../helpers/jwt');
 const { Product, User } = require('../models')
 
 function authentication(req, res, next) {

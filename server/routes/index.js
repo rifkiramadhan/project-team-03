@@ -2,7 +2,7 @@ const router = require('express').Router();
 
 router.get('/',(req, res) =>{
     res.status(200).json({
-        message : "USERS ITEMS STORE"
+        message : 'Selamat Datang di Codi Health'
     });
 });
 
