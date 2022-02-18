@@ -4,21 +4,30 @@ import { useHistory, Link } from 'react-router-dom';
 import axios from 'axios';
 import './User.css';
 
-function UserLogin({userLogin, getToken}) {
+// Fungsi untuk melakukan sign in
+function UserLogin({ userLogin, getToken }) {
+    // Fungsi untuk menjalankan url API
+    const URL = 'http://localhost:3000';
+
+    // Untuk menjalankan lokasi kemana halaman akan di arahkan setelah button di klik
+    const history = useHistory();
+
+    // Fungsi untuk menerima dari field url API untuk user dan password
     const [ user, setUser ] = useState({
         email: '',
         password: ''
     });
 
-    const URL = 'http://localhost:3000';
-    const history = useHistory();
-
+    // Fungsi untuk menjalankan button sign in
     const submitHandler = e => {
         e.preventDefault();
         loginUser();
     };
 
+    // Fungsi untuk menjalankan dan mengirim data dari button sign in setelah button nya di klik
     const loginUser = async () => {
+
+        // Jika berhasil sign in
         try {
             const result = await axios({
                 method: 'POST',
@@ -30,16 +39,19 @@ function UserLogin({userLogin, getToken}) {
             getToken(access_token);
             userLogin(true);
         
+            // Maka jalankan perintah sign in berhasil
             Swal.fire(
                 `Sign In Berhasil`,
                 'Anda berhasil melakukan Sign In, Selamat berbelanja',
                 'success'
             );
-                
+            
+            // Dari form sign in akan di kirim ke halaman home page untuk user / admin
             history.push('/');
         
             // console.log(access_token)
         } catch (err) {
+            // Jika gagal sign in, maka akan menampilkan pesan sign in gagal dan tetap berada di halaman sign in
             Swal.fire(
                 'Sign In Gagal!',
                 `Username atau password Anda salah, silahkan Daftar atau Masuk kembali!`,

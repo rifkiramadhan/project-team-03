@@ -5,6 +5,13 @@ import axios from 'axios';
 import Swal from 'sweetalert2';
  
 function ModalOrder({ setOpenModal, productName, productId, productPrice, productStock }) {
+    // Fungsi untuk menjalankan url API
+    const URL = "http://localhost:3000";
+
+    // Untuk menjalankan lokasi kemana halaman akan di arahkan setelah button di klik
+    const history = useHistory();
+
+    // Fungsi untuk menjalankan order dari use state yang menerima data dari order produk
     const [order, setOrder] = useState({
         name: productName,
         subtotal: 0,
@@ -13,9 +20,7 @@ function ModalOrder({ setOpenModal, productName, productId, productPrice, produc
         address: '',
     });
 
-    const URL = "http://localhost:3000";
-    const history = useHistory();
-
+    // Fungsi untuk menjalankan add cart, add order, update sold, dan add line item
     const orderHandler = async (e) => {
         e.preventDefault();
         addCart();
@@ -26,13 +31,16 @@ function ModalOrder({ setOpenModal, productName, productId, productPrice, produc
         console.log(order);
     };
 
+    // Fungsi untuk membuat update sold
     const updateSold = async () => {
+        // Jika user yang telah sign in berhasil melakukan order maka sold order akan bertambah sebanyak 1x
         try {
             await axios({
                 method: 'PUT',
                 url: `${URL}/products/updateSold/${productId}`
             });
         } catch (err){
+            // Jika tidak maka akan menampilkan pesan silahkan ii data terlebih dahulu
             Swal.fire(
                 'Silahkan isi data terlebih dahulu!',
                 `Anda gagal update Sold, silahkan isi data terlebih dahulu!`,
@@ -41,7 +49,10 @@ function ModalOrder({ setOpenModal, productName, productId, productPrice, produc
         };
     };
 
+    // Fungsi untuk membuat add order
     const addOrder = async () => {
+
+        // Jika user yang telah sign in berhasil melakukan order
         try {
             const access_token = localStorage.getItem('access_token');
 
@@ -56,14 +67,17 @@ function ModalOrder({ setOpenModal, productName, productId, productPrice, produc
             
             // console.log(access_token);
             
+            // Maka akan menerima pesan berhasil order
             Swal.fire(
                 'Berhasil Order',
                 `${productName} Anda telah berhasil melakukan Order pembelian Produk`,
                 'success'
             );
 
+            // Kemudian akan di arahkan ke halaman order
             history.push('/order');
         } catch(err) {
+            // Jika gagal maka akan menerima pesan gagal order
             Swal.fire(
                 'Gagal Order!',
                 `Anda gagal melakukan Order pembelian Produk!`,
@@ -72,7 +86,9 @@ function ModalOrder({ setOpenModal, productName, productId, productPrice, produc
         };
     };
 
+    // Fungsi untuk membuat add cart
     const addCart = async () => {
+        // Jika user yang telah sign in berhasil melakukan order maka data akan ditambahkan ke halaman cart
         try {
             const access_token = localStorage.getItem('access_token');
             
@@ -86,6 +102,7 @@ function ModalOrder({ setOpenModal, productName, productId, productPrice, produc
 
             console.log(access_token)
         } catch(err) {
+            // Jika gagal maka aakn menampilkan pesan gagal menambahkan cart
             Swal.fire(
                 'Gagal Menambahkan Cart!',
                 `Anda gagal menambahkan Produk ke Cart!`,
@@ -94,7 +111,9 @@ function ModalOrder({ setOpenModal, productName, productId, productPrice, produc
         }
     }
 
+    // Fungsi untuk menambahkan add line item
     const addLineItem = async () => {
+        // Jika user yang telah sign in melakukan order
         try {
             const qty = order.total_qty;
             const ProductId = productId;
@@ -114,12 +133,14 @@ function ModalOrder({ setOpenModal, productName, productId, productPrice, produc
                 }
             });
             
+            // Maka akan menampilkan pesan order berhasil ditambahkan
             Swal.fire(
                 'Order Berhasil Ditambahkan',
                 `Anda telah berhasil menambahkan order pembelian`,
                 'success'
             );
         } catch(err) {
+            // Jika gagal maka akan menampilkan pesan order gagal ditambahkan
             Swal.fire(
                 'Order Gagal Ditambahkan!',
                 `Anda gagal menambahkan order pembelian!`,

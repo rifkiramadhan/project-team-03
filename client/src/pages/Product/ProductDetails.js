@@ -5,12 +5,19 @@ import Swal from 'sweetalert2';
 import { ModalOrder } from '../../components';
 import './Product.css';
 
+// Fungsi untuk membuat product details
 function ProductDetails({ login }) {
-    const params = useParams();
-    const id = +params.id;
+    
+    // Fungsi untuk menjalankan url API
     const URL = 'http://localhost:3000';
+    
+    // Untuk menjalankan lokasi kemana halaman akan di arahkan setelah button di klik
     const history = useHistory();
 
+    const params = useParams();
+    const id = +params.id;
+
+    // Fungsi untuk menerima field dari url API untuk halaman detail produk
     const [ product, setProduct ] = useState({
         name: '',
         description: '',
@@ -24,12 +31,14 @@ function ProductDetails({ login }) {
         total_sold: 0,
         rating: 0,
         views: 0,
-        User: {},        
+        User: {},
         Products_Images: []
     });
 
+    // Fungsi untuk menampilkan produk image
     const [ productImages, setProductImages ] = useState({});
 
+    // Fungsi untuk menjalanakn button submit update image
     const submitHandler = (e) => {
         e.preventDefault();
         
@@ -41,7 +50,10 @@ function ProductDetails({ login }) {
         // console.log(productImages);
     };
 
+    // Fungsi untuk membuat edit product image
     const editProductImage = async () => {
+
+        // Jika user yang telah sign in berhasil merubah product image
         try {
             const access_token = localStorage.getItem('access_token');
             let img = new FormData();
@@ -60,6 +72,7 @@ function ProductDetails({ login }) {
                 data: img
             });
 
+            // Maka tampilkan pesan foto produk diperbaharui
             Swal.fire(
                 `Foto Produk Diperbaharui`,
                 `Foto Produk Anda berhasil diperbaharui`,
@@ -68,6 +81,7 @@ function ProductDetails({ login }) {
 
             history.push('/');
         } catch (error) {
+            // Jika user yang tidak melakukan sign in melakukan update upload foto product, maka tampilkan pesan nya
             Swal.fire(
                 `Foto Gagal Diperbaharui!`,
                 `Foto Produk Anda gagal diperbaharui!`,
@@ -76,7 +90,10 @@ function ProductDetails({ login }) {
         };
     };
 
+    // Fungsi untuk membuat upload image
     const uploadImage = async () => {
+
+        // Jika user yang telah melakukan sign in melakukan update upload foto product, maka tampilkan pesan nya
         try {
             const access_token = localStorage.getItem('access_token');
             let img = new FormData();
@@ -95,37 +112,45 @@ function ProductDetails({ login }) {
                 data: img
             });
 
+            // Maka tampilkan pesan foto berhasil diperbaharui
             Swal.fire(
-                `Foto Diperbaharui`,
-                `Produk Anda berhasil diperbaharui`,
+                `Foto Berhasil Ditambahkan`,
+                `Produk Anda berhasil ditambahkan`,
                 'success'
             );
 
             history.push('/');
         } catch (error) {
+
+            // Jika user yang tidak melakukan sign in melakukan upload foto product, maka tampilkan pesan nya
             Swal.fire(
-                `Foto Gagal Diperbaharui!!`,
-                `Foto Produk gagal diperbaharui`,
+                `Foto Gagal Ditambahkan!!`,
+                `Foto Produk gagal ditambahkan!`,
                 'error'
             );
         };
     };
     
+    // Fungsi untuk menonaktifkan form modal
     const [ openModal, setOpenModal ] = useState(false);
     
+    // Fungsi untuk menampilkan produk detail dan views dari pengguna yang melihat produk yang di klik
     useEffect(() => {
         getProductById();
         addViews();
     }, []);
 
+    // Fungsi untuk membuat add views
     const addViews = async () => {
+        // Jika add views berhasil dijalanakn maka akan bertambah sebanyak 1x
         try {
             await axios({
                 method: 'PUT',
                 url: `${URL}/products/updateViews/${id}`
             });
         } catch (err){
-            Swal.fire(
+        // Jika add views gagal dijalanakn maka akan menampilkan pesan views gagal ditambahkan
+        Swal.fire(
                 'Views Gagal Ditambahkan',
                 `Anda gagal menambahkan Views`,
                 'error'
@@ -133,21 +158,26 @@ function ProductDetails({ login }) {
         };
     };
 
+    // Fungsi untuk membuat add ratings
     const addRatings = async () => {
         try {
+            // Jika add ratings berhasil dijalanakn, maka akan bertambah sebanyak 1x
             await axios({
                 method: 'PUT',
                 url: `${URL}/products/updateRating/${id}`
             });
 
+            // Dan menampilkan pesan rating berhasil ditambahkan
             Swal.fire(
                 'Rating Berhasil Ditambahkan',
                 `Anda barhasil menambahkan <b>Rating Produk:</b> <i>"${product.name}"</i>`,
                 'success'
             );
 
+            // Kemudian akan diarahkan ke halaman home page
             history.push('/');
         } catch (err){
+            // Jika add ratings gagal dijalanakn, maka akan menampilkan pesan rating gagal ditambahkan!
             Swal.fire(
                 'Rating Gagal Ditambahkan',
                 `Anda gagal menambahkan Rating`,
@@ -156,24 +186,30 @@ function ProductDetails({ login }) {
         };
     };
 
+    // Fungsi untuk membuat get product
     const getProductById = async () => {
+        // Jika get product berhasil dijalanakn
         try{
             let result = await axios({
                 method: 'GET',
                 url: `${URL}/products/${id}`
             });
 
+            // Maka akan menampilkan seluruh keterangan produk yang tersedia
             setProduct(result.data);
         } catch(err){
+            // Jika get product gagal dijalanakn, maka akan menampilkan pesan gagal melihat produk
             Swal.fire(
-                'Gagal Melihat Produk',
-                `Anda gagal melihat Produk yang dipilih`,
+                'Gagal Melihat Produk!',
+                `Anda gagal melihat Produk yang dipilih!`,
                 'error'
             );
         };
     };
 
+    // Fungsi untuk membuat delete produk
     const deleteProductHandler = (id) => {
+        // Jika user yang sign in menekan delete product , maka akan menjalankan pesan konfirmasi
         try {
             Swal.fire({
                 title: 'Ingin Menghapus Produk ?',
@@ -184,6 +220,7 @@ function ProductDetails({ login }) {
                 cancelButtonColor: '#d33',
                 confirmButtonText: 'Oke'
             }).then((result) => {
+                // Jika user yang sign in mengkonfirmasi delete product
                 if (result.isConfirmed) {
                     const access_token = localStorage.getItem('access_token');
 
@@ -196,16 +233,19 @@ function ProductDetails({ login }) {
                         }
                     });
 
+                    // Maka sebenarnya akan menampilkan pesan produk berhasil dihapus
                     Swal.fire(
-                        'Produk Dihapus',
+                        'Produk Berhasil Dihapus',
                         `${product.name} Berhasil dihapus dari Toko`,
                         'success'
                     );
-
+                    
+                    // Kemudian akan di arahkan ke halaman home page
                     history.push('/');
                 };
             })
         } catch(err) {
+            // Jika terjadi kesalahan dalam pengisian data produk maka ketika produk dihapus akan menampilkan pesan berikut
             Swal.fire(
                 'Produk Gagal Dihapus!',
                 `Gagal menghapus produk dari Toko`,
@@ -214,18 +254,20 @@ function ProductDetails({ login }) {
         };
     };
 
+    // Fungsi untuk membuat button product gagal order produk
     const actionHandler = (e) => {
         e.preventDefault();
-
+        // Jika user tidak melakukan sign in tetapi melakukan order produk, maka akan menampilkan pesan berikut
         Swal.fire(
             'Gagal Order!',
-            `Anda gagal Order Produk, silahkan Login terlebih dahulu!`,
+            `Anda gagal Order Produk, silahkan Sign In terlebih dahulu!`,
             'error'
         );
     };
 
-    var tempExp = product.expire_date.slice().split('T');
-    var exp_date = tempExp[0];
+    // Fungsi untuk menjalankan tanggal expired product
+    let tempExp = product.expire_date.slice().split('T');
+    let exp_date = tempExp[0];
     
     return (
         <>
@@ -261,8 +303,9 @@ function ProductDetails({ login }) {
                                     Dijual Oleh: {product.User.name}
                                 </li>
                                 <div className="side-by-side">
+                                    {/* Logic belum aktif */}
                                     {
-                                        login === true ?
+                                        login ?
                                         <Link 
                                             to={`/products/edit/${id}`} 
                                             className="btn btn-info fw-bold rounded-pill"
@@ -278,26 +321,56 @@ function ProductDetails({ login }) {
                                         </Link>
                                     }
                                     
-                                    <button onClick={() => deleteProductHandler(id)} className="btn btn-sm btn-danger fw-bold rounded-pill">Delete</button>
+                                    <button 
+                                        onClick={() => deleteProductHandler(id)} 
+                                        className="btn btn-sm btn-danger fw-bold rounded-pill"
+                                    >
+                                        Delete
+                                    </button>
                                         
                                 </div>
+                                {/* Logic belum aktif */}
                                 {
                                     login ?
                                     <form>
                                         <div className="prod-img">
-                                            <input type="file" className="form-control rounded-pill" id="image" name="image" 
-                                            onChange={(e) => setProductImages(e.target.files[0])} 
-                                                accept="image/*"/>
-                                            <button type="submit" id="btn-upload" className="btn btn-lg btn-primary w-100 fw-bold rounded-pill" onClick={(e) => submitHandler(e)}>Submit</button>
+                                            <input 
+                                                type="file" 
+                                                className="form-control rounded-pill" 
+                                                id="image" 
+                                                name="image" 
+                                                onChange={(e) => setProductImages(e.target.files[0])} 
+                                                accept="image/*"
+                                            />
+                                            <button 
+                                                type="submit" 
+                                                id="btn-upload" 
+                                                className="btn btn-lg btn-primary w-100 fw-bold rounded-pill" 
+                                                onClick={(e) => submitHandler(e)}
+                                            >
+                                                Submit
+                                            </button>
                                         </div>
                                     </form>
                                     :
                                     <form>
                                         <div className="prod-img">
-                                            <input type="file" className="form-control rounded-pill" id="image" name="image" 
-                                            onChange={(e) => setProductImages(e.target.files[0])} 
-                                                accept="image/*"/>
-                                            <button type="submit" id="btn-upload" className="btn btn-lg btn-primary w-100 fw-bold rounded-pill" onClick={(e) => submitHandler(e)}>Submit</button>
+                                            <input 
+                                                type="file" 
+                                                className="form-control rounded-pill" 
+                                                id="image" 
+                                                name="image" 
+                                                onChange={(e) => setProductImages(e.target.files[0])} 
+                                                accept="image/*"
+                                            />
+                                            <button 
+                                                type="submit" 
+                                                id="btn-upload" 
+                                                className="btn btn-lg btn-primary w-100 fw-bold rounded-pill" 
+                                                onClick={(e) => submitHandler(e)}
+                                            >   
+                                                Submit
+                                            </button>
                                         </div>
                                     </form>
                                 }
@@ -319,7 +392,13 @@ function ProductDetails({ login }) {
                         {
                             openModal
                             &&
-                            <ModalOrder setOpenModal={setOpenModal} productName={product.name} productId={product.id} productPrice={product.price} productStock={product.stock}/>
+                            <ModalOrder 
+                                setOpenModal={setOpenModal} 
+                                productName={product.name} 
+                                productId={product.id} 
+                                productPrice={product.price} 
+                                productStock={product.stock}
+                            />
                         }
                         <div id="btn-buy" className="prod-img">
                             <button 

@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import './CardHome.css';
 
+// Fungsi untuk menampilkan data produk dari url API pada card home
 function CardHome(props) {
     const { 
         id,

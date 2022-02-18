@@ -4,7 +4,16 @@ import { useHistory } from 'react-router-dom';
 import axios from 'axios';
 import './Product.css';
 
+// Fungsi untuk membuat product add
 function ProductAdd() {
+
+    // Fungsi untuk menjalankan url API
+    const URL = 'http://localhost:3000';
+    
+    // Untuk menjalankan lokasi kemana halaman akan di arahkan setelah button di klik
+    const history = useHistory();
+
+    // Fungsi untuk menerima field dari url API untuk form tambah produk
     const [product, setProduct] = useState({
         name: '',
         desc: '',
@@ -16,9 +25,7 @@ function ProductAdd() {
         condition: ''
     });
 
-    const URL = 'http://localhost:3000';
-    const history = useHistory();
-
+    // Fungsi untuk menjalankan tambah produk
     const submitHandler = (e) => {
         e.preventDefault();
         addProduct();
@@ -26,7 +33,10 @@ function ProductAdd() {
         // console.log(product);
     };
 
+    // Fungsi untuk membuat add produk
     const addProduct = async () => {
+
+        // Jika user yang sign in menekan tombol button
         try {
             const access_token = localStorage.getItem('access_token');
 
@@ -39,17 +49,20 @@ function ProductAdd() {
                 },
                 data: product
             });
-
+            
+            // Maka akan menampilkan pesan produk berhasil ditambahkan
             Swal.fire(
                 `Produk Berhasil Diitambahkan!`,
                 `Produk Anda berhasil ditambahkan`,
                 'success'
             );
 
+            // Dari form tambah produk akan di kirim ke halaman home page untuk user / admin
             history.push('/');
 
             // console.log(access_token)
         } catch (error) {
+            // Jika user yang tidak sigin in menekan tombol button, maka akan menampilkan pesan produk gagal ditambahkan
             Swal.fire(
                 `Produk Gagal Ditambahkan!!`,
                 `Anda gagal menambahkan Produk!`,

@@ -4,9 +4,19 @@ import { useParams, useHistory } from 'react-router-dom';
 import axios from 'axios';
 import './Product.css';
 
+// Fungsi untuk product edit
 function ProductEdit() {
+    
+    // Fungsi untuk menjalankan url API
+    const URL = 'http://localhost:3000';
+    
+    // Untuk menjalankan lokasi kemana halaman akan di arahkan setelah button di klik
+    const history = useHistory();
+
     const params = useParams();
     const id = +params.id;
+
+    // Fungsi untuk menerima field dari url API untuk halaman edit product
     const [product, setProduct] = useState({
         name: '',
         desc: '',
@@ -20,22 +30,24 @@ function ProductEdit() {
         UserId: 0
     });
 
-    const URL = 'http://localhost:3000';
-    const history = useHistory();
-
+    // Fungsi untuk menampilkan data value pada form edit product
     useEffect(() => {
         getProductById()
     }, []);
 
+    // Fungsi untuk menjalankan data untuk form edit product
     const getProductById = async () => {
+        // Jika user yang sign in berhasil mengklik tombol edit product
         try{
             let product = await axios({
                 method: 'GET',
                 url: `${URL}/products/${id}`
             });
 
+            // Maka tampilkan datanya ke dalam form edit product
             setProduct(product.data);
         } catch(err){
+            // Jika gagal menerma data untuk edit product, maka akan menampilkan pesan gagal melihat produk
             Swal.fire(
                 'Gagal Melihat Produk!',
                 `Anda gagal melihat Produk!`,
@@ -44,6 +56,7 @@ function ProductEdit() {
         };
     };
 
+    // Fungsi untuk menjalanakn button edit product
     const submitHandler = (e) => {
         e.preventDefault();
         let item = product;
@@ -51,7 +64,9 @@ function ProductEdit() {
         editProduct(item);
     };
 
+    // Fungsi untuk membuat form edit product
     const editProduct = async (item) => {
+        // Jika user yang sign in berhasil mengisi form edit product
         try {
             const access_token = localStorage.getItem('access_token');
             const { 
@@ -88,14 +103,17 @@ function ProductEdit() {
                 }
             });
 
+            // Maka akan menampilkan pesan produk berhasil diperbaharui
             Swal.fire(
-                `Produk Diperbaharui`,
+                `Produk Berhasil Diperbaharui`,
                 `Produk Anda berhasil diperbaharui`,
                 'success'
             );
-
+            
+            // Kemudian akan di arahkan ke halaman home page
             history.push('/');
         } catch (error) {
+            // Debug error
             console.log(error);
         };
     };
@@ -178,7 +196,14 @@ function ProductEdit() {
                     </div>
                     <div className="row">
                         <div className="col-sm-12">
-                            <button type="submit" className="btn btn-lg btn-success w-100 fw-bold rounded-pill" onClick={(e) => submitHandler(e)}>Simpan</button>
+                            <button 
+                                type="submit" 
+                                className="btn btn-lg btn-success w-100 fw-bold rounded-pill" 
+                                onClick={(e) => 
+                                submitHandler(e)}
+                            >
+                                Simpan
+                            </button>
                         </div>
                     </div>
                 </form>

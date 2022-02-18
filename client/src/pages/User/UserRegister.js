@@ -4,7 +4,16 @@ import { useHistory, Link } from 'react-router-dom';
 import axios from 'axios';
 import './User.css';
 
+// Fungsi untuk membuat register akun
 function UserRegister({userLogin, getToken}) {
+    
+    // Fungsi untuk menjalankan url API
+    const URL = 'http://localhost:3000';
+    
+    // Untuk menjalankan lokasi kemana halaman akan di arahkan setelah button di klik
+    const history = useHistory();
+
+    // Fungsi untuk menerima data dari field data API untuk form input pada register akun
     const [ user, setUser ] = useState({
         name: '',
         email: '',
@@ -15,15 +24,16 @@ function UserRegister({userLogin, getToken}) {
         type: ''
     });
 
-    const URL = 'http://localhost:3000';
-    const history = useHistory();
-
+    // Fungsi untuk menjalankan button sign up
     const submitHandler = (e) => {
         e.preventDefault();
         registerUser();
     };
 
+    // Fungsi untuk menjalankan dan mengirim data dari button sign up setelah button nya di klik
     const registerUser = async () => {
+
+        // Jika data nya berhasil di kirim
         try {
             let newUser = new FormData();
 
@@ -49,14 +59,17 @@ function UserRegister({userLogin, getToken}) {
             getToken(access_token);
             userLogin(true);
 
+            // Maka akan menampilkan pesan selamat datang 
             Swal.fire(
                 `Selamat Datang ${user.name}`,
                 'Anda berhasil mendaftar Akun, selamat berbelanja',
                 'success'
             );
             
+            // Dari form sign in akan di kirim ke halaman home page untuk user / admin
             history.push('/');
         } catch (err) {
+            // Jika data nya gagal di kirim, maka akan menampilkan pesan daftar akun terlebih dahulu
             Swal.fire(
                 'Daftar Akun terlebih dahulu!',
                 `Silahkan Anda mendaftar Akun terlebih dahulu!`,

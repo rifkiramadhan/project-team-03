@@ -4,9 +4,12 @@ import Swal from 'sweetalert2';
 import { DropdownButton, Dropdown } from 'react-bootstrap';
 import './Navbar.css';
 
+// Fungsi untuk membuat navbar
 function Navbar({ login, userLogin }) {
+    // Untuk menjalankan lokasi kemana halaman akan di arahkan setelah button di klik
     const history = useHistory();
 
+    // Fungsi untuk menjalankan tombol sign in, dan sign out
     const logoutHandler = (e) => {
         e.preventDefault();
         userLogin(false);
@@ -15,12 +18,13 @@ function Navbar({ login, userLogin }) {
         history.push('/');
     };
 
+    // Fungsi untuk membuat gagal order
     const actionHandler = (e) => {
         e.preventDefault();
 
         Swal.fire(
-            'Gagal Order!',
-            `Anda gagal melakukan Order Produk, silahkan Login terlebih dahulu!`,
+            'Gagal Melihat Order!',
+            `Anda gagal melihat seluruh Order Produk, silahkan Login terlebih dahulu!`,
             'error'
         );
     };

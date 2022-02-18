@@ -3,15 +3,23 @@ import axios from 'axios';
 import Swal from 'sweetalert2';
 import './TransactionOrder.css';
 
+// Fungsi untuk membuat order
 function Order() {
-    const [orders, setOrders] = useState([]);
+    
+    // Fungsi untuk menjalankan url API
     const URL = 'http://localhost:3000';
 
+    // Fungsi untuk menjalankan order dari use state yang menerima array
+    const [orders, setOrders] = useState([]);
+
+    // Fungsi untuk menampilkan data yang telah di order
     useEffect(() => {
         getOrderById();
     }, []);
 
+    // Fungsi untuk melihat order
     const getOrderById = async () => {
+        // Jika user yang telah sign in melakukan order produk
         try {
             const access_token = localStorage.getItem('access_token');
 
@@ -23,11 +31,13 @@ function Order() {
                 },
             });
 
+            // Maka akan menampilkan data produk yang telah di order
             setOrders(orders.data);
             
             // console.log(orders.data)
             // console.log(access_token)
         } catch (err) {
+            // Jika tidak maka akan menampilkan pesan gagal melihat order id
             Swal.fire(
                 'Gagal Melihat Order Id!',
                 `Anda gagal melihat Order Id!`,

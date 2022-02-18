@@ -4,9 +4,13 @@ import axios from 'axios';
 import Swal from 'sweetalert2';
 import './Modal.css';
 
+// Fungsi untuk membuat modal user edit
 function ModalUserEdit({ setOpenModal, username, gender, birthdate, type, avatar}) {
+    
+    // Untuk menjalankan lokasi kemana halaman akan di arahkan setelah button di klik
     const history = useHistory();
 
+    // Fungsi untuk menjalankan data user dari use state
     const [ user, setUser ] = useState({
         name: username,
         birthdate: birthdate,
@@ -15,12 +19,15 @@ function ModalUserEdit({ setOpenModal, username, gender, birthdate, type, avatar
         type: type
     });
 
+    // Fungsi untuk menjalankan update user
     const submitHandler = (e) => {
         e.preventDefault();
         updateUser();
     };
 
+    // Fungsi untuk membuat form update user
     const updateUser = async () => {
+        // Jika user yang telah sign in berhasil mengedit profile
         try {
             const access_token = localStorage.getItem('access_token');
             let newUser = new FormData();
@@ -41,15 +48,20 @@ function ModalUserEdit({ setOpenModal, username, gender, birthdate, type, avatar
                 data: newUser
             });
 
+            // Maka akan menampilkan pesan profile berhasil diperbaharui 
             Swal.fire(
-                'Profile Diperbaharui',
+                'Profile Berhasil Diperbaharui',
                 `Profile Anda berhasil diperbaharui.`,
                 'success'
             );
 
+            // Kemudian akan di arahkan ke halaman home page
             history.push('/');
+
+            // Serta menutup form modal
             setOpenModal(false);
         } catch (err){
+            // Jika gagal maka akan menampilkan pesan profile gagal diperbaharui
             Swal.fire(
                 'Profile Gagal Diperbaharui!',
                 `Profile Anda gagal diperbaharui!.`,
