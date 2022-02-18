@@ -55,7 +55,7 @@ function Home({ login }) {
     const loadingProducts = () => {
         return (
             <div>
-                <p className="text-center font-weight-bold fw-bold">Loading Products.. Please Wait..</p>
+                <p className="loader font-weight-bold fw-bold">Loading Products.. Please Wait..</p>
             </div>
         );
     };

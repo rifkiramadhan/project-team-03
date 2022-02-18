@@ -15,7 +15,7 @@ import {
   LineItem,
   NotFound
 } from './pages';
-import { Navbar } from './components';
+import { Navigation } from './components';
 
 function App() {
   const [login, setLogin] = useState(false);
@@ -36,7 +36,7 @@ function App() {
 
   return (
     <BrowserRouter>
-      <Navbar login={login} userLogin={userLogin}/>
+      <Navigation login={login} userLogin={userLogin}/>
       {
         login ?
         <div className="container-fluid">

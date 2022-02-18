@@ -8,7 +8,8 @@ function CardHome(props) {
         id,
         name, 
         price, 
-        stock, 
+        stock,
+        total_sold,
         category,  
         rating, 
         views,
@@ -38,7 +39,7 @@ function CardHome(props) {
                                 Views : <span class="badge bg-success">{views}</span>
                             </span>
                             <span className="badge bg-secondary p-2 rounded-pill">
-                                Stock : <span class="badge bg-success">{stock}</span>
+                                Stock : <span class="badge bg-success">{stock} / {total_sold}</span>
                             </span>
                             <span className="text-black prod-info text-secondary card-category mt-5">
                                 <i class="fa-solid fa-bars-staggered"></i> {category}

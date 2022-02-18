@@ -39,8 +39,8 @@ function Order() {
         } catch (err) {
             // Jika tidak maka akan menampilkan pesan gagal melihat order id
             Swal.fire(
-                'Gagal Melihat Order Id!',
-                `Anda gagal melihat Order Id!`,
+                'Gagal Melihat Order Produk!',
+                `Anda gagal melihat Order Produk!`,
                 'error'
             );
         };

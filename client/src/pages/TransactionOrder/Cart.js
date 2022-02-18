@@ -40,9 +40,9 @@ function Cart() {
         } catch (err) {
         // Jika terjadi kesalahan, maka akan menampilkan pesan gagal melihat order
             Swal.fire(
-                'Gagal Melihat Order!',
-                `${err}`,
-                'Anda gagal melihat Order Produk!'
+                'Gagal Melihat Order Cart!',
+                `Anda gagal melihat Order Produk!`,
+                'error'
             );
         };
     };
