@@ -4,7 +4,7 @@ class ProductImageController {
   static async showImages(req, res) {
     try {
       let img = await Products_Image.findAll({
-        order: [["id", "ASC"]],
+        order: [['id', 'ASC']],
       });
       res.status(200).json(img);
     } catch (err) {
@@ -42,7 +42,7 @@ class ProductImageController {
       );
 
       res.status(200).json({
-        message: "Status Has Been Update",
+        message: 'Status Has Been Update'
       });
     } catch (err) {
       res.status(500).json(err);

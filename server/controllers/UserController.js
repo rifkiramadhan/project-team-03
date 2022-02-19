@@ -6,7 +6,7 @@ class UserController {
   static async showUsers(req, res) {
     try {
       let users = await User.findAll({
-        order: [["id", "ASC"]],
+        order: [['id', 'ASC']],
       });
 
       res.status(200).json(users);
@@ -34,7 +34,7 @@ class UserController {
       });
       if (findEmail) {
         res.status(403).json({
-          message: "Email already Used",
+          message: 'Email already Used',
         });
       } else {
         let user_token = await User.create({
@@ -74,7 +74,7 @@ class UserController {
         }
       } else {
         res.status(404).json({
-          message: " Not Found ! ",
+          message: ' Not Found ! ',
         });
       }
     } catch (err) {
@@ -121,7 +121,7 @@ class UserController {
       );
 
       res.status(200).json({
-        message: "Data Has Been Update",
+        message: 'Data Has Been Update'
       });
     } catch (err) {
       res.status(500).json(err);

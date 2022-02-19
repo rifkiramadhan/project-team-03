@@ -6,7 +6,7 @@ class ShoppingCartController {
   static async showCarts(req, res) {
     try {
       let cart = await Shopping_Cart.findAll({
-        order: [["id", "ASC"]],
+        order: [['id', 'ASC']],
       });
 
       res.status(200).json(cart);
@@ -89,7 +89,7 @@ class ShoppingCartController {
         }
       );
       res.status(200).json({
-        message: "Data Has Been Update",
+        message: 'Data Has Been Update'
       });
     } catch (err) {
       res.status(500).json(err);

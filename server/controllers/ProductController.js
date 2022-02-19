@@ -7,7 +7,7 @@ class ProductController {
     static async showProducts(req, res) {
       try {
         let product = await Product.findAll({
-        order: [["id", "ASC"]],
+        order: [['id', 'ASC']],
           include: 
                [Products_Image] 
         });

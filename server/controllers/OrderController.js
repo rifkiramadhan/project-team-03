@@ -7,7 +7,7 @@ class OrderController {
     static async showOrders(req, res) {
         try {
           let order = await Order.findAll({
-          order: [["UserId", "ASC"]],
+          order: [['UserId', 'ASC']],
             include: 
               [
                 User
@@ -95,7 +95,7 @@ class OrderController {
           );
 
           res.status(200).json ({
-              message: "Data Has Been Update"
+              message: 'Data Has Been Update'
           });
         } catch (err) {
           res.status(500).json(err);
@@ -114,7 +114,7 @@ class OrderController {
           );
 
           res.status(200).json ({
-              message: "Status Has Been Update"
+              message: 'Status Has Been Update'
           });
         } catch (err) {
           res.status(500).json(err);
