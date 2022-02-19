@@ -1,66 +1,60 @@
-const { products_image } = require("../models");
+const { Products_Image } = require('../models');
 
 class ProductImageController {
-  static async showProductImage(req, res) {
+  static async showImages(req, res) {
     try {
-      let image = await products_image.findAll({
+      let img = await Products_Image.findAll({
         order: [["id", "ASC"]],
       });
-      res.status(200).json(image);
+      res.status(200).json(img);
     } catch (err) {
       res.status(500).json(err);
-    }
-  }
-  static async uploadProductImage(req, res) {
+    };
+  };
+
+  static async uploadImages(req, res) {
     try {
-      const productId = +req.params.id;
+      const ProductId = +req.params.id;
       let filename = req.file.filename;
       let filesize = req.file.size;
       let filetype = req.file.mimetype;
-      let img = await products_image.create({
-        filename,
-        filesize,
-        filetype,
-        primary: true,
-        productId,
-      });
+      let img = await Products_Image.create(
+        { filename, filesize, filetype, primary:true, ProductId }
+      );
 
       res.status(200).json(img);
     } catch (err) {
       res.status(403).json(err);
-    }
-  }
-  static async updateProductImage(req, res) {
+    };
+  };
+
+  static async updateImages(req, res) {
     try {
-      const productId = +req.params.id;
+      const ProductId = +req.params.id;
       let filename = req.file.filename;
       let filesize = req.file.size;
       let filetype = req.file.mimetype;
-      let result = await products_image.update(
+      let img = await Products_Image.update(
         { filename, filesize, filetype },
         {
-          where: { productId },
+          where: { ProductId },
         }
       );
 
-      result[0] === 1
-        ? res.status(200).json({
-            message: `${id} has been updated!`,
-          })
-        : res.status(404)({
-            message: `${id} has been not updated!`,
-          });
+      res.status(200).json({
+        message: "Status Has Been Update",
+      });
     } catch (err) {
-      res.status(403).json(err);
-    }
-  }
-  static async deleteProductImage(req, res) {
+      res.status(500).json(err);
+    };
+  };
+
+  static async deleteImages(req, res) {
     try {
       const id = +req.params.id;
-      let result = await products_image.destroy({
+      let result = await Products_Image.destroy({
         where: { id },
       });
-      res.status(200).json(result);
       result === 1
         ? res.status(200).json({
             message: `${id} has been deleted!`,
@@ -70,8 +64,8 @@ class ProductImageController {
           });
     } catch (err) {
       res.status(500).json(err);
-    }
-  }
-}
+    };
+  };
+};
 
 module.exports = ProductImageController;

@@ -1,161 +1,125 @@
-const { users, orders } = require("../models");
+const { User, 
+        Order, 
+        Line_Item 
+} = require('../models')
 
 class OrderController {
-  static async showOrders(req, res) {
-    try {
-      let order = await orders.findAll({
-        order: [["userId", "ASC"]],
+    static async showOrders(req, res) {
+        try {
+          let order = await Order.findAll({
+          order: [["UserId", "ASC"]],
             include: 
               [
-                users
+                User
               ] 
-      });
-      res.status(200).json(order);
-    } catch (err) {
-      res.status(500).json(err);
-    }
-  }
-  static async showOrdersByUser(req, res) {
-    try {
-      const { id } = req.userData;
-      let order = await orders.findAll({
-        where: { userId: id },
-      });
-      res.status(200).json(order);
-    } catch (err) {
-      res.status(500).json(err);
-    }
-  }
-  static async showOrdersById(req, res) {
-    try {
-      const id = +req.params.id;
-      let order = await orders.findOne({
-        where: { id },
-        include: [users],
-      });
-      res.status(200).json(order);
-    } catch (err) {
-      res.status(500).json(err);
-    }
-  }
-  static async createOrder(req, res) {
-    try {
-      const {
-        name,
-        created_on,
-        subtotal,
-        discount,
-        tax,
-        total_due,
-        total_qty,
-        payt_trx_number,
-        city,
-        address,
-        status,
-      } = req.body;
-
-      const userId = req.userData.id;
-      let order = await orders.create({
-        name,
-        created_on: new Date(),
-        subtotal,
-        discount,
-        tax,
-        total_due,
-        total_qty,
-        payt_trx_number,
-        city,
-        address,
-        status,
-        userId,
-      });
-      res.status(201).json(order);
-    } catch (err) {
-      res.status(500).json(err);
-    }
-  }
-  static async updateOrder(req, res) {
-    try {
-      const id = +req.params.id;
-      const {
-        name,
-        created_on,
-        subtotal,
-        discount,
-        tax,
-        total_due,
-        total_qty,
-        payt_trx_number,
-        city,
-        address,
-        status,
-      } = req.body;
-
-      let result = await orders.update(
-        {
-          name,
-          created_on: new Date(),
-          subtotal,
-          discount,
-          tax,
-          total_due,
-          total_qty,
-          payt_trx_number,
-          city,
-          address,
-          status,
-        },
-        {
-          where: { id },
-        }
-      );
-
-      result[0] === 1
-        ? res.status(200).json({
-            message: `${id} has been updated!`,
-          })
-        : res.status(404)({
-            message: `${id} has been not updated!`,
           });
-    } catch (err) {
-      res.status(500).json(err);
-    }
-  }
-  static async deleteOrder(req, res) {
-    try {
-      const id = +req.params.id;
-      let result = await orders.destroy({
-        where: { id },
-      });
-      result === 1
-        ? res.status(200).json({
-            message: `${id} has been deleted!`,
-          })
-        : res.status(403).json({
-            message: `${id} has been not deleted!`,
-          });
-    } catch (err) {
-      res.status(500).json(err);
-    }
-  }
-  static async updateStatusOrder(req, res) {
-    try {
-      const id = +req.params.id;
-      const { status } = req.body;
-      let order = await orders.update(
-        { status },
-        {
-          where: { id },
-        }
-      );
+    
+          res.status(200).json(order);
+        } catch (err) {
+          res.status(500).json(err);
+        };
+      };
 
-      res.status(200).json({
-        message: "Status Has Been Update",
-      });
+    static async showOrdersById(req, res){  
+      try{
+          let id = +req.params.id;
+          let orders = await Order.findOne({
+              where:{id}
+          });
+
+          res.status(200).json(orders);
+        } catch (err){
+          res.status(500).json(err);
+        };
+    };
+
+    static async showOrdersUsers(req, res) {
+      try{
+        const {id} = req.UserDetail
+        let order =  await Order.findAll({
+          where : { UserId : id }
+        });
+
+        res.status(200).json(order);
+      } catch (err) {
+        res.status(500).json(err);
+      };
+    };
+
+    static async addOrders(req, res) {
+        try {
+          // Subtotal harga total semua barang
+          const { name, subtotal, total_qty, city, address } = req.body;
+          const UserId = req.UserDetail.id;
+          let order = await Order.create({
+            name, created_on:new Date(), subtotal, total_qty, city, address, UserId
+          });;
+
+          res.status(201).json(order);
     } catch (err) {
-      res.status(500).json(err);
-    }
-  }
-}
+          res.status(500).json(err);
+        };
+    };
+    
+    static async deleteOrders(req, res) {
+        try {
+          const id = +req.params.id;
+          let result = await Order.destroy({
+            where: { id },
+          });
+
+          result === 1
+            ? res.status(200).json({
+                message: `${id} has been deleted!`,
+              })
+            : res.status(403).json({
+                message: `${id} has been not deleted!`,
+             });
+        } catch (err) {
+          res.status(500).json(err);
+        };
+    };
+
+    static async updateOrders(req, res) {
+        try {
+          const id = +req.params.id;
+          const { name, subtotal, total_qty, city, address, UserId } = req.body;
+          let order = await Order.update(
+            {
+                name, subtotal, total_qty, city, address, UserId
+            },
+            {
+              where: { id },
+              individualHooks:true
+            }
+          );
+
+          res.status(200).json ({
+              message: "Data Has Been Update"
+          });
+        } catch (err) {
+          res.status(500).json(err);
+        };
+    };
+
+    static async updateStatus(req, res) {
+        try {
+          const id = +req.params.id;
+          const { status } = req.body;
+          let order = await Order.update(
+            {status},
+            {
+              where: { id },
+            }
+          );
+
+          res.status(200).json ({
+              message: "Status Has Been Update"
+          });
+        } catch (err) {
+          res.status(500).json(err);
+        };
+    };
+};
 
 module.exports = OrderController;

@@ -1,166 +1,158 @@
-const { users, products, products_image } = require("../models");
+const { User, 
+        Product,
+        Products_Image 
+} = require ('../models');
 
 class ProductController {
-  static async showProduct(req, res) {
-    try {
-      let product = await products.findAll({
+    static async showProducts(req, res) {
+      try {
+        let product = await Product.findAll({
         order: [["id", "ASC"]],
-        include: 
-               [products_image] 
-      });
-      res.status(200).json(product);
-    } catch (err) {
-      res.status(500).json(err);
-    }
-  }
-  static async showProductByUser(req, res) {
-    try {
-      const { id } = req.userData;
-      let product = await products.findAll({
-        where: { userId: id },
-      });
-      res.status(200).json(product);
-    } catch (err) {
-      res.status(500).json(err);
-    }
-  }
-  static async showProductById(req, res) {
-    try {
-      const id = +req.params.id;
-      let product = await products.findOne({
-        where: { id },
-        include: [users, products_image],
-      });
-      res.status(200).json(product);
-    } catch (err) {
-      res.status(500).json(err);
-    }
-  }
-  static async createProduct(req, res) {
-    try {
-      const {
-        name,
-        desc,
-        price,
-        stock,
-        expire,
-        weight,
-        category,
-        brand,
-        condition,
-        total_sold,
-        rating,
-        views,
-      } = req.body;
+          include: 
+               [Products_Image] 
+        });
+  
+        res.status(200).json(product);
+      } catch (err) {
+        res.status(500).json(err);
+      };
+    };
 
-      const userId = req.userData.id;
-      let product = await products.create({
-        name,
-        desc,
-        price,
-        stock,
-        expire,
-        weight,
-        category,
-        brand,
-        condition,
-        total_sold,
-        rating,
-        views,
-        userId,
-      });
-      res.status(201).json(product);
-    } catch (err) {
-      res.status(500).json(err);
-    }
-  }
-  static async updateProduct(req, res) {
-    try {
-      const id = +req.params.id;
-      const {
-        name,
-        desc,
-        price,
-        stock,
-        expire,
-        weight,
-        category,
-        brand,
-        condition,
-        total_sold,
-        rating,
-        views,
-      } = req.body;
+    static async showProductsUsers(req, res) {
+      try{
+        const {id} = req.UserDetail;
+        let product =  await Product.findAll({
+          where : { UserId : id }
+        });
 
-      let result = await products.update(
-        {
-          name,
-          desc,
-          price,
-          stock,
-          expire,
-          weight,
-          category,
-          brand,
-          condition,
-          total_sold,
-          rating,
-          views,
-        },
-        {
-          where: { id },
-        }
-      );
+        res.status(200).json(product);
+      } catch (err) {
+        res.status(500).json(err);
+      };
+    };
 
-      result[0] === 1
-        ? res.status(200).json({
-            message: `${id} has been updated!`,
-          })
-        : res.status(404)({
-            message: `${id} has been not updated!`,
+    static async showProductsById(req, res) {
+      try {
+        const id = +req.params.id;
+        let product = await Product.findOne({
+          where: {id},
+            include: 
+                [
+                  User,
+                  Products_Image
+                ] 
           });
-    } catch (err) {
-      res.status(500).json(err);
-    }
-  }
-  static async deleteProduct(req, res) {
-    try {
-      const id = +req.params.id;
-      let result = await products.destroy({
-        where: { id },
-      });
-      result === 1
-        ? res.status(200).json({
-            message: `${id} has been deleted!`,
-          })
-        : res.status(403).json({
-            message: `${id} has been not deleted!`,
+
+        res.status(200).json(product);
+      } catch (err) {
+        res.status(500).json(err);
+      };
+    };
+
+    static async addProducts(req, res) {
+        try {
+          const { name, desc, price, expire_date, weight, category, brand, condition} = req.body;
+          const UserId = req.UserDetail.id;
+          let product = await Product.create({
+            name, desc, price, expire_date, weight, category, brand, condition, UserId
           });
-    } catch (err) {
-      res.status(500).json(err);
-    }
-  }
+
+          res.status(201).json (product);
+        } catch (err) {
+          res.status(500).json(err);
+        };
+    };
+
+    static async deleteProducts(req, res) {
+      try {
+            const id = +req.params.id;
+            let result = await Product.destroy({
+              where: { id },
+            });
+            result === 1
+              ? res.status(200).json({
+                  message: `${id} has been deleted!`,
+                })
+              : res.status(403).json({
+                  message: `${id} has been not deleted!`,
+                });
+          } catch (err) {
+            res.status(500).json(err);
+          };
+    };
+    
+    static async updateProducts(req, res) {
+      try {
+        const id = +req.params.id;
+        const { name, desc, price, stock, expire_date, weight, category, brand, condition } = req.body;
+        let product = await Product.update(
+          {
+              name, desc, price, stock, expire_date, weight, category, brand, condition
+          },
+          {
+            where: { id },
+          }
+        );
+
+        res.status(200).json (product);
+      } catch (err) {
+        res.status(500).json(err);
+      };
+  };
+
   static async updateViews(req, res) {
-    try {
+     try{
+       const id = +req.params.id;
+       let product = await Product.increment(
+         {
+           views : +1,
+          },
+          {
+            where: { id },
+          }
+       );
+
+       res.status(200).json(product);
+     } catch (err) {
+       res.status(500).json(err);
+     };
+   };
+
+   static async updateSold(req, res) {
+    try{
       const id = +req.params.id;
-      let product = await products.increment({ views: +1 }, { where: { id } });
-      res.status(200).json(product);
-    } catch (err) {
-      res.status(500).json(err);
-    }
-  }
-  static async updateSold(req, res) {
-    try {
-      const id = +req.params.id;
-      let product = await products.increment(
-        { total_sold: +1 },
-        { where: { id } }
+      let product = await Product.increment(
+        {
+          total_sold : +1,
+         },
+         {
+           where: { id },
+         }
       );
+
       res.status(200).json(product);
-    } catch (err) {
+    }catch (err) {
       res.status(500).json(err);
-    }
-  }
-}
+    };
+  };
+
+   static async updateRating(req, res) {
+    try{
+      const id = +req.params.id;
+      let product = await Product.increment(
+        {
+          rating: +1,
+         },
+         {
+           where: { id },
+         }
+      );
+
+      res.status(200).json(product);
+    }catch (err) {
+      res.status(500).json(err);
+    };
+  };
+};
 
 module.exports = ProductController;

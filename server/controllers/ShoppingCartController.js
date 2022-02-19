@@ -1,61 +1,67 @@
-const { shopping_cart, users } = require("../models");
+const { Shopping_Cart, 
+        User 
+} = require('../models');
 
 class ShoppingCartController {
   static async showCarts(req, res) {
     try {
-      let cart = await shopping_cart.findAll({
+      let cart = await Shopping_Cart.findAll({
         order: [["id", "ASC"]],
-        include: { users },
       });
+
       res.status(200).json(cart);
     } catch (err) {
       res.status(500).json(err);
-    }
-  }
-  static async showCartByUser(req, res) {
+    };
+  };
+
+  static async showCartsUsers(req, res) {
     try {
-      const { id } = req.userData;
-      let cart = await shopping_cart.findAll({
-        where: { userId: id },
+      const { id } = req.UserDetail;
+      let cart = await Shopping_Cart.findAll({
+        where: { UserId: id },
       });
       res.status(200).json(cart);
     } catch (err) {
       res.status(500).json(err);
-    }
-  }
-  static async showCartById(req, res) {
+    };
+  };
+
+  static async showCartsById(req, res) {
     try {
       const id = +req.params.id;
-      let cart = await shopping_cart.findOne({
+      let cart = await Shopping_Cart.findOne({
         where: { id },
-        include: [users],
+        include: [User],
       });
       res.status(200).json(cart);
     } catch (err) {
       res.status(500).json(err);
-    }
-  }
-  static async createCart(req, res) {
-    try {
-      const { status, created_on } = req.body;
+    };
+  };
 
-      const userId = req.userData.id;
-      let cart = await shopping_cart.create({
-        status,
+  static async addCarts(req, res) {
+    try {
+      const UserId = req.UserDetail.id;
+      let cart = await Shopping_Cart.create({
         created_on: new Date(),
-        userId,
+        status: 'Open',
+        UserId,
       });
+
       res.status(201).json(cart);
     } catch (err) {
       res.status(500).json(err);
-    }
-  }
-  static async deleteCart(req, res) {
+    };
+  };
+
+  static async deleteCarts(req, res) {
     try {
       const id = +req.params.id;
-      let result = await shopping_cart.destroy({
+      let result = await Shopping_Cart.destroy({
         where: { id },
       });
+
       result === 1
         ? res.status(200).json({
             message: `${id} has been deleted!`,
@@ -65,34 +71,30 @@ class ShoppingCartController {
           });
     } catch (err) {
       res.status(500).json(err);
-    }
-  }
-  static async updateCart(req, res) {
+    };
+  };
+
+  static async updateCarts(req, res) {
     try {
       const id = +req.params.id;
-      const { status, created_on } = req.body;
-      //const userId = req.userData.id;
-      let result = await shopping_cart.update(
+      const { status, UserId } = req.body;
+      let cart = await Shopping_Cart.update(
         {
-          status,
           created_on: new Date(),
+          status,
+          UserId,
         },
         {
           where: { id },
         }
       );
-
-      result[0] === 1
-        ? res.status(200).json({
-            message: `${id} has been updated!`,
-          })
-        : res.status(404)({
-            message: `${id} has been not updated!`,
-          });
+      res.status(200).json({
+        message: "Data Has Been Update",
+      });
     } catch (err) {
       res.status(500).json(err);
-    }
-  }
-}
+    };
+  };
+};
 
 module.exports = ShoppingCartController;

@@ -1,7 +1,9 @@
-"use strict";
-const { Model } = require("sequelize");
+'use strict';
+const {
+  Model
+} = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
-  class products extends Model {
+  class Product extends Model {
     /**
      * Helper method for defining associations.
      * This method is not a part of Sequelize lifecycle.
@@ -9,115 +11,37 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      products.belongsTo(models.users);
-      products.hasMany(models.products_image);
-      products.hasMany(models.line_items);
+      Product.belongsTo(models.User);
+      Product.hasMany(models.Products_Image);
+      Product.hasMany(models.Line_Item);
     }
-  }
-  products.init(
-    {
-      name: {
-        type: DataTypes.STRING,
-        validate: {
-          notEmpty: {
-            message: "Product name must be not empty!",
-          },
-        },
-      },
-      desc: {
-        type: DataTypes.STRING,
-        validate: {
-          notEmpty: {
-            message: "Product description must be not empty!",
-          },
-        },
-      },
-      price: {
-        type: DataTypes.INTEGER,
-        validate: {
-          notEmpty: {
-            message: "Product price must be not empty!",
-          },
-        },
-      },
-      stock: {
-        type: DataTypes.INTEGER,
-        validate: {
-          notEmpty: {
-            message: "Product stock must be not empty!",
-          },
-        },
-      },
-      expire_date: DataTypes.DATE,
-      weight: {
-        type: DataTypes.INTEGER,
-        validate: {
-          notEmpty: {
-            message: "Product weight must be not empty!",
-          },
-        },
-      },
-      category: {
-        type: DataTypes.STRING,
-        validate: {
-          notEmpty: {
-            message: "Product category must be not empty!",
-          },
-        },
-      },
-      brand: {
-        type: DataTypes.STRING,
-        validate: {
-          notEmpty: {
-            message: "Product brand must be not empty!",
-          },
-        },
-      },
-      condition: {
-        type: DataTypes.STRING,
-        validate: {
-          notEmpty: {
-            message: "Product condition must be not empty!",
-          },
-        },
-      },
-      total_sold: {
-        type: DataTypes.INTEGER,
-        validate: {
-          notEmpty: {
-            message: "Product total sold must be not empty!",
-          },
-        },
-      },
-      rating: {
-        type: DataTypes.INTEGER,
-        validate: {
-          notEmpty: {
-            message: "Product rating must be not empty!",
-          },
-        },
-      },
-      views: {
-        type: DataTypes.INTEGER,
-        validate: {
-          notEmpty: {
-            message: "Product views must be not empty!",
-          },
-        },
-      },
-      userId: {
-        type: DataTypes.INTEGER,
-        validate: {
-          notEmpty: {
-            message: "Product user id must be not empty!",
-          },
-        },
-      },
+  };
+  Product.init({
+    name: DataTypes.STRING,
+    desc: DataTypes.STRING,
+    price: DataTypes.INTEGER,
+    stock: DataTypes.INTEGER,
+    expire_date: DataTypes.DATE,
+    weight: DataTypes.INTEGER,
+    category: DataTypes.STRING,
+    brand: DataTypes.STRING,
+    condition: DataTypes.STRING,
+    total_sold: DataTypes.INTEGER,
+    rating: DataTypes.INTEGER,
+    views: DataTypes.INTEGER,
+    UserId: DataTypes.INTEGER
+  },
+  {
+    hooks: {
+      beforeCreate(product,option){
+        product.stock= 1,
+        product.total_sold= 0,
+        product.rating = 0,
+        product.views = 0
+      }
     },
-    {
-      sequelize,
-      modelName: "products",
-    }
-  );
-  return products;
+    sequelize,
+    modelName: 'Product',
+  });
+  return Product;
 };

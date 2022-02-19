@@ -1,98 +1,93 @@
-const { line_items } = require("../models");
+const { 
+  Line_Item,
+  Shopping_Cart,
+  Order
+} = require('../models');
 
-class LineItemsController {
-  static async showLineItem(req, res) {
-    try {
-      let line_item = await line_items.findAll({
-        order: [["id", "ASC"]],
-      });
-      res.status(200).json(line_item);
-    } catch (err) {
-      res.status(500).json(err);
-    }
-  }
-  static async showLineItemByUser(req, res) {
-    try {
-      const { id } = req.userData;
-      let line_item = await line_items.findAll({
-        where: { userId: id },
-      });
-      res.status(200).json(line_item);
-    } catch (err) {
-      res.status(500).json(err);
-    }
-  }
-  static async showLineItemById(req, res) {
-    try {
-      const id = +req.params.id;
-      let line_item = await line_items.findOne({
-        where: { id },
-        include: [users],
-      });
-      res.status(200).json(line_item);
-    } catch (err) {
-      res.status(500).json(err);
-    }
-  }
-  static async createLineItem(req, res) {
-    try {
-      const { qty, status, productId, shoppingCartId, orderId } =
-        req.body;
+class LineItemController {
+      static async showLineItems(req, res) {
+          try {
+            let lineitems = await Line_Item.findAll({
+            });
+            res.status(200).json(lineitems);
+          } catch (err) {
+            res.status(404).json(err);
+          };
+      };
 
-      let line_item = await line_items.create({
-        qty,
-        status,
-        productId,
-        shoppingCartId,
-        orderId,
-      });
-      res.status(201).json(line_item);
-    } catch (err) {
-      res.status(500).json(err);
-    }
-  }
-  static async updateLineItem(req, res) {
-    try {
-      const id = +req.params.id;
-      const { qty, status } = req.body;
-      let result = await line_items.update(
-        {
-          qty,
-          status,
-        },
-        {
-          where: { id },
-        }
-      );
+      static async showItemsUsers(req, res) {
+          try {
+            const {id} = req.UserDetail;
+            let items =  await Line_Item.findAll({
+              where : { UserId : id }
+            });
 
-      result[0] === 1
-        ? res.status(200).json({
-            message: `${id} has been updated!`,
-          })
-        : res.status(404)({
-            message: `${id} has been not updated!`,
-          });
-    } catch (err) {
-      res.status(500).json(err);
-    }
-  }
-  static async deleteLineItem(req, res) {
-    try {
-      const id = +req.params.id;
-      let result = await line_items.destroy({
-        where: { id },
-      });
-      result === 1
-        ? res.status(200).json({
-            message: `${id} has been deleted!`,
-          })
-        : res.status(403).json({
-            message: `${id} has been not deleted!`,
-          });
-    } catch (err) {
-      res.status(500).json(err);
-    }
-  }
-}
+            res.status(200).json(items);
+          } catch (err){
+            res.status(500).json(err);
+          };
+      };
 
-module.exports = LineItemsController;
+      static async showItemsById(req, res) {
+          try {
+            const id = +req.params.id;
+            let product = await Line_Item.findByPk(id);
+
+            res.status(200).json(product);
+          } catch (err) {
+            res.status(500).json(err);
+          };
+      };
+
+      static async addLineItem(req, res) {
+          try {
+            const { qty, status, ProductId, ShoppingCartId, OrderId } = req.body;
+            let lineitem = await Line_Item.create({
+              qty, status, ProductId, ShoppingCartId, OrderId
+            });
+
+            res.status(201).json (lineitem);
+          } catch (err) {
+            res.status(500).json(err);
+          };
+      };
+
+      static async deleteLineItem(req, res) {
+          try {
+              const id = +req.params.id;
+              let result = await Line_Item.destroy({
+                where: { id },
+              });
+
+              result === 1
+              ? res.status(200).json({
+                  message: `${id} has been deleted!`,
+                })
+              : res.status(403).json({
+                  message: `${id} has been not deleted!`,
+                });
+            } catch (err) {
+              res.status(500).json(err);
+            };
+      };
+
+      static async updateLineItem(req, res) {
+            try {
+              const id = +req.params.id;
+              const { qty, status, ProductId,Shopping_CartId, OrderId} = req.body;
+              let lineitem = await Line_Item.update(
+                {
+                    qty, status, ProductId,Shopping_CartId, OrderId
+                },
+                {
+                  where: { id },
+                }
+              );
+              res.status(200).json (lineitem);
+            } catch (err) {
+              res.status(500).json(err);
+            };
+        };
+};
+
+module.exports = LineItemController;

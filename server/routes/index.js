@@ -1,23 +1,23 @@
-const { Router } = require("express");
-const route = Router();
+const router = require('express').Router();
 
-route.get("/", (req, res) => {
-  res.status(200).json({
-    message: "home page",
-  });
+router.get('/',(req, res) =>{
+    res.status(200).json({
+        message : 'Selamat Datang di Codi Health'
+    });
 });
 
-const userRoute = require("./users");
-const productRoute = require("./products");
-const orderRoute = require("./orders");
-const shoppingCartRoute = require("./shopping_cart");
-const productImageRoute = require("./products_image");
-const lineItemRoute = require("./line_item");
-route.use("/users", userRoute);
-route.use("/products", productRoute);
-route.use("/orders", orderRoute);
-route.use("/shoppingCarts", shoppingCartRoute);
-route.use("/productImages", productImageRoute);
-route.use("/lineItems", lineItemRoute);
+const UsersRoutes = require('./users');
+const LineItemsRoutes = require('./lineitems');
+const OrdersRoutes = require('./orders');
+const ProductImagesRoutes = require('./productimages');
+const ProductsRoutes = require('./products');
+const ShoppingCartsRoutes = require('./shoppingcarts');
 
-module.exports = route;
+router.use('/users', UsersRoutes);
+router.use('/line_items', LineItemsRoutes);
+router.use('/orders', OrdersRoutes);
+router.use('/productimages', ProductImagesRoutes);
+router.use('/products', ProductsRoutes);
+router.use('/shopping_carts', ShoppingCartsRoutes);
+
+module.exports = router;

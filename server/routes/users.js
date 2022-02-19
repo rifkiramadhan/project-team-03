@@ -1,13 +1,13 @@
-const userRoute = require("express").Router();
-const UserControllers = require("../controllers/UserController");
-const { authentication } = require("../middleware/auth");
-const upload = require("../middleware/multer");
+const UserRouter = require('express').Router();
+const UserController = require('../controllers/UserController');
+const upload = require('../middlewares/multer');
+const { authentication } = require('../middlewares/auth');
 
-userRoute.get("/", UserControllers.showUser);
-userRoute.get("/:id", authentication, UserControllers.showUserById);
-userRoute.delete("/delete/:id", UserControllers.deleteUser);
-userRoute.post("/login", UserControllers.loginUser);
-userRoute.post("/register",upload.single("avatar"),UserControllers.registerUser);
-userRoute.put("/update",authentication,upload.single("avatar"),UserControllers.updateUser);
+UserRouter.get('/', UserController.showUsers);
+UserRouter.get('/:id', authentication, UserController.showUsersById);
+UserRouter.post('/register', upload.single('avatar'), UserController.registerUsers);
+UserRouter.post('/login', UserController.loginUsers);
+UserRouter.delete('/delete/:id', UserController.deleteUsers);
+UserRouter.put('/update/', authentication, upload.single('avatar'), UserController.updateUsers);
 
-module.exports = userRoute;
+module.exports = UserRouter;

@@ -1,114 +1,146 @@
-const { decrypter } = require("../helpers/bcrypt");
-const { tokenGenerator } = require("../helpers/jwt");
-const { users } = require("../models");
+const { User } = require('../models');
+const { decrypter } = require('../helpers/bcrypt');
+const { tokenGenerator } = require('../helpers/jwt');
 
 class UserController {
-  static async showUser(req, res) {
+  static async showUsers(req, res) {
     try {
-      let user = await users.findAll({
+      let users = await User.findAll({
         order: [["id", "ASC"]],
       });
-      res.status(200).json(user);
+
+      res.status(200).json(users);
     } catch (err) {
       res.status(500).json(err);
     }
   }
-  static async loginUser(req, res) {
+
+  static async showUsersById(req, res) {
     try {
-      const { email, password } = req.body;
-      let user = await users.findOne({
+      const id = req.UserDetail.id;
+      let userid = await User.findByPk(id);
+      res.status(200).json(userid);
+    } catch (err) {
+      res.status(500).json(err);
+    }
+  }
+
+  static async registerUsers(req, res) {
+    try {
+      let avatar = req.file.path;
+      const { name, email, password, birthdate, gender, type } = req.body;
+      let findEmail = await User.findOne({
         where: { email },
       });
+      if (findEmail) {
+        res.status(403).json({
+          message: "Email already Used",
+        });
+      } else {
+        let user_token = await User.create({
+          name,
+          email,
+          password,
+          birthdate,
+          gender,
+          avatar,
+          type,
+        });
+        let access_token = tokenGenerator(user_token);
+        res.status(201).json({ access_token });
+      }
+    } catch (err) {
+      res.status(500).json(err);
+    }
+  }
 
+  static async loginUsers(req, res) {
+    try {
+      const { email, password } = req.body;
+      let user = await User.findOne({
+        where: { email },
+      });
       if (user) {
         if (decrypter(password, user.password)) {
+          // res.status(200).json(user)
           let access_token = tokenGenerator(user);
           res.status(200).json({
             access_token,
           });
         } else {
           res.status(403).json({
-            message: "Invalid Password",
+            message: 'Invalid Password',
           });
         }
       } else {
         res.status(404).json({
-          message: "User Not Found!",
+          message: " Not Found ! ",
         });
       }
     } catch (err) {
       res.status(500).json(err);
     }
   }
-  static async registerUser(req, res) {
-    try {
-      const { name, email, password, salt, birthdate, gender, type } = req.body;
 
-      let avatar = req.file.path;
-      let findEmail = await users.findOne({
-        where: { email },
-      });
-      if (findEmail) {
-        res.status(403).json({
-          message: "Email already used!",
-        });
-      } else {
-        let user = await users.create({
-          name,
-          email,
-          password,
-          salt,
-          birthdate,
-          gender,
-          avatar,
-          type,
-        });
-        res.status(201).json(user);
-      }
-    } catch (err) {
-      res.status(500).json(err);
-    }
-  }
-  static async showUserById(req, res) {
-    try {
-      const id = req.userData.id;
-      let user = await users.findByPk(id);
-      res.status(200).json(user);
-    } catch (err) {
-      res.status(500).json(err);
-    }
-  }
-  static async deleteUser(req, res) {
+  static async deleteUsers(req, res) {
     try {
       const id = +req.params.id;
-      let result = await users.destroy({
+      let result = await User.destroy({
         where: { id },
       });
-      res.status(200).json(result);
+      result === 1
+        ? res.status(200).json({
+            message: `${id} has been deleted!`,
+          })
+        : res.status(403).json({
+            message: `${id} has been not deleted!`,
+          });
     } catch (err) {
       res.status(500).json(err);
     }
   }
-  static async updateUser(req, res) {
-    try {
-      const id = req.userData.id;
-      let avatar = req.file.path;
-      const { name, email, password, salt, birthdate, gender, type } = req.body;
 
-      let user = await users.update(
+  static async updateUsers(req, res) {
+    try {
+      const id = req.UserDetail.id;
+      let avatar = req.file.path;
+      const { name, email, password, birthdate, gender, type } = req.body;
+      let users = await User.update(
         {
           name,
           email,
           password,
-          salt,
           birthdate,
           gender,
           avatar,
           type,
         },
-        { where: { id } }
+        {
+          where: { id },
+        }
       );
 
+      res.status(200).json({
+        message: "Data Has Been Update",
+      });
+    } catch (err) {
+      res.status(500).json(err);
+    }
+  }
+
+  // PATH MULTER
+  static async multer(req, res) {
+    try {
+      let avatar = req.file.path;
+      let id = +req.params.id;
+      let user = await User.update(
+        {
+          avatar,
+        },
+        {
+          where: { id },
+        }
+      );
       res.status(200).json(user);
     } catch (err) {
       res.status(500).json(err);

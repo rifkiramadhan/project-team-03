@@ -1,7 +1,9 @@
-"use strict";
-const { Model } = require("sequelize");
+'use strict';
+const {
+  Model
+} = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
-  class products_image extends Model {
+  class Products_Image extends Model {
     /**
      * Helper method for defining associations.
      * This method is not a part of Sequelize lifecycle.
@@ -9,56 +11,17 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      products_image.belongsTo(models.products);
     }
-  }
-  products_image.init(
-    {
-      filename: {
-        type: DataTypes.STRING,
-        validate: {
-          notEmpty: {
-            message: "Product image file name must be not empty!",
-          },
-        },
-      },
-      filesize: {
-        type: DataTypes.STRING,
-        validate: {
-          notEmpty: {
-            message: "Product image file size must be not empty!",
-          },
-        },
-      },
-      filetype: {
-        type: DataTypes.STRING,
-        validate: {
-          notEmpty: {
-            message: "Product image file type must be not empty!",
-          },
-        },
-      },
-      primary: {
-        type: DataTypes.BOOLEAN,
-        validate: {
-          notEmpty: {
-            message: "Product image primary must be not empty!",
-          },
-        },
-      },
-      productId: {
-        type: DataTypes.INTEGER,
-        validate: {
-          notEmpty: {
-            message: "Product id must be not empty!",
-          },
-        },
-      },
-    },
-    {
-      sequelize,
-      modelName: "products_image",
-    }
-  );
-  return products_image;
+  };
+  Products_Image.init({
+    filename: DataTypes.STRING,
+    filesize: DataTypes.STRING,
+    filetype: DataTypes.STRING,
+    primary: DataTypes.BOOLEAN,
+    ProductId: DataTypes.INTEGER
+  }, {
+    sequelize,
+    modelName: 'Products_Image',
+  });
+  return Products_Image;
 };

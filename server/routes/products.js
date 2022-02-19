@@ -1,15 +1,16 @@
-const productRoute = require("express").Router();
-const ProductControllers = require("../controllers/ProductController");
-const { authentication, authorization } = require("../middleware/auth");
+const ProductRouter = require('express').Router();
+const ProductController = require('../controllers/ProductController');
+const { authentication, authorization } = require('../middlewares/auth');
 
-productRoute.get("/", ProductControllers.showProduct);
-productRoute.get("/auth", authentication, ProductControllers.showProductByUser);
-productRoute.get("/:id", ProductControllers.showProductById);
-productRoute.put("/update/:id",authentication,authorization,ProductControllers.updateProduct);
-productRoute.post("/add", authentication, ProductControllers.createProduct);
-productRoute.delete("/delete/:id",authentication,authorization,ProductControllers.deleteProduct);
+ProductRouter.get('/', ProductController.showProducts);
+ProductRouter.get('/auth', authentication, ProductController.showProductsUsers);
+ProductRouter.get('/:id', ProductController.showProductsById);
+ProductRouter.post('/add', authentication, ProductController.addProducts);
+ProductRouter.delete('/delete/:id', authentication, authorization, ProductController.deleteProducts);
+ProductRouter.put('/update/:id', authentication, authorization, ProductController.updateProducts);
 
-productRoute.put("/updateViews/:id", ProductControllers.updateViews);
-productRoute.put("/updateSold/:id", ProductControllers.updateSold);
+ProductRouter.put('/updateViews/:id', ProductController.updateViews);
+ProductRouter.put('/updateSold/:id', ProductController.updateSold);
+ProductRouter.put('/updateRating/:id', ProductController.updateRating);
 
-module.exports = productRoute;
+module.exports = ProductRouter;

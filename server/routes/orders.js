@@ -1,13 +1,13 @@
-const orderRoute = require("express").Router();
-const { authentication } = require("../middleware/auth");
-const OrderControllers = require("../controllers/OrderController");
+const OrderRouter = require('express').Router();
+const OrderController = require('../controllers/OrderController');
+const { authentication } = require('../middlewares/auth');
 
-orderRoute.get("/", OrderControllers.showOrders);
-orderRoute.get("/auth",authentication, OrderControllers.showOrdersByUser);
-orderRoute.get("/:id", OrderControllers.showOrdersById);
-orderRoute.post("/add", authentication, OrderControllers.createOrder);
-orderRoute.delete("/delete/:id",authentication, OrderControllers.deleteOrder);
-orderRoute.put("/update/:id",authentication, OrderControllers.updateOrder);
-orderRoute.put("/updateStatus/:id",authentication, OrderControllers.updateStatusOrder);
+OrderRouter.get('/', OrderController.showOrders);
+OrderRouter.get('/auth', authentication, OrderController.showOrdersUsers);
+OrderRouter.get('/:id', OrderController.showOrdersById);
+OrderRouter.post('/add', authentication, OrderController.addOrders);
+OrderRouter.delete('/delete/:id', authentication, OrderController.deleteOrders);
+OrderRouter.put('/update/:id', authentication, OrderController.updateOrders);
+OrderRouter.put('/updateStatus/:id', authentication, OrderController.updateStatus);
 
-module.exports = orderRoute;
+module.exports = OrderRouter;
