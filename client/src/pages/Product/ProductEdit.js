@@ -3,12 +3,10 @@ import Swal from 'sweetalert2';
 import { useParams, useHistory } from 'react-router-dom';
 import axios from 'axios';
 import './Product.css';
+import { URL } from '../../utils/config';
 
 // Fungsi untuk product edit
 function ProductEdit() {
-    
-    // Fungsi untuk menjalankan url API
-    const URL = 'http://localhost:3000';
     
     // Untuk menjalankan lokasi kemana halaman akan di arahkan setelah button di klik
     const history = useHistory();

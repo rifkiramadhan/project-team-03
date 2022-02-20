@@ -4,12 +4,11 @@ import axios from 'axios';
 import Swal from 'sweetalert2';
 import { ModalOrder } from '../../components';
 import './Product.css';
+import { URL } from '../../utils/config';
+import { URL_IMAGE } from '../../utils/config';
 
 // Fungsi untuk membuat product details
 function ProductDetails({ login }) {
-    
-    // Fungsi untuk menjalankan url API
-    const URL = 'http://localhost:3000';
     
     // Untuk menjalankan lokasi kemana halaman akan di arahkan setelah button di klik
     const history = useHistory();
@@ -273,36 +272,65 @@ function ProductDetails({ login }) {
         <>
             <div className="container">
             <h1 className="mt-20 text-center fw-bold">Detail Product</h1>
-                <div className="middle d-flex justify-content-center align-items-center mb-3">
-                    <div className="col-md-4 col-4 mt-20">
-                        <div className="card bg-light mt-20">
+                <div className="card-details pt-5 pt-5">
+                    <div className="row d-flex justify-content-center">
+                        <div className="col-md-4">
                             <img 
                                 src = {
                                     product.Products_Images.map(image => {
-                                        return `http://localhost:3000/tmp/my-uploads/${image.filename}`
+                                        return `${URL_IMAGE}/${image.filename}`
                                     })
                                 } 
-                                className="card-img-top middle" alt=""
+                                className="card-img-top rounded" 
+                                alt="Foto Produk Detail"
                             />
+                             <ul className="list-group list-group-flush mt-20">
+                                <li className="list-group-item">
+                                        <h4 className="card-title mb-4 fw-bold">{product.name}</h4>
+                                       <small><i class="fa-solid fa-user-check"></i> Dijual Oleh: {product.User.name}</small>
+                                </li>
+                                <li className="list-group-item fw-medium">
+                                    {' '}
+                                    <h5><i className="fa-solid fa-money-bill-wave"></i> DR. {product.price}</h5>
+                                </li>
+                                <li className="list-group-item fw-medium">
+                                    <div className="d-flex gap-4">
+                                        <span><i class="fa-solid fa-folder-minus"></i> {product.total_sold} Unit terjual</span>
+                                        <span><i className="fa-solid fa-business-time"></i> {product.stock} Unit tersisa</span>
+                                    </div>
+                                </li>
+                                <li className="list-group-item fw-medium">
+                                    <div className="d-flex gap-4">
+                                        <span><i className="fa-solid fa-star"></i> {product.rating} Orang menilai</span>
+                                        <span><i className="fa-solid fa-eye"></i> {product.views} Kali dilihat</span>
+                                    </div>
+                                </li>
+                             </ul>
+                        </div>
 
-                            <h5 className="card-title middle mt-20 text-center">{product.name}</h5>
+                        <div className="col-md-8">
                             <ul className="list-group list-group-flush">
-                                <li className="list-group-item bg-ligh">
-                                    <div className="side-by-side">
-                                        <span>Price: {product.price}</span>
-                                        <span>Stock: {product.stock}</span>
+                                <div className="row">
+                                    <div className="col-md-8 mt-20">
+                                        <ul className="list-group list-group-flush">
+                                            <li className="list-group-item fw-medium">Kategori: {product.category}</li>
+                                            <li className="list-group-item fw-medium">Kondisi: {product.condition}</li>
+                                            <li className="list-group-item fw-medium">Brand: {product.brand}</li>
+                                            <li className="list-group-item fw-medium">Berat Barang: {product.weight}</li>
+                                            <li className="list-group-item fw-medium">Expire Date: <i>{exp_date}</i></li>
+                                        </ul>
+                                        <ul className="list-group list-group-flush">
+                                            <li className="list-group-item fw-medium">{product.desc}</li>                                
+                                        </ul>
                                     </div>
-                                </li>
-                                <li className="list-group-item bg-ligh">
-                                    <div className="side-by-side">
-                                        <span>Rating: {product.rating}</span>
-                                        <span>Views: {product.views}</span>
-                                    </div>
-                                </li>
-                                <li className="list-group-item bg-ligh middle">
-                                    Dijual Oleh: {product.User.name}
-                                </li>
-                                <div className="side-by-side">
+                                    <button 
+                                        className="btn btn-secondary fw-bold rating-button text-warning rounded-pill fas fa-star" 
+                                        onClick={() => addRatings()}
+                                    >
+                                    </button>
+                                </div>
+                        
+                                <div className="d-flex gap-2 m-3">
                                     {/* Logic belum aktif */}
                                     {
                                         login ?
@@ -327,13 +355,13 @@ function ProductDetails({ login }) {
                                     >
                                         Delete
                                     </button>
-                                        
+
                                 </div>
                                 {/* Logic belum aktif */}
-                                {
-                                    login ?
-                                    <form>
-                                        <div className="prod-img">
+                                <form>
+                                    {
+                                        login ?
+                                        <div className="">
                                             <input 
                                                 type="file" 
                                                 className="form-control rounded-pill" 
@@ -349,70 +377,53 @@ function ProductDetails({ login }) {
                                                 onClick={(e) => submitHandler(e)}
                                             >
                                                 Submit
-                                            </button>
-                                        </div>
-                                    </form>
+                                        </button>
+                                    </div>
                                     :
-                                    <form>
-                                        <div className="prod-img">
-                                            <input 
-                                                type="file" 
-                                                className="form-control rounded-pill" 
-                                                id="image" 
-                                                name="image" 
-                                                onChange={(e) => setProductImages(e.target.files[0])} 
-                                                accept="image/*"
-                                            />
-                                            <button 
-                                                type="submit" 
-                                                id="btn-upload" 
-                                                className="btn btn-lg btn-primary w-100 fw-bold rounded-pill" 
-                                                onClick={(e) => submitHandler(e)}
-                                            >   
-                                                Submit
-                                            </button>
-                                        </div>
-                                    </form>
+                                    <div className="">
+
+                                        <input 
+                                            type="file" 
+                                            className="form-control rounded-pill" 
+                                            id="image" 
+                                            name="image" 
+                                            onChange={(e) => setProductImages(e.target.files[0])} 
+                                            accept="image/*"
+                                        />
+                                        <button 
+                                            type="submit" 
+                                            id="btn-upload" 
+                                            className="btn btn-lg btn-primary w-100 fw-bold rounded-pill" 
+                                            onClick={(e) => submitHandler(e)}
+                                        >   
+                                            Submit
+                                        </button>
+                                    </div>
+                                    }
+
+                                </form>
+                                {
+                                    openModal
+                                    &&
+                                    <ModalOrder 
+                                        setOpenModal={setOpenModal} 
+                                        productName={product.name} 
+                                        productId={product.id} 
+                                        productPrice={product.price} 
+                                        productStock={product.stock}
+                                    />
                                 }
+                                <div id="btn-buy" className="">
+                                    <button 
+                                        className="btn btn-lg btn-success fw-bold rounded-pill w-100 openModal" 
+                                        onClick={() => setOpenModal(true)}
+                                        key={id}
+                                    >
+                                        Order
+                                    </button>
+                                </div>
                             </ul>
                         </div>
-                    </div>
-                    <div className="col-md-3 col-3 mt-20">
-                        <div className="bg-ligh mt-20">
-                            <ul className="list-group list-group-flush">
-                                <li className="list-group-item bg-ligh middle">Expire Date: {exp_date}</li>
-                                <li className="list-group-item bg-ligh middle">Weight: {product.weight}</li>
-                                <li className="list-group-item bg-ligh middle">Category: {product.category}</li>
-                                <li className="list-group-item bg-ligh middle">Brand: {product.brand}</li>
-                                <li className="list-group-item bg-ligh middle">Condition: {product.condition}</li>
-                                <li className="list-group-item bg-ligh middle">Total Sold: {product.total_sold}</li>
-                                <li className="list-group-item bg-ligh middle">Description: {product.desc}</li>
-                            </ul>
-                        </div>
-                        {
-                            openModal
-                            &&
-                            <ModalOrder 
-                                setOpenModal={setOpenModal} 
-                                productName={product.name} 
-                                productId={product.id} 
-                                productPrice={product.price} 
-                                productStock={product.stock}
-                            />
-                        }
-                        <div id="btn-buy" className="prod-img">
-                            <button 
-                                className="btn btn-lg btn-success fw-bold rounded-pill w-100 openModal" 
-                                onClick={() => setOpenModal(true)}
-                            >
-                                Order
-                            </button>
-                        </div>
-                        <button 
-                            className="btn btn-secondary fw-bold rating-button text-warning rounded-pill fas fa-star" 
-                            onClick={() => addRatings()}
-                        >
-                        </button>
                     </div>
                 </div>
             </div>

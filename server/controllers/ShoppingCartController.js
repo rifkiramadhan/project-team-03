@@ -45,7 +45,7 @@ class ShoppingCartController {
       const UserId = req.UserDetail.id;
       let cart = await Shopping_Cart.create({
         created_on: new Date(),
-        status: 'Open',
+        status: 'Pending',
         UserId,
       });
 

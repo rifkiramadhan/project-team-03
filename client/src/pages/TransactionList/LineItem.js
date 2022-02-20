@@ -3,13 +3,11 @@ import { useHistory } from 'react-router-dom';
 import axios from 'axios';
 import Swal from 'sweetalert2';
 import './LineItem.css';
+import { URL } from '../../utils/config';
 
 // Fungsi untuk membuat line item
 function LineItem() {
-    
-    // Fungsi untuk menjalankan url API
-    const URL = 'http://localhost:3000';
-    
+
     // Untuk menjalankan lokasi kemana halaman akan di arahkan setelah button di klik
     const history = useHistory();
 

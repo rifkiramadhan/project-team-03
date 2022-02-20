@@ -8,9 +8,16 @@
 }
 
 .card-details {
-    margin: 0 auto;
+    margin: 20px;
+    padding: 20px;
     float: none;
     margin-bottom: 10px;
+    border: 1px solid auto;
+    border-radius: 25px 25px 25px 25px;
+    -moz-border-radius: 25px 25px 25px 25px;
+    -webkit-border-radius: 25px 25px 25px 25px;
+    border: 0px solid var(--black-color);
+    background-color: var(--white-color);
 }
 
 .card-form {

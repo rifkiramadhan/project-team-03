@@ -41,7 +41,7 @@ module.exports = (sequelize, DataTypes) => {
           order.tax = ((+order.subtotal)-(+order.discount))*10/100;
           order.total_due =(+order.subtotal)-(+order.discount)+(+order.tax)
           order.payt_trx_number=`${order.UserId}000-1`
-          order.status='Open'
+          order.status='Pending'
       },
       beforeUpdate(order,options){
         let qty = +order.total_qty

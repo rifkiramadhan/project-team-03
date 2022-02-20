@@ -4,12 +4,10 @@ import axios from 'axios';
 import Swal from 'sweetalert2';
 import { ModalUserEdit } from '../../components';
 import './User.css';
+import { URL } from '../../utils/config';
 
 // Fungsi untuk membuat user profile
 function UserProfile() {
-
-    // Fungsi untuk menjalankan url API
-    const URL = 'http://localhost:3000';
 
     // Fungsi untuk menerima data dari field data API untuk form user profile
     const [ user, setUser ] = useState({
@@ -66,7 +64,7 @@ function UserProfile() {
             <h1 className="mt-20 text-center text-dark fw-bold mb-5">Profile</h1>
             <div className="container mt-20 mb-5">
                 <div className="card card-profile card-details bg-light">
-                    <img src={`http://localhost:3000/${user.avatar}`} 
+                    <img src={`${URL}/${user.avatar}`} 
                          className="card-img-top mt-4 mb-5 img-thumbnail image-profile mx-auto d-block" 
                          alt=""/>
                         <div className="card-body">

@@ -3,11 +3,10 @@ import Swal from 'sweetalert2';
 import { useHistory, Link } from 'react-router-dom';
 import axios from 'axios';
 import './User.css';
+import { URL } from '../../utils/config';
 
 // Fungsi untuk melakukan sign in
 function UserLogin({ userLogin, getToken }) {
-    // Fungsi untuk menjalankan url API
-    const URL = 'http://localhost:3000';
 
     // Untuk menjalankan lokasi kemana halaman akan di arahkan setelah button di klik
     const history = useHistory();

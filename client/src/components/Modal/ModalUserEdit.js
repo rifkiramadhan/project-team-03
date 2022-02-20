@@ -3,6 +3,7 @@ import { useHistory } from 'react-router-dom';
 import axios from 'axios';
 import Swal from 'sweetalert2';
 import './Modal.css';
+import { URL } from '../../utils/config';
 
 // Fungsi untuk membuat modal user edit
 function ModalUserEdit({ setOpenModal, username, gender, birthdate, type, avatar}) {
@@ -40,7 +41,7 @@ function ModalUserEdit({ setOpenModal, username, gender, birthdate, type, avatar
 
             await axios({
                 method: 'PUT',
-                url: `http://localhost:3000/users/update/`,
+                url: `${URL}/users/update/`,
 
                 headers: {
                     access_token

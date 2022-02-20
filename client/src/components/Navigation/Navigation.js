@@ -3,6 +3,7 @@ import { Link, useHistory } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import { DropdownButton, Dropdown, Navbar, Container, Nav } from 'react-bootstrap';
 import './Navigation.css';
+import logo from '../../assets/logo-navigation.png';
 
 // Fungsi untuk membuat navbar
 function Navigation({ login, userLogin }) {
@@ -42,15 +43,17 @@ function Navigation({ login, userLogin }) {
                 <Container fluid>
 
                     <Navbar.Brand>
-                    <img 
-                        src="https://i.pinimg.com/originals/d6/b7/51/d6b751d75c50b98be47a56bd11106334.jpg" 
-                        className="rounded-circle"
-                        width="40px" 
-                        height="40px" 
-                        alt="" 
-                    />
-                    {' '}
-                    Codi Helath
+                        <Link to="/">    
+                            <img 
+                                src={logo}
+                                className="rounded-circle"
+                                width="40px" 
+                                height="40px" 
+                                alt=""
+                            />
+                            {' '}
+                            <span className="text-light fw-bold">Codi Helath</span>
+                        </Link>
                     </Navbar.Brand>
 
                     <Navbar.Toggle className="coloring" />

@@ -4,13 +4,12 @@ import Swal from 'sweetalert2';
 import { Link } from 'react-router-dom';
 import { CardHome } from '../../components';
 import './Home.css';
+import { URL } from '../../utils/config';
 
 // Fungsi home memiliki parameter login
 function Home({ login }) {
     const [products, setProducts] = useState([]);
     const [search, setSearch] = useState([]);
-
-    const URL = 'http://localhost:3000';
 
     // Menampilkan produk yang ada di home page
     useEffect(() => {
@@ -66,7 +65,7 @@ function Home({ login }) {
             <div className="container-fluid mt-20">
                 <form className="d-flex">
                     <input className="form-control me-2 rounded-pill" type="search" placeholder="Mau cari apa ?" onChange={(e) => {setSearch(e.target.value)}}/>
-                    <button className="btn btn-success fw-bold rounded-pill m-1" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+                    <button className="btn btn-success fw-bold rounded-pill m-1" type="submit"><i className="fa-solid fa-magnifying-glass"></i></button>
                 </form>
             </div>
             
