@@ -66,8 +66,8 @@ function Order() {
                 <tbody>
                         {
                             orders.map((order) => {
-                                var tempExp = order.created_on.slice().split('T');
-                                var order_date = tempExp[0];
+                                let tempExp = order.created_on.slice().split('T');
+                                let order_date = tempExp[0];
                                 return (
                                     <tr>
                                         <td className="table-light">{order.payt_trx_number}</td>

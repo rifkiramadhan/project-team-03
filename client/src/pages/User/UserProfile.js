@@ -62,7 +62,7 @@ function UserProfile() {
     return (
         <>
             <h1 className="mt-20 text-center text-dark fw-bold mb-5">Profile</h1>
-            <div className="container mt-20 mb-5">
+            <div className="container mt-20 mb-5 d-flex align-items-center justify-content-center">
                 <div className="card card-profile card-details bg-light">
                     <img src={`${URL}/${user.avatar}`} 
                          className="card-img-top mt-4 mb-5 img-thumbnail image-profile mx-auto d-block" 

@@ -7,7 +7,10 @@ class OrderController {
     static async showOrders(req, res) {
         try {
           let order = await Order.findAll({
-          order: [["UserId", "ASC"]],
+            order: [
+              [
+                'UserId', 'ASC']
+              ],
             include: 
               [
                 User
