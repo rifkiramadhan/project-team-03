@@ -15,7 +15,7 @@
 
 ### Deskripsi
 
-``` CodiHealth adalah sebuah Toko Online berbasis website untuk menjual produk obat-obatan kesehatan berdasarkan resep dokter dan juga menyediakan fasilitas untuk konsultasi masalah kesehatan secara daring dengan para dokter specialist. ```
+```CodiHealth adalah sebuah Toko Online berbasis website untuk menjual produk obat-obatan kesehatan berdasarkan resep dokter dan juga menyediakan fasilitas untuk konsultasi masalah kesehatan secara daring dengan para dokter specialist. ```
 
 ### Copyright  
 
@@ -34,7 +34,7 @@
 
 ### Tools Development
 
-``` Adalah tools menarik untuk Web Developer ketika membuat sebuah project dengan cara yang lebih cepat. ```
+```Adalah tools menarik untuk Web Developer ketika membuat sebuah project dengan cara yang lebih cepat. ```
 
 1. [CSS Matic](https://www.cssmatic.com/)
     - Suatu Generator yang akan membantu kita dalam pembuatan Box Shadow, Noise, Gradient, dan Border Radius.
