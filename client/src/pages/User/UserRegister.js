@@ -147,7 +147,7 @@ function UserRegister({userLogin, getToken}) {
                                 </div>
                             </div>
                         </div>
-                        <div className="row d-grid">
+                        <div className="row d-grid mt-5">
                             <div className="col-sm-12">
                                 <button type="submit" className="btn btn-lg btn-success fw-bold rounded-pill w-100" onClick={(e) => submitHandler(e)}>Sign Up</button>
                             </div>

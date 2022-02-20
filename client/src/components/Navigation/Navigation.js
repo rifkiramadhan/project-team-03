@@ -52,7 +52,7 @@ function Navigation({ login, userLogin }) {
                                 alt=""
                             />
                             {' '}
-                            <span className="text-light fw-bold">Codi Helath</span>
+                            <span className="text-light fw-bold">Codi Health</span>
                         </Link>
                     </Navbar.Brand>
 

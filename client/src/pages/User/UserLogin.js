@@ -76,7 +76,7 @@ function UserLogin({ userLogin, getToken }) {
                             <input type="password" className="form-control rounded-pill w-100" id="password" onChange={(e) => setUser({...user, password: e.target.value})} placeholder="Your password"/>
                         </div>
                     </div>
-                    <div className="row mt-3 d-grid">    
+                    <div className="row mt-5 d-grid">    
                         <div className="col-sm-12">
                             <button type="submit" className="btn btn-lg btn-success fw-bold rounded-pill w-100" onClick={(e) => submitHandler(e)}>Sign In</button>
                         </div>
