@@ -31,7 +31,7 @@
 /* Container */
 .container-form {
   margin-top: 50px;
-  width: 500px;
+  max-width: 500px;
 }
 
 .form-control {

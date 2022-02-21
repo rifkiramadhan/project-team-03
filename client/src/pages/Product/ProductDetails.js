@@ -301,7 +301,7 @@ function ProductDetails({ login }) {
                                 </li>
                                 <li className="list-group-item fw-medium">
                                     <div className="d-flex gap-4">
-                                        <span><i className="fa-solid fa-star"></i> {product.rating} Orang menilai</span>
+                                        <span><i className="fa-solid fa-star"></i> {product.rating} Kali dinilai</span>
                                         <span><i className="fa-solid fa-eye"></i> {product.views} Kali dilihat</span>
                                     </div>
                                 </li>
