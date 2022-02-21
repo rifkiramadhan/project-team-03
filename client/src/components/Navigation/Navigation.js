@@ -34,7 +34,7 @@ function Navigation({ login, userLogin }) {
         <>
             <Navbar 
                 bg="light" 
-                variant="dark"
+                variant="light"
                 sticky="top" 
                 expand="sm" 
                 className="navbar navbar-expand-lg"
