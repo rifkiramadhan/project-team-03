@@ -172,22 +172,21 @@ function ProductEdit() {
                         <label className="col-sm-2 col-form-label">Condition: </label>
                         <div className="col-sm-10" onChange={(e) => setProduct({...product, condition: e.target.value})}>
                             <div className="form-check">
-                                <input className="form-check-input" type="radio" id="condition" name="condition" value="new" checked={product.condition === "new"}/>
-                                <label className="form-check-label " for="new">
-                                    New
+                                <input className="form-check-input" type="radio" id="condition" name="condition" value="Bary"/>
+                                <label className="form-check-label " for="Baru">
+                                    Baru
                                 </label>
                             </div>
                             <div className="form-check">
-                                <input className="form-check-input" type="radio" id="condition" name="condition" value="second" checked={product.condition === "second"}/>
-                                <label className="form-check-label " for="second">
-                                    Second
+                                <input className="form-check-input" type="radio" id="condition" name="condition" value="Bekas"/>
+                                <label className="form-check-label " for="Bekas">
+                                    Bekas
                                 </label>
                             </div>
-                            
                             <div className="form-check">
-                                <input className="form-check-input" type="radio" id="condition" name="condition" value="refurbish" checked={product.condition === "refurbish"}/>
-                                <label className="form-check-label " for="refurbish">
-                                    Refurbish
+                                <input className="form-check-input" type="radio" id="condition" name="condition" value="Daur Ulang"/>
+                                <label className="form-check-label " for="Daur Ulang">
+                                    Daur Ulang
                                 </label>
                             </div>
                         </div>

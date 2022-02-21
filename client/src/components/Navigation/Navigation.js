@@ -33,8 +33,8 @@ function Navigation({ login, userLogin }) {
     return (
         <>
             <Navbar 
-                bg="primary" 
-                variant="dark"
+                bg="light" 
+                variant="light"
                 sticky="top" 
                 expand="sm" 
                 className="navbar navbar-expand-lg"
@@ -43,7 +43,10 @@ function Navigation({ login, userLogin }) {
                 <Container fluid>
 
                     <Navbar.Brand>
-                        <Link to="/">    
+                        <Link 
+                            to="/"
+                            className="text-decoration-none"    
+                        >    
                             <img 
                                 src={logo}
                                 className="rounded-circle"
@@ -52,7 +55,7 @@ function Navigation({ login, userLogin }) {
                                 alt=""
                             />
                             {' '}
-                            <span className="text-light fw-bold">Codi Health</span>
+                            <span className="text-dark fw-bold">Codi Health</span>
                         </Link>
                     </Navbar.Brand>
 
@@ -61,14 +64,14 @@ function Navigation({ login, userLogin }) {
                         <Nav>
                             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                                 <li className="nav-item">
-                                        <Link className="nav-link text-light" to="/">Home</Link>
+                                        <Link className="nav-link text-dark" to="/">Home</Link>
                                 </li>
                                 <li className="nav-item">
                                     {
                                         login ?
-                                        <Link className="nav-link text-light" to="/cart">Cart</Link>
+                                        <Link className="nav-link text-dark" to="/cart">Cart</Link>
                                         :
-                                        <Link className="nav-link text-light d-none" to="#"
+                                        <Link className="nav-link text-dark d-none" to="#"
                                         onClick={e => actionHandler(e)}>
                                             Cart
                                         </Link>
@@ -78,9 +81,9 @@ function Navigation({ login, userLogin }) {
                                 <li className="nav-item">
                                     {
                                         login ?
-                                        <Link className="nav-link text-light" to="/line-item">Line Item</Link>
+                                        <Link className="nav-link text-dark" to="/line-item">Line Item</Link>
                                         :
-                                        <Link className="nav-link text-light d-none" to="#"
+                                        <Link className="nav-link text-dark d-none" to="#"
                                         onClick={e => actionHandler(e)}>
                                             Line Item
                                         </Link>
@@ -90,16 +93,16 @@ function Navigation({ login, userLogin }) {
                                 <li className="nav-item">
                                     {
                                         login ?
-                                        <Link className="nav-link text-light" to="/order">Order</Link>
+                                        <Link className="nav-link text-dark" to="/order">Order</Link>
                                         :
-                                        <Link className="nav-link text-light d-none" to="#"
+                                        <Link className="nav-link text-dark d-none" to="#"
                                         onClick={e => actionHandler(e)}>
                                             Order
                                         </Link>
                                     }
                                 </li>
                             </ul>
-                                <DropdownButton title="Menu" variant="primary" menuVariant="primary">
+                                <DropdownButton title="Menu" variant="light" menuVariant="light">
                                 {
                                     login ?
                                         <>
