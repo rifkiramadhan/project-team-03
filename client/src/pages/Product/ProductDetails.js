@@ -291,7 +291,7 @@ function ProductDetails({ login }) {
                                 </li>
                                 <li className="list-group-item fw-medium">
                                     {' '}
-                                    <h5><i className="fa-solid fa-money-bill-wave"></i> DR. {product.price}</h5>
+                                    <h5><i className="fa-solid fa-money-bill-wave"></i> IDR. {product.price}</h5>
                                 </li>
                                 <li className="list-group-item fw-medium">
                                     <div className="d-flex gap-4">

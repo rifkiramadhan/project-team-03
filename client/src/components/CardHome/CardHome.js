@@ -36,12 +36,12 @@ function CardHome(props) {
                             <span className="text-black prod-info text-secondary card-ratings">
                                 <i className="fas fa-star text-warning"></i> {rating}
                             </span>
-                            <span className="badge bg-secondary p-2 rounded-pill">
+                            <small className="badge bg-secondary p-2 rounded-pill">
                                 <span className="badge bg-success">{stock} / {total_sold}</span> Tersisa
-                            </span>
-                            <span className="badge bg-secondary p-2 rounded-pill">
+                            </small>
+                            <small className="badge bg-secondary p-2 rounded-pill">
                                 <span className="badge bg-success">{views}</span> Mention
-                            </span>
+                            </small>
                             <span className="text-black prod-info text-secondary card-category mt-5">
                                 <i className="fa-solid fa-bars-staggered"></i> {category}
                             </span>
