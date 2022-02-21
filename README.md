@@ -10,8 +10,8 @@
 
 ### Rancangan Data
 
-1. [Master ERD]('./ERD.png)
-1. [Codi Health ERD]('./https://drive.google.com/file/d/1XuzjOnnxaLr4-qrTdQCUhfajD7aFDJHW/view?usp=sharing)
+1. [Master ERD](./ERD.png)
+1. [Codi Health ERD](https://drive.google.com/file/d/1XuzjOnnxaLr4-qrTdQCUhfajD7aFDJHW/view?usp=sharing)
 2. [API Documentation](/)
 
 ### Deskripsi
@@ -20,7 +20,7 @@
 
 ### Aplikasi Dukungan
 
-- [Codigram](/https://codigram.netlify.app)
+- [Codigram](https://codigram.netlify.app)
 
 ```Codigram adalah aplikasi sistem informasi berbasis website yang bertujuan untuk mendukung platform Codi Health sebagai fasilitas komunikasi dan konsultasi antara pasien dan dokter specialist yang kemudian akan diberikan solusi dan rekomendasi obat-obatan sesuai resep dokter yang dapat di beli melalui aplikasi Codi Health.```
 
