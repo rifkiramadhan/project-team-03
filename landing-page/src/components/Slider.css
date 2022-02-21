@@ -1,0 +1,138 @@
+.slider .carousel-item{
+	min-height: 100vh;
+	background-position: center;
+	background-size: cover;
+	position: relative;
+	z-index: 1;
+}
+.slider .carousel-item:before{
+	content: '';
+	position: absolute;
+	left:0;
+	top:0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0,0,0,0.5);
+	z-index: -1;
+}
+.slider .carousel-item .container{
+	position: absolute;
+	left: 50%;
+	top:50%;
+	transform: translate(-50%,-50%);
+	text-align: center;
+}
+.slider .carousel-item h2{
+	font-size: 80px;
+	color: #ffffff;
+	margin:0 0 10px;
+	opacity: 0;
+}
+.slider .carousel-item p{
+	font-size: 30px;
+	margin:0;
+	color: #eeeeee;
+	opacity:0;
+}
+.slider .carousel-item.active h2{
+	animation: fadeInLeft 0.5s ease forwards;
+}
+.slider .carousel-item.active p{
+	animation: fadeInRight 0.5s ease forwards;
+}
+
+@keyframes fadeInLeft{
+	0%{
+		opacity: 0;
+		transform: translateX(-30px);
+	}
+	100%{
+		opacity: 1;
+		transform: translateX(0px);
+	}
+}
+@keyframes fadeInRight{
+	0%{
+		opacity: 0;
+		transform: translateX(30px);
+	}
+	100%{
+		opacity: 1;
+		transform: translateX(0px);
+	}
+}
+
+.slider .carousel-controls{
+	position: absolute;
+	left: 50%;
+	bottom: 40px;
+	z-index: 10;
+	transform: translateX(-50%);
+}
+
+.slider .carousel-indicators{
+	position: relative;
+	margin:0;
+}
+
+.slider .carousel-indicators li{
+	height: 70px;
+	width: 70px;
+	margin:0 5px;
+	border-radius: 50%;
+	background-position: center;
+	background-size: cover;
+	border:3px solid transparent;
+	transition: all 0.3s ease;
+}
+.slider .carousel-indicators li.active{
+	border-color: #ffffff;
+	transform: scale(1.2);
+}
+
+.slider .carousel-control-next, 
+.slider .carousel-control-prev{
+	height: 60px;
+	width: 60px;
+	opacity: 1;
+	z-index: 3;
+	top: 50%;
+	transform: translateY(-50%);
+	border-radius: 50%;
+	transition: all 0.3s ease;
+}
+.slider .carousel-control-next:hover, 
+.slider .carousel-control-prev:hover{
+   box-shadow: 0 0 10px #ffffff;
+}
+.slider .carousel-control-next img, 
+.slider .carousel-control-prev img{
+   width: 30px;
+}
+.slider .carousel-control-next{
+	right: -90px;
+}
+.slider .carousel-control-prev{
+	left: -90px;
+}
+
+/*responsive*/
+/* @media(max-width: 767px){
+  .slider .carousel-control-next, 
+  .slider .carousel-control-prev{
+  	display: none;
+  }
+  .slider .carousel-indicators li{
+  	height: 60px;
+  	width: 60px;
+  }
+  .slider .carousel-item h2{
+  	font-size: 45px;
+  }
+  .slider .carousel-item p{
+  	font-size: 22px;
+  }
+} */
+
+
+

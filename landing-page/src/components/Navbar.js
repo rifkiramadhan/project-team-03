@@ -1,5 +1,5 @@
 import React from 'react'
-import logo from '../assets/logo-codi.svg';
+import logo from '../assets/logo.png';
 
 function Navbar() {
   return (

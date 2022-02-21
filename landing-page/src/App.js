@@ -1,14 +1,16 @@
 import React from 'react'
 import './App.css';
-import { TextHeading , Navbar, AboutUs } from './components';
+
+import { TextHeading , Navbar, AboutUs, Slider } from './components';
 
 
 function App() {
   return (
     <div className="App">
-      <Navbar></Navbar>
-      <TextHeading></TextHeading>
-      <AboutUs></AboutUs>
+      <Navbar/>
+      <TextHeading/>
+      <AboutUs/>
+      <Slider/>
     </div>
   );
 }
