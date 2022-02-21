@@ -50,17 +50,26 @@ function Home({ login }) {
         );
     };
 
+    const today = new Date();
+    const day = today.toDateString();
+
     // Fungsi untuk menjalankan spiner setiap kali ada loading
     const loadingProducts = () => {
         return (
             <div>
-                <p className="loader font-weight-bold fw-bold">Loading Products.. Please Wait..</p>
+                <div className="loader"></div>
             </div>
         );
     };
 
     return (
         <div className="container mt-20 middle">
+
+            <div class="main-hero-image">
+                <div class="main-hero-text">
+                    <h1>{day}</h1>
+                </div>
+            </div>
 
             <div className="container-fluid mt-20">
                 <form className="d-flex">

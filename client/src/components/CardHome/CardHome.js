@@ -42,7 +42,7 @@ function CardHome(props) {
                             <small className="badge bg-secondary p-2 rounded-pill">
                                 <span className="badge bg-success">{views}</span> Mention
                             </small>
-                            <span className="text-black prod-info text-secondary card-category mt-5">
+                            <span className="text-black text-category prod-info text-secondary card-category mt-5">
                                 <i className="fa-solid fa-bars-staggered"></i> {category}
                             </span>
                         </div>

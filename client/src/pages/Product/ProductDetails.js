@@ -281,7 +281,7 @@ function ProductDetails({ login }) {
                                         return `${URL_IMAGE}/${image.filename}`
                                     })
                                 } 
-                                className="card-img-top rounded" 
+                                className="card-img-top rounded lazyload" 
                                 alt="Foto Produk Detail"
                             />
                              <ul className="list-group list-group-flush mt-20">
