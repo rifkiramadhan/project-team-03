@@ -77,43 +77,85 @@ function ProductAdd() {
                     <div className="row mb-3">
                         <label className="col-sm-2 col-form-label">Name: </label>
                         <div className="col-sm-10">
-                            <input type="text" className="form-control rounded-pill" id="name" onChange={(e) => setProduct({...product, name: e.target.value})} placeholder="Product Name"/>
+                            <input 
+                                type="text" 
+                                className="form-control rounded-pill" 
+                                id="name" 
+                                onChange={(e) => setProduct({...product, name: e.target.value})} 
+                                placeholder="Product Name"
+                            />
                         </div>
                     </div>
                     <div className="row mb-3">
                         <label className="col-sm-2 col-form-label">Description: </label>
                         <div className="col-sm-10">
-                            <textarea type="text" className="form-control rounded-pill" id="password" onChange={(e) => setProduct({...product, desc: e.target.value})} placeholder="Product Description"/>
+                            <textarea 
+                                type="text" 
+                                className="form-control rounded-pill" 
+                                id="password" 
+                                onChange={(e) => setProduct({...product, desc: e.target.value})} 
+                                placeholder="Product Description"
+                            />
                         </div>
                     </div>
                     <div className="row mb-3">
                         <label className="col-sm-2 col-form-label">Price (Rp.): </label>
                         <div className="col-sm-10">
-                            <input type="number" className="form-control rounded-pill" id="price" onChange={(e) => setProduct({...product, price: e.target.value})} placeholder="Rp."/>
+                            <input 
+                                type="number" 
+                                className="form-control rounded-pill" 
+                                id="price" 
+                                onChange={(e) => setProduct({...product, price: e.target.value})} 
+                                placeholder="Rp."
+                            />
                         </div>
                     </div>
                     <div className="row mb-3">
                         <label className="col-sm-2 col-form-label">Expire Date: </label>
                         <div className="col-sm-10">
-                            <input type="date" className="form-control rounded-pill" id="expire_date" onChange={(e) => setProduct({...product, expire_date: e.target.value})} placeholder="Expire Date"/>
+                            <input 
+                                type="date" 
+                                className="form-control rounded-pill" 
+                                id="expire_date" 
+                                onChange={(e) => setProduct({...product, expire_date: e.target.value})} 
+                                placeholder="Expire Date"
+                            />
                         </div>
                     </div>
                     <div className="row mb-3">
                         <label className="col-sm-2 col-form-label">Weight (kg): </label>
                         <div className="col-sm-10">
-                            <input type="number" className="form-control rounded-pill" id="price" onChange={(e) => setProduct({...product, weight: e.target.value})} placeholder="kg"/>
+                            <input 
+                                type="number" 
+                                className="form-control rounded-pill" 
+                                id="price" 
+                                onChange={(e) => setProduct({...product, weight: e.target.value})} 
+                                placeholder="Kg"
+                            />
                         </div>
                     </div>
                     <div className="row mb-3">
                         <label className="col-sm-2 col-form-label">Category: </label>
                         <div className="col-sm-10">
-                            <input type="text" className="form-control rounded-pill" id="category" onChange={(e) => setProduct({...product, category: e.target.value})} placeholder="Product Category"/>
+                            <input 
+                                type="text" 
+                                className="form-control rounded-pill" 
+                                id="category" 
+                                onChange={(e) => setProduct({...product, category: e.target.value})} 
+                                placeholder="Product Category"
+                            />
                         </div>
                     </div>
                     <div className="row mb-3">
                         <label className="col-sm-2 col-form-label">Brand: </label>
                         <div className="col-sm-10">
-                            <input type="text" className="form-control rounded-pill" id="brand" onChange={(e) => setProduct({...product, brand: e.target.value})} placeholder="Product Brand"/>
+                            <input 
+                                type="text" 
+                                className="form-control rounded-pill" 
+                                id="brand" 
+                                onChange={(e) => setProduct({...product, brand: e.target.value})} 
+                                placeholder="Product Brand"
+                            />
                         </div>
                     </div>
                     <div className="row mb-3">
@@ -141,7 +183,13 @@ function ProductAdd() {
                     </div>
                     <div className="row">
                         <div className="col-sm-12">
-                            <button type="submit" className="btn btn-lg btn-success fw-bold rounded-pill w-100" onClick={(e) => submitHandler(e)}>Tambahkan</button>
+                            <button 
+                                type="submit" 
+                                className="btn btn-lg btn-success fw-bold rounded-pill w-100" 
+                                onClick={(e) => 
+                                submitHandler(e)}
+                            >Tambahkan
+                            </button>
                         </div>
                     </div>
                 </form>

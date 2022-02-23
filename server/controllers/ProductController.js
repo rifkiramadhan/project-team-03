@@ -7,9 +7,12 @@ class ProductController {
     static async showProducts(req, res) {
       try {
         let product = await Product.findAll({
-        order: [["id", "ASC"]],
-          include: 
-               [Products_Image] 
+          order: [
+            ['id', 'ASC']
+          ],
+          include: [
+            Products_Image
+          ] 
         });
   
         res.status(200).json(product);
@@ -20,10 +23,12 @@ class ProductController {
 
     static async showProductsUsers(req, res) {
       try{
-        const {id} = req.UserDetail;
-        let product =  await Product.findAll({
-          where : { UserId : id }
-        });
+        const { id } = req.UserDetail;
+        let product =  await Product.findAll(
+          {
+            where: { UserId: id }
+          }
+        );
 
         res.status(200).json(product);
       } catch (err) {
@@ -35,14 +40,16 @@ class ProductController {
       try {
         const id = +req.params.id;
         // console.log(id)
-        let product = await Product.findOne({
-          where: {id},
-            include: 
-                [
-                  User,
-                  Products_Image
-                ] 
-          });
+        let product = await Product.findOne(
+          {
+            where: { id },
+              include: 
+                  [
+                    User,
+                    Products_Image
+                  ] 
+          }
+        );
 
         res.status(200).json(product);
       } catch (err) {
@@ -52,11 +59,29 @@ class ProductController {
 
     static async addProducts(req, res) {
         try {
-          const { name, desc, price, expire_date, weight, category, brand, condition} = req.body;
+          const { name, 
+                  desc, 
+                  price, 
+                  expire_date, 
+                  weight, 
+                  category, 
+                  brand, 
+                  condition
+                } = req.body;
           const UserId = req.UserDetail.id;
-          let product = await Product.create({
-            name, desc, price, expire_date, weight, category, brand, condition, UserId
-          });
+          let product = await Product.create(
+            {
+              name, 
+              desc, 
+              price, 
+              expire_date, 
+              weight, 
+              category, 
+              brand, 
+              condition, 
+              UserId
+            }
+          );
 
           res.status(201).json (product);
         } catch (err) {
@@ -67,9 +92,12 @@ class ProductController {
     static async deleteProducts(req, res) {
       try {
             const id = +req.params.id;
-            let result = await Product.destroy({
-              where: { id },
-            });
+            let result = await Product.destroy(
+              {
+                where: { id },
+              }
+            );
+
             res.status(200).json(result);
           } catch (err) {
             res.status(500).json(err);
@@ -79,10 +107,27 @@ class ProductController {
     static async updateProducts(req, res) {
       try {
         const id = +req.params.id;
-        const { name, desc, price, stock, expire_date, weight, category, brand, condition } = req.body;
+        const { name, 
+                desc, 
+                price, 
+                stock, 
+                expire_date, 
+                weight, 
+                category, 
+                brand, 
+                condition 
+              } = req.body;
         let product = await Product.update(
           {
-              name, desc, price, stock, expire_date, weight, category, brand, condition
+              name, 
+              desc, 
+              price, 
+              stock, 
+              expire_date, 
+              weight, 
+              category, 
+              brand, 
+              condition
           },
           {
             where: { id },

@@ -3,6 +3,7 @@ import axios from 'axios';
 import Swal from 'sweetalert2';
 import './TransactionOrder.css';
 import { URL } from '../../utils/config';
+import { Link } from 'react-router-dom';
 
 // Fungsi untuk membuat cart
 function Cart() {
@@ -46,7 +47,7 @@ function Cart() {
     };
 
     return (
-        <div className="container mt-20">
+        <div className="container table-responsive mt-20">
             <h1 className="text-center fw-bold">Cart</h1>
             <table className="table table-light mt-20">
                 <thead>
@@ -54,6 +55,7 @@ function Cart() {
                     <th className="table-light" scope="col">Shop Id</th>
                     <th className="table-light" scope="col">Created On</th>
                     <th className="table-light" scope="col">Status</th>
+                    <th className="table-light" scope="col">Action</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -67,7 +69,35 @@ function Cart() {
                                 <tr>
                                     <td className="table-light">{cart.id}</td>
                                     <td className="table-light">{cart_date}</td>
-                                    <td className="table-light">{cart.status}</td>
+                                    <td>
+                                            { cart.status === 'Pending' ?
+                                                <span className="badge bg-warning rounded-pill">
+                                                   {cart.status}
+                                                </span>
+                                            : cart.status === 'Success' ?
+                                            <span className="badge bg-success rounded-pill">
+                                                    {cart.status}                   
+                                                </span>
+                                            : 
+                                            <span className="badge bg-danger rounded-pill">
+                                                    {cart.status}                      
+                                                </span>
+                                            }
+                                    </td>
+                                    <td className="table-light d-flex gap-2">
+                                        <form>
+                                            <Link className="btn btn-danger btn-sm rounded-pill">
+                                                <i className="fas fa-times-circle"></i>
+                                                {' '}Tolak
+                                            </Link>
+                                        </form>
+                                        <form>
+                                            <Link className="btn btn-info btn-sm rounded-pill">
+                                                <i className="fas fa-check"></i>
+                                                {' '}Terima
+                                            </Link>
+                                        </form>
+                                    </td>
                                 </tr>
                             )
                         })

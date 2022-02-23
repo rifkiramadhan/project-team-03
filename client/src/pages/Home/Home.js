@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Swal from 'sweetalert2';
 import { Link } from 'react-router-dom';
-import { CardHome } from '../../components';
+import { CardHome, Footer, Information, Jumbotron, Testimonial, Time } from '../../components';
 import './Home.css';
 import { URL } from '../../utils/config';
 
@@ -50,9 +50,6 @@ function Home({ login }) {
         );
     };
 
-    const today = new Date();
-    const day = today.toDateString();
-
     // Fungsi untuk menjalankan spiner setiap kali ada loading
     const loadingProducts = () => {
         return (
@@ -63,18 +60,24 @@ function Home({ login }) {
     };
 
     return (
-        <div className="container mt-20 middle">
+        <div className="container-fluid">
+            <Jumbotron />
+            <Information />
+            <Time />
 
-            <div class="main-hero-image">
-                <div class="main-hero-text">
-                    <h1>{day}</h1>
-                </div>
-            </div>
-
-            <div className="container-fluid mt-20">
+            <div className="container mt-20" id="search">
                 <form className="d-flex">
-                    <input className="form-control me-2 rounded-pill" type="search" placeholder="Mau cari apa ?" onChange={(e) => {setSearch(e.target.value)}}/>
-                    <button className="btn btn-success fw-bold rounded-pill m-1" type="submit"><i className="fa-solid fa-magnifying-glass"></i></button>
+                    <input 
+                        className="form-control me-2 rounded-pill" 
+                        type="search" placeholder="Mau cari apa ?" 
+                        onChange={(e) => {setSearch(e.target.value)}}/
+                    >
+                    <button 
+                        className="btn btn-success fw-bold rounded-pill m-1" 
+                        type="submit"
+                    >
+                        <i className="fa-solid fa-magnifying-glass"></i>
+                    </button>
                 </form>
             </div>
             
@@ -82,11 +85,15 @@ function Home({ login }) {
                 {/* Jika user nya sign in maka tampilkan link untuk menambahkan produk baru ke dalam home page */}
                 {
                     login ?
-                    <Link to="/products/add" className="btn btn-primary fw-bold rounded-pill">Tambah Produk</Link>
+                    <Link 
+                        to="/products/add" 
+                        className="btn btn-primary fw-bold rounded-pill"
+                    >
+                        Tambah Produk
+                    </Link>
                     :
                     // Jika user nya tidak sign in maka link untuk menambahkan produk baru tidak akan ditampilkan ke home page
-                    <Link to="/users/login" className="btn btn-info d-none" 
-                    onClick={e => actionHandler(e)}>
+                    <Link className="btn btn-info d-none">
                         Tambah Produk
                     </Link>
                 }
@@ -111,12 +118,17 @@ function Home({ login }) {
                         // Jika produknya yang telah dicari tersedia, maka akan menampilkan data produk ke card home
                         .map(product => {
                             return (
-                                <CardHome key={product.id} product={product}/>
+                                <CardHome 
+                                    key={product.id} 
+                                    product={product}
+                                />
                             )
                         })
                 }
             </div>
 
+            <Testimonial />
+            <Footer />
         </div>
     );
 };

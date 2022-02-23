@@ -84,25 +84,48 @@ function UserRegister({userLogin, getToken}) {
                         <div className="row mb-3 d-grid">
                             <label className="text-dark fw-medium col-sm-2 col-form-label">Username: </label>
                             <div className="col-sm-12">
-                                <input type="text" className="form-control rounded-pill w-100" id="name" onChange={(e) => setUser({...user, name: e.target.value})} placeholder="Enter your username"/>
+                                <input 
+                                    type="text" 
+                                    className="form-control rounded-pill w-100" 
+                                    id="name" 
+                                    onChange={(e) => setUser({...user, name: e.target.value})} 
+                                    placeholder="Enter your username"
+                                />
                             </div>
                         </div>
                         <div className="row mb-3 d-grid">
                             <label className="text-dark fw-medium col-sm-2 col-form-label">Email: </label>
                             <div className="col-sm-12">
-                                <input type="text" className="form-control rounded-pill w-100" id="email" onChange={(e) => setUser({...user, email: e.target.value})} placeholder="Your email"/>
+                                <input 
+                                    type="text" 
+                                    className="form-control rounded-pill w-100" 
+                                    id="email" 
+                                    onChange={(e) => setUser({...user, email: e.target.value})} 
+                                    placeholder="Your email"
+                                />
                             </div>
                         </div>
                         <div className="row mb-3 d-grid">
                             <label className="text-dark fw-medium col-sm-2 col-form-label">Password: </label>
                             <div className="col-sm-12">
-                                <input type="password" className="form-control rounded-pill w-100" id="password" onChange={(e) => setUser({...user, password: e.target.value})} placeholder="Your password"/>
+                                <input 
+                                    type="password" 
+                                    className="form-control rounded-pill w-100" 
+                                    id="password" 
+                                    onChange={(e) => setUser({...user, password: e.target.value})} 
+                                    placeholder="Your password"
+                                />
                             </div>
                         </div>
                         <div className="row mb-3 d-grid">
                             <label className="text-dark fw-medium col-sm-2 col-form-label">Birthdate: </label>
                             <div className="col-sm-12">
-                                <input type="date" className="form-control rounded-pill w-100" id="birthdate" onChange={(e) => setUser({...user, birthdate: e.target.value})}/>
+                                <input 
+                                    type="date" 
+                                    className="form-control rounded-pill w-100" 
+                                    id="birthdate" 
+                                    onChange={(e) => setUser({...user, birthdate: e.target.value})}
+                                />
                             </div>
                         </div>
                         <div className="row mb-3 d-grid">
@@ -125,7 +148,14 @@ function UserRegister({userLogin, getToken}) {
                         <div className="row mb-3 d-grid">
                             <label className="text-dark fw-medium col-sm-2 col-form-label">Avatar: </label>
                             <div className="col-sm-12">
-                                <input type="file" className="form-control rounded-pill w-100" id="avatar" name="avatar" onChange={(e) => setUser({...user, avatar: e.target.files[0]})} accept="image/*"/>
+                                <input 
+                                    type="file" 
+                                    className="form-control rounded-pill w-100" 
+                                    id="avatar" 
+                                    name="avatar" 
+                                    onChange={(e) => setUser({...user, avatar: e.target.files[0]})} 
+                                    accept="image/*"
+                                />
                             </div>
                         </div>
                         <div className="row mb-3 d-grid">
@@ -149,7 +179,12 @@ function UserRegister({userLogin, getToken}) {
                         </div>
                         <div className="row d-grid mt-5">
                             <div className="col-sm-12">
-                                <button type="submit" className="btn btn-lg btn-success fw-bold rounded-pill w-100" onClick={(e) => submitHandler(e)}>Sign Up</button>
+                                <button 
+                                    type="submit" 
+                                    className="btn btn-lg btn-success fw-bold rounded-pill w-100" 
+                                    onClick={(e) => submitHandler(e)}
+                                    >Sign Up
+                                </button>
                             </div>
                             <p className="fw-medium mt-20">
                                 Sudah memiliki akun ?

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useHistory } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import axios from 'axios';
 import Swal from 'sweetalert2';
 import './LineItem.css';
@@ -129,7 +129,7 @@ function LineItem() {
         e.preventDefault();
 
         const data = {
-            status: 'cart',
+            status: 'Success',
             ProductId: products.id, 
             ShoppingCartId: carts.id, 
             OrderId: orders.id
@@ -177,7 +177,14 @@ function LineItem() {
     };
     
     return (
-        <div className="container mt-20 mb-5">
+        <div className="container table-responsive mt-20 mb-5">
+            <button 
+                    type="submit" 
+                    className="btn btn-success fw-bold rounded-pill" 
+                    onClick={(e) => submitHandler(e)}
+                >
+                    Add Line Item
+            </button>
             <h1 className="text-center fw-bold">Line Item</h1>
             <table className="table table-light mt-20">
                 <thead>
@@ -188,6 +195,7 @@ function LineItem() {
                     <th className="table-light" scope="col">Product ID</th>
                     <th className="table-light" scope="col">Shop ID</th>
                     <th className="table-light" scope="col">Order Name</th>
+                    <th className="table-light" scope="col">Action</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -197,75 +205,44 @@ function LineItem() {
                                 <tr>
                                     <td className="table-light">{lineItem.id}</td>
                                     <td className="table-light">{lineItem.qty}</td>
-                                    <td className="table-light">{lineItem.status}</td>
+                                    <td>
+                                            { lineItem.status === 'Pending' ?
+                                                <span className="badge bg-warning rounded-pill">
+                                                   {lineItem.status}
+                                                </span>
+                                            : lineItem.status === 'Success' ?
+                                                <span className="badge bg-success rounded-pill">
+                                                    {lineItem.status}                   
+                                                </span>
+                                            : 
+                                                <span className="badge bg-danger rounded-pill">
+                                                    {lineItem.status}                      
+                                                </span>
+                                            }
+                                    </td>
                                     <td className="table-light">{lineItem.ProductId}</td>
                                     <td className="table-light">{lineItem.Shopping_CartId}</td>
                                     <td className="table-light">{lineItem.order_name}</td>
+                                    <td className="table-light d-flex gap-2">
+                                        <form>
+                                            <Link className="btn btn-danger btn-sm rounded-pill">
+                                                <i className="fas fa-times-circle"></i>
+                                                {' '}Tolak
+                                            </Link>
+                                        </form>
+                                        <form>
+                                            <Link className="btn btn-info btn-sm rounded-pill">
+                                                <i className="fas fa-check"></i>
+                                                {' '}Terima
+                                            </Link>
+                                        </form>
+                                    </td>
                                 </tr>
                             )
                         })
                     }
                 </tbody>
             </table>
-            <br/>
-            <h4 className="text-center mt-20 fw-bold">Insert Line Item Manually</h4>
-            <form className="row g-3 ">
-                <select 
-                    className="mb-3 rounded-pill"
-                    onChange={(e) => setCarts({...carts, id: e.target.value})}
-                >
-                    <option disabled selected>Select Cart Id</option>
-                    {
-                        carts.map(cart => {
-                            return (
-                                <>
-                                    <option value={cart.id}>{cart.id}</option>
-                                </>
-                            )
-                        })
-                    }
-                </select>
-
-                <select 
-                    className="mb-3 rounded-pill"
-                    onChange={(e) => setOrders({...orders, id: e.target.value})}
-                >
-                    <option disabled selected>Select Order Id</option>
-                    {
-                        orders.map(order => {
-                            return (
-                                <>
-                                    <option value={order.id}>{order.id}</option>
-                                </>
-                            )
-                        })
-                    }
-                </select>
-                
-                <select 
-                    className="mb-3 rounded-pill"
-                    onChange={(e) => setProducts({...products, id: e.target.value})}
-                >
-                    <option disabled selected>Select Product Id</option>
-                    {
-                        products.map(product => {
-                            return (
-                                <>
-                                    <option value={product.id}>{product.id}</option>
-                                </>
-                            )
-                        })
-                    }
-                </select>
-                <button 
-                    type="submit" 
-                    className="btn btn-success fw-bold rounded-pill" 
-                    onClick={(e) => submitHandler(e)}
-                >
-                    Add Line Item
-                </button>
-            </form>
-
         </div>
     );
 };
