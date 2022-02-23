@@ -15,7 +15,10 @@ import {
   LineItem,
   NotFound
 } from './pages';
-import { Navigation } from './components';
+import { 
+  CompleteChekcout, 
+  Navigation 
+} from './components';
 
 function App() {
   const [login, setLogin] = useState(false);
@@ -41,29 +44,32 @@ function App() {
         login ?
         <div className="container-fluid">
           <Switch>
-            <Route exact path ="/">
+            <Route exact path = "/">
               <Home login={login}/>
             </Route>
-            <Route exact path ="/cart">
+            <Route exact path = "/cart">
               <Cart/>
             </Route>
-            <Route exact path ="/line-item">
+            <Route exact path = "/line-item">
               <LineItem/>
             </Route>
-            <Route exact path ="/order">
+            <Route exact path = "/order">
               <Order/>
             </Route>
-            <Route exact path ="/products/add/">
+            <Route exact path = "/products/add/">
               <ProductAdd/>
             </Route>
-            <Route exact path ="/products/edit/:id">
+            <Route exact path = "/products/edit/:id">
               <ProductEdit/>
             </Route>
-            <Route exact path ="/products/details/:id">
-              <ProductDetails/>
+            <Route exact path = "/products/details/:id">
+              <ProductDetails login={login} />
             </Route>
-            <Route exact path ="/user/profile/">
+            <Route exact path = "/user/profile/">
               <UserProfile/>
+            </Route>
+            <Route exact path = "/complete-checkout">
+              <CompleteChekcout />
             </Route>
             <Route>
               <NotFound/>
@@ -73,17 +79,17 @@ function App() {
         :
         <div className="container-fluid">
           <Switch>
-            <Route exact path ="/">
+            <Route exact path = "/">
               <Home login={login}/>
             </Route>
-            <Route exact path ="/users/login"> 
+            <Route exact path = "/users/login"> 
               <UserLogin userLogin={userLogin} getToken={getToken}/>
             </Route>
-            <Route exact path ="/users/register">
+            <Route exact path = "/users/register">
               <UserRegister userLogin={userLogin} getToken={getToken}/>
             </Route> 
-            <Route exact path ="/products/details/:id">
-              <ProductDetails/>
+            <Route exact path = "/products/details/:id">
+              <ProductDetails login={login}/>
             </Route>
             <Route>
               <NotFound/>

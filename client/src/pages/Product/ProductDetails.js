@@ -281,7 +281,7 @@ function ProductDetails({ login }) {
                                         return `${URL_IMAGE}/${image.filename}`
                                     })
                                 } 
-                                className="card-img-top rounded lazyload" 
+                                className="card-img-top rounded" 
                                 alt="Foto Produk Detail"
                             />
                              <ul className="list-group list-group-flush mt-20">
@@ -323,11 +323,20 @@ function ProductDetails({ login }) {
                                             <li className="list-group-item fw-medium">{product.desc}</li>                                
                                         </ul>
                                     </div>
-                                    <button 
-                                        className="btn btn-secondary fw-bold rating-button text-warning rounded-pill fas fa-star" 
-                                        onClick={() => addRatings()}
-                                    >
-                                    </button>
+                                    {
+                                        login ?
+                                            <button 
+                                                className="btn btn-secondary fw-bold rating-button text-warning rounded-pill fas fa-star" 
+                                                onClick={() => addRatings()}
+                                            >
+                                            </button>
+                                        :
+                                            <button 
+                                                className="btn btn-secondary fw-bold rating-button text-warning rounded-pill fas fa-star d-none" 
+                                                onClick={() => addRatings()}
+                                            >
+                                            </button>
+                                    }
                                 </div>
                         
                                 <div className="d-flex gap-2 m-3">
@@ -343,25 +352,35 @@ function ProductDetails({ login }) {
                                         : 
                                         <Link 
                                             to={`/products/edit/${id}`} 
-                                            className="btn btn-info fw-bold rounded-pill"
+                                            className="btn btn-info fw-bold rounded-pill d-none"
                                         >
                                             Edit
                                         </Link>
                                     }
                                     
-                                    <button 
-                                        onClick={() => deleteProductHandler(id)} 
-                                        className="btn btn-sm btn-danger fw-bold rounded-pill"
-                                    >
-                                        Delete
-                                    </button>
+                                    {
+                                        login ?    
+                                            <button 
+                                                onClick={() => deleteProductHandler(id)} 
+                                                className="btn btn-sm btn-danger fw-bold rounded-pill"
+                                            >
+                                                Delete
+                                            </button>
+                                        :
+                                            <button 
+                                                onClick={() => deleteProductHandler(id)} 
+                                                className="btn btn-sm btn-danger fw-bold rounded-pill d-none"
+                                            >
+                                                Delete
+                                            </button>
+                                    }
 
                                 </div>
                                 {/* Logic belum aktif */}
                                 <form>
-                                    {
-                                        login ?
-                                        <div className="">
+                                {
+                                    login ?
+                                    <div className="">
                                             <input 
                                                 type="file" 
                                                 className="form-control rounded-pill" 
@@ -377,14 +396,13 @@ function ProductDetails({ login }) {
                                                 onClick={(e) => submitHandler(e)}
                                             >
                                                 Submit
-                                        </button>
+                                            </button>
                                     </div>
                                     :
                                     <div className="">
-
                                         <input 
                                             type="file" 
-                                            className="form-control rounded-pill" 
+                                            className="form-control rounded-pill d-none" 
                                             id="image" 
                                             name="image" 
                                             onChange={(e) => setProductImages(e.target.files[0])} 
@@ -393,13 +411,13 @@ function ProductDetails({ login }) {
                                         <button 
                                             type="submit" 
                                             id="btn-upload" 
-                                            className="btn btn-lg btn-primary w-100 fw-bold rounded-pill" 
+                                            className="btn btn-lg btn-primary w-100 fw-bold rounded-pill d-none" 
                                             onClick={(e) => submitHandler(e)}
                                         >   
                                             Submit
                                         </button>
                                     </div>
-                                    }
+                                }
 
                                 </form>
                                 {

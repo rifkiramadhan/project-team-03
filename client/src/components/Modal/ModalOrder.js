@@ -74,7 +74,7 @@ function ModalOrder({ setOpenModal, productName, productId, productPrice, produc
             );
 
             // Kemudian akan di arahkan ke halaman order
-            history.push('/order');
+            // history.push('/order');
         } catch(err) {
             // Jika gagal maka akan menerima pesan gagal order
             Swal.fire(
@@ -106,9 +106,9 @@ function ModalOrder({ setOpenModal, productName, productId, productPrice, produc
                 'Gagal Menambahkan Cart!',
                 `Anda gagal menambahkan Produk ke Cart!`,
                 'error'
-            )
-        }
-    }
+            );
+        };
+    };
 
     // Fungsi untuk menambahkan add line item
     const addLineItem = async () => {
@@ -138,6 +138,7 @@ function ModalOrder({ setOpenModal, productName, productId, productPrice, produc
                 `Anda telah berhasil menambahkan order pembelian`,
                 'success'
             );
+            history.push('/complete-checkout');
         } catch(err) {
             // Jika gagal maka akan menampilkan pesan order gagal ditambahkan
             Swal.fire(
@@ -159,18 +160,27 @@ function ModalOrder({ setOpenModal, productName, productId, productPrice, produc
                     </button>
                 </div>
                 <div className="title">
-                    <h2>Order For {productName}</h2>
-                    <p>Price: {productPrice}</p>
+                    <h2>Order Produk {productName}</h2>
+                    <p>IDR. {productPrice}</p>
                 </div>
                 <div className="body">
                     <form>
                         <div className="row mb-3">
                             <label className="form-label modal-form">Address: </label>
-                            <textarea type="text" className="form-control rounded-pill" id="address" onChange={(e) => setOrder({...order, address: e.target.value})}/>
+                            <textarea 
+                                type="text" 
+                                className="form-control rounded-pill" 
+                                id="address" 
+                                onChange={(e) => setOrder({...order, address: e.target.value})}
+                            />
                         </div>
                         <div className="row mb-3">
                             <label className="form-label modal-form">City: </label>
-                            <select className="form-select rounded-pill" id="city" onChange={(e) => setOrder({...order, city: e.target.value})}>
+                            <select 
+                                className="form-select rounded-pill" 
+                                id="city" 
+                                onChange={(e) => setOrder({...order, city: e.target.value})
+                            }>
                                 <option disabled selected value> -- Select City -- </option>
                                 <option value="DKI Jakarta">DKI Jakarta</option>
                                 <option value="Depok">Depok</option>
@@ -181,7 +191,11 @@ function ModalOrder({ setOpenModal, productName, productId, productPrice, produc
                         </div>
                         <div className="row mb-3">
                             <label className="form-label modal-form">Total: </label>
-                            <input type="number" className="form-control rounded-pill" id="total_qty" onChange={(e) => setOrder({...order, total_qty: e.target.value, subtotal: productPrice * e.target.value})}/>
+                            <input 
+                                type="number" 
+                                className="form-control rounded-pill" 
+                                id="total_qty" onChange={(e) => setOrder({...order, total_qty: e.target.value, subtotal: productPrice * e.target.value})}
+                            />
                             <div className="form-text modal-form">Produk Stock: {productStock}</div>
                         </div>
                         <div className="footer">
@@ -193,7 +207,8 @@ function ModalOrder({ setOpenModal, productName, productId, productPrice, produc
                             </button>
                             <button
                                 className="btn btn-sm btn-danger fw-bold rounded-pill" 
-                                onClick={() => setOpenModal(false)}id="cancelBtn"
+                                onClick={() => setOpenModal(false)}
+                                id="cancelBtn"
                             >
                                 Cancel
                             </button>
