@@ -62,7 +62,6 @@ function Order() {
                         <th className="table-light" scope="col">Address</th>
                         <th className="table-light" scope="col">Order Date</th>
                         <th className="table-light" scope="col">Status</th>
-                        <th className="table-light" scope="col">Action</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -97,20 +96,6 @@ function Order() {
                                                 </span>
                                             }
                                         </td>
-                                        <td className="table-light">
-                                        <form>
-                                            <Link className="btn btn-danger btn-sm rounded-pill">
-                                                <i className="fas fa-times-circle"></i>
-                                                {' '}Tolak
-                                            </Link>
-                                        </form>
-                                        <form>
-                                            <Link className="btn btn-info btn-sm rounded-pill">
-                                                <i className="fas fa-check"></i>
-                                                {' '}Terima
-                                            </Link>
-                                        </form>
-                                    </td>
                                     </tr>
                                 )
                             })

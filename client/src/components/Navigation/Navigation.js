@@ -151,7 +151,7 @@ function Navigation({ login, userLogin }) {
                                 }
                                 <li className="nav-item">
                                     {
-                                        login ?
+                                        login && user.type === 'user' ?
                                         <Link 
                                             className="nav-link text-dark text-uppercase"
                                             to="/cart"
@@ -186,7 +186,7 @@ function Navigation({ login, userLogin }) {
 
                                 <li className="nav-item">
                                     {
-                                        login ?
+                                        login && user.type === 'user' ?
                                         <Link className="nav-link text-dark text-uppercase" 
                                               to="/order"
                                         >Order

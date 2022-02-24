@@ -46,16 +46,50 @@ function Cart() {
         };
     };
 
+    // Fungsi untuk menerima data dari field data API untuk form user profile
+    const [ user, setUser ] = useState({
+        name: '',
+        type: ''
+    });
+    
+
+    // Fungsi untuk menerima data dari url API user profile
+    useEffect(() => {
+        getUserById();
+    }, []);
+
+    // Fungsi untuk menjalankan api dari url API user profile
+    const getUserById = async () => {
+
+        // Jika user yang sign in tersedia
+        try {
+            const access_token = localStorage.getItem('access_token');
+
+            let result = await axios({
+                method: 'GET',
+                url: `${URL}/users/profile`,
+                
+                headers: {
+                    access_token
+                }
+            });
+
+            // maka tampilkan data user yang sedang sign in
+            setUser(result.data);
+        } catch(err){
+            console.log(err);
+        };
+    };
+
     return (
         <div className="container table-responsive mt-20">
             <h1 className="text-center fw-bold">Cart</h1>
             <table className="table table-light mt-20">
                 <thead>
                     <tr>
-                    <th className="table-light" scope="col">Shop Id</th>
-                    <th className="table-light" scope="col">Created On</th>
-                    <th className="table-light" scope="col">Status</th>
-                    <th className="table-light" scope="col">Action</th>
+                        <th className="table-light" scope="col">Shop Id</th>
+                        <th className="table-light" scope="col">Created On</th>
+                        <th className="table-light" scope="col">Status</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -83,21 +117,7 @@ function Cart() {
                                                     {cart.status}                      
                                                 </span>
                                             }
-                                    </td>
-                                    <td className="table-light d-flex gap-2">
-                                        <form>
-                                            <Link className="btn btn-danger btn-sm rounded-pill">
-                                                <i className="fas fa-times-circle"></i>
-                                                {' '}Tolak
-                                            </Link>
-                                        </form>
-                                        <form>
-                                            <Link className="btn btn-info btn-sm rounded-pill">
-                                                <i className="fas fa-check"></i>
-                                                {' '}Terima
-                                            </Link>
-                                        </form>
-                                    </td>
+                                    </td>      
                                 </tr>
                             )
                         })

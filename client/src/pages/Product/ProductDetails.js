@@ -417,7 +417,7 @@ function ProductDetails({ login }) {
                                     <div className="">
                                             <input 
                                                 type="file" 
-                                                className="form-control rounded-pill" 
+                                                className="form-control w-50 rounded-pill" 
                                                 id="image" 
                                                 name="image" 
                                                 onChange={(e) => setProductImages(e.target.files[0])} 
@@ -426,7 +426,7 @@ function ProductDetails({ login }) {
                                             <button 
                                                 type="submit" 
                                                 id="btn-upload" 
-                                                className="btn btn-lg btn-primary w-100 fw-bold rounded-pill" 
+                                                className="btn btn-lg btn-primary fw-bold rounded-pill" 
                                                 onClick={(e) => submitHandler(e)}
                                             >
                                                 <i class="fa-solid fa-floppy-disk"></i>{' '}Submit
