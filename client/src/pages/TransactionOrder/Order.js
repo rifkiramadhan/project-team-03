@@ -3,6 +3,7 @@ import axios from 'axios';
 import Swal from 'sweetalert2';
 import './TransactionOrder.css';
 import { URL } from '../../utils/config';
+import { Link } from 'react-router-dom';
 
 // Fungsi untuk membuat order
 function Order() {
@@ -45,7 +46,7 @@ function Order() {
     };
 
     return (
-        <div className="mt-20">
+        <div className="container-fluid table-responsive mt-20">
             <h1 className="text-center fw-bold">Order</h1>
             <table className="table table-light mt-20 text-center">
                 <thead>
@@ -61,6 +62,7 @@ function Order() {
                         <th className="table-light" scope="col">Address</th>
                         <th className="table-light" scope="col">Order Date</th>
                         <th className="table-light" scope="col">Status</th>
+                        <th className="table-light" scope="col">Action</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -80,7 +82,35 @@ function Order() {
                                         <td className="table-light">{order.city}</td>
                                         <td className="table-light">{order.address}</td>
                                         <td className="table-light">{order_date}</td>
-                                        <td className="table-light">{order.status}</td>
+                                        <td>
+                                            { order.status === 'Pending' ?
+                                                <span className="badge bg-warning rounded-pill">
+                                                   {order.status}
+                                                </span>
+                                            : order.status === 'Success' ?
+                                                <span className="badge bg-success rounded-pill">
+                                                    {order.status}                   
+                                                </span>
+                                            : 
+                                                <span className="badge bg-danger rounded-pill">
+                                                    {order.status}                      
+                                                </span>
+                                            }
+                                        </td>
+                                        <td className="table-light">
+                                        <form>
+                                            <Link className="btn btn-danger btn-sm rounded-pill">
+                                                <i className="fas fa-times-circle"></i>
+                                                {' '}Tolak
+                                            </Link>
+                                        </form>
+                                        <form>
+                                            <Link className="btn btn-info btn-sm rounded-pill">
+                                                <i className="fas fa-check"></i>
+                                                {' '}Terima
+                                            </Link>
+                                        </form>
+                                    </td>
                                     </tr>
                                 )
                             })

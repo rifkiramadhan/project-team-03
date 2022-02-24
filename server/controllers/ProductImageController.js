@@ -1,11 +1,14 @@
-const { Products_Image } = require("../models");
+const { Products_Image } = require('../models');
 
 class ProductImageController {
   static async showImages(req, res) {
     try {
       let img = await Products_Image.findAll({
-        order: [["id", "ASC"]],
+        order: [
+          ['id', 'ASC']
+        ],
       });
+      
       res.status(200).json(img);
     } catch (err) {
       res.status(500).json(err);
@@ -19,7 +22,12 @@ class ProductImageController {
       let filesize = req.file.size;
       let filetype = req.file.mimetype;
       let img = await Products_Image.create(
-        { filename, filesize, filetype, primary:true, ProductId }
+        { filename, 
+          filesize, 
+          filetype, 
+          primary: true, 
+          ProductId 
+        }
       );
 
       res.status(200).json(img);
@@ -35,14 +43,18 @@ class ProductImageController {
       let filesize = req.file.size;
       let filetype = req.file.mimetype;
       let img = await Products_Image.update(
-        { filename, filesize, filetype },
+        { 
+          filename, 
+          filesize, 
+          filetype 
+        },
         {
           where: { ProductId },
         }
       );
 
       res.status(200).json({
-        message: "Status Has Been Update",
+        message: 'Status Has Been Update',
       });
     } catch (err) {
       res.status(500).json(err);
@@ -55,6 +67,7 @@ class ProductImageController {
       let result = await Products_Image.destroy({
         where: { id },
       });
+      
       res.status(200).json(result);
     } catch (err) {
       res.status(500).json(err);

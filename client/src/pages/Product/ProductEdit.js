@@ -36,7 +36,7 @@ function ProductEdit() {
     // Fungsi untuk menjalankan data untuk form edit product
     const getProductById = async () => {
         // Jika user yang sign in berhasil mengklik tombol edit product
-        try{
+        try {
             let product = await axios({
                 method: 'GET',
                 url: `${URL}/products/${id}`
@@ -44,7 +44,7 @@ function ProductEdit() {
 
             // Maka tampilkan datanya ke dalam form edit product
             setProduct(product.data);
-        } catch(err){
+        } catch (err){
             // Jika gagal menerma data untuk edit product, maka akan menampilkan pesan gagal melihat produk
             Swal.fire(
                 'Gagal Melihat Produk!',
@@ -123,49 +123,97 @@ function ProductEdit() {
                     <div className="row mb-3">
                         <label className="col-sm-2 col-form-label">Name: </label>
                         <div className="col-sm-10">
-                            <input type="text" className="form-control rounded-pill" id="name" onChange={(e) => setProduct({...product, name: e.target.value})} value={product.name}/>
+                            <input 
+                                type="text" 
+                                className="form-control rounded-pill" 
+                                id="name" 
+                                onChange={(e) => setProduct({...product, name: e.target.value})} 
+                                value={product.name}
+                            />
                         </div>
                     </div>
                     <div className="row mb-3">
                         <label className="col-sm-2 col-form-label">Description: </label>
                         <div className="col-sm-10">
-                            <textarea type="text" className="form-control rounded-pill" id="password" onChange={(e) => setProduct({...product, desc: e.target.value})} defaultValue={product.desc}/>
+                            <textarea 
+                                type="text" 
+                                className="form-control rounded-pill" 
+                                id="password" 
+                                onChange={(e) => setProduct({...product, desc: e.target.value})} 
+                                defaultValue={product.desc}
+                            />
                         </div>
                     </div>
                     <div className="row mb-3">
                         <label className="col-sm-2 col-form-label">Price (Rp.): </label>
                         <div className="col-sm-10">
-                            <input type="number" className="form-control rounded-pill" id="price" onChange={(e) => setProduct({...product, price: e.target.value})} value={product.price}/>
+                            <input 
+                                type="number" 
+                                className="form-control rounded-pill" 
+                                id="price" 
+                                onChange={(e) => setProduct({...product, price: e.target.value})} 
+                                value={product.price}
+                            />
                         </div>
                     </div>
                     <div className="row mb-3">
-                        <label className="col-sm-2 col-form-label">Stock : </label>
+                        <label className="col-sm-2 col-form-label">Stock: </label>
                         <div className="col-sm-10">
-                            <input type="number" className="form-control rounded-pill" id="stock" onChange={(e) => setProduct({...product, stock: e.target.value})} value={product.stock}/>
+                            <input 
+                                type="number" 
+                                className="form-control rounded-pill" 
+                                id="stock" 
+                                onChange={(e) => setProduct({...product, stock: e.target.value})} 
+                                value={product.stock}
+                            />
                         </div>
                     </div>
                     <div className="row mb-3">
                         <label className="col-sm-2 col-form-label">Expire Date: </label>
                         <div className="col-sm-10">
-                            <input type="date" className="form-control rounded-pill" id="expire_date" onChange={(e) => setProduct({...product, expire_date: e.target.value})} value={product.expire_date}/>
+                            <input 
+                                type="date" 
+                                className="form-control rounded-pill" id="expire_date" 
+                                onChange={(e) => setProduct({...product, expire_date: e.target.value})} 
+                                value={product.expire_date}
+                            />
                         </div>
                     </div>
                     <div className="row mb-3">
                         <label className="col-sm-2 col-form-label">Weight: </label>
                         <div className="col-sm-10">
-                            <input type="number" className="form-control rounded-pill" id="weight" onChange={(e) => setProduct({...product, weight: e.target.value})} value={product.weight}/>
+                            <input 
+                                type="number" 
+                                className="form-control rounded-pill" 
+                                id="weight" 
+                                onChange={(e) => setProduct({...product, weight: e.target.value})}
+                                value={product.weight}
+                            />
                         </div>
                     </div>
                     <div className="row mb-3">
                         <label className="col-sm-2 col-form-label">Category: </label>
                         <div className="col-sm-10">
-                            <input type="text" className="form-control rounded-pill" id="category" onChange={(e) => setProduct({...product, category: e.target.value})} value={product.category}/>
+                            <input 
+                                type="text" 
+                                className="form-control 
+                                rounded-pill" 
+                                id="category" 
+                                onChange={(e) => setProduct({...product, category: e.target.value})} 
+                                value={product.category}
+                            />
                         </div>
                     </div>
                     <div className="row mb-3">
                         <label className="col-sm-2 col-form-label">Brand: </label>
                         <div className="col-sm-10">
-                            <input type="text" className="form-control rounded-pill" id="brand" onChange={(e) => setProduct({...product, brand: e.target.value})} value={product.brand}/>
+                            <input 
+                                type="text" 
+                                className="form-control rounded-pill" 
+                                id="brand" 
+                                onChange={(e) => setProduct({...product, brand: e.target.value})} 
+                                value={product.brand}
+                            />
                         </div>
                     </div>
                     <div className="row mb-3">
@@ -173,19 +221,19 @@ function ProductEdit() {
                         <div className="col-sm-10" onChange={(e) => setProduct({...product, condition: e.target.value})}>
                             <div className="form-check">
                                 <input className="form-check-input" type="radio" id="condition" name="condition" value="Bary"/>
-                                <label className="form-check-label " for="Baru">
+                                <label className="form-check-label" for="Baru">
                                     Baru
                                 </label>
                             </div>
                             <div className="form-check">
                                 <input className="form-check-input" type="radio" id="condition" name="condition" value="Bekas"/>
-                                <label className="form-check-label " for="Bekas">
+                                <label className="form-check-label" for="Bekas">
                                     Bekas
                                 </label>
                             </div>
                             <div className="form-check">
                                 <input className="form-check-input" type="radio" id="condition" name="condition" value="Daur Ulang"/>
-                                <label className="form-check-label " for="Daur Ulang">
+                                <label className="form-check-label" for="Daur Ulang">
                                     Daur Ulang
                                 </label>
                             </div>

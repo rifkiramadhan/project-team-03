@@ -67,18 +67,35 @@ function UserLogin({ userLogin, getToken }) {
                     <div className="row mb-3 d-grid">
                         <label className="text-dark col-sm-2 fw-normal col-form-label">Email: </label>
                         <div className="col-sm-12">
-                            <input type="text" className="form-control rounded-pill w-100" id="email" onChange={(e) => setUser({...user, email: e.target.value})} placeholder="Enter your email address"/>
+                            <input 
+                                type="text" 
+                                className="form-control rounded-pill w-100" 
+                                id="email" 
+                                onChange={(e) => setUser({...user, email: e.target.value})} 
+                                placeholder="Enter your email address"
+                            />
                         </div>
                     </div>
                     <div className="row mb-3 d-grid">
                         <label className="text-dark col-sm-2 fw-normal col-form-label">Password: </label>
                         <div className="col-sm-12">
-                            <input type="password" className="form-control rounded-pill w-100" id="password" onChange={(e) => setUser({...user, password: e.target.value})} placeholder="Your password"/>
+                            <input 
+                                type="password" 
+                                className="form-control rounded-pill w-100" 
+                                id="password" 
+                                onChange={(e) => setUser({...user, password: e.target.value})} 
+                                placeholder="Your password"
+                            />
                         </div>
                     </div>
                     <div className="row mt-5 d-grid">    
                         <div className="col-sm-12">
-                            <button type="submit" className="btn btn-lg btn-success fw-bold rounded-pill w-100" onClick={(e) => submitHandler(e)}>Sign In</button>
+                            <button 
+                                type="submit" 
+                                className="btn btn-lg btn-success fw-bold rounded-pill w-100" 
+                                onClick={(e) => submitHandler(e)}
+                            >Sign In
+                            </button>
                         </div>
                         <p className="mt-20">
                             Belum memiliki akun ?
