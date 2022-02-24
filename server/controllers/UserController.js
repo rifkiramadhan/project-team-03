@@ -80,7 +80,7 @@ class UserController {
                 where: { email }
             })
             if (user) {
-                if(decrypter(password,user.password)){
+                if(decrypter(password, user.password)){
                   // res.status(200).json(user)
                   let access_token = tokenGenerator(user)
                     res.status(200).json({

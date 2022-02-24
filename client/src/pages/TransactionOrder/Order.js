@@ -3,7 +3,6 @@ import axios from 'axios';
 import Swal from 'sweetalert2';
 import './TransactionOrder.css';
 import { URL } from '../../utils/config';
-import { Link } from 'react-router-dom';
 
 // Fungsi untuk membuat order
 function Order() {

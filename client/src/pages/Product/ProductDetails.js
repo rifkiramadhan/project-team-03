@@ -212,7 +212,7 @@ function ProductDetails({ login }) {
         try {
             Swal.fire({
                 title: 'Ingin Menghapus Produk ?',
-                text: "Produk Anda akan dihapus dari Toko secara permanen.",
+                text: 'Produk Anda akan dihapus dari Toko secara permanen.',
                 icon: 'warning',
                 showCancelButton: true,
                 confirmButtonColor: '#3085d6',

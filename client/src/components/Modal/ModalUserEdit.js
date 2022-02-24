@@ -6,7 +6,7 @@ import './Modal.css';
 import { URL } from '../../utils/config';
 
 // Fungsi untuk membuat modal user edit
-function ModalUserEdit({ setOpenModal, username, gender, birthdate, type, avatar}) {
+function ModalUserEdit({ setOpenModal, username, gender, birthdate, type, avatar }) {
     
     // Untuk menjalankan lokasi kemana halaman akan di arahkan setelah button di klik
     const history = useHistory();
@@ -96,10 +96,20 @@ function ModalUserEdit({ setOpenModal, username, gender, birthdate, type, avatar
                             <label className="form-label modal-form">Birth date: </label>
                             <input type="date" className="form-control rounded-pill" id="total_qty" onChange={(e) => setUser({...user, birthdate: e.target.value})} value={user.birthdate}/>
                         </div>
-                        <div className="row mb-3">
+                        {/* <div className="row mb-3">
                             <label className="form-label modal-form">Gender: </label>
                             <input type="text" className="form-control rounded-pill" id="address" onChange={(e) => setUser({...user, gender: e.target.value})} value={user.gender}/>
+                        </div> */}
+
+                        <div className="row mb-3">    
+                            <select className="form-select rounded-pill" id="address" onChange={(e) => setUser({...user, gender: e.target.value})} value={user.gender}>
+                                <option selected>-- Select Gender --</option>
+                                <option value="Male">Male</option>
+                                <option value="Female">Female</option>
+                            </select>
                         </div>
+
+
                         <div className="row mb-3">
                             <div className="d-flex modal-form" onChange={(e) => setUser({...user, type: e.target.value})}>
                             <label className="form-label">Type: </label>

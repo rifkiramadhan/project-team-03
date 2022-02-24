@@ -110,15 +110,6 @@ function Navigation({ login, userLogin }) {
                                 <li className="nav-item">
                                     <a 
                                         className="nav-link text-dark text-uppercase" 
-                                        href="https://codigram.netlify.app"
-                                        target="_blank"
-                                        rel="noreferrer"
-                                    > Konsultasi
-                                    </a>
-                                </li>
-                                <li className="nav-item">
-                                    <a 
-                                        className="nav-link text-dark text-uppercase" 
                                         href="#testimoni"
                                     > Testimoni
                                     </a>
@@ -132,10 +123,10 @@ function Navigation({ login, userLogin }) {
                                             </Link>
                                         </li>
                                     :
-                                    <>
+                                    <div className="d-flex gap-3">
                                         <li class="nav-item">                                            
                                             <Link 
-                                                className="nav-link text-dark fw-medium text-uppercase"
+                                                className="text-dark btn btn-light w-100 fw-bold border border-primary rounded-pill text-uppercase"
                                                 to="/users/register"
                                             > Sign Up
                                             </Link>
@@ -147,7 +138,7 @@ function Navigation({ login, userLogin }) {
                                             > Sign In
                                             </Link>
                                         </li>
-                                    </> 
+                                    </div> 
                                 }
                                 <li className="nav-item">
                                     {

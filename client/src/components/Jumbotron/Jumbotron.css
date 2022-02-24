@@ -43,6 +43,10 @@
     font-weight: 500;
 }
 
+.telusuri {
+    font-family: fantasy;
+}
+
 .telusuri:hover {
     background: var(--gray-color);
     color: var(--white-color);

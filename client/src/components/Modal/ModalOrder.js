@@ -182,16 +182,18 @@ function ModalOrder({ setOpenModal, productName, productId, productPrice, produc
                                 onChange={(e) => setOrder({...order, city: e.target.value})
                             }>
                                 <option disabled selected value> -- Select City -- </option>
-                                <option value="DKI Jakarta">DKI Jakarta</option>
+                                <option value="DKI Jakarta">Jakarta</option>
                                 <option value="Depok">Depok</option>
                                 <option value="Bogor">Bogor</option>
                                 <option value="Bekasi">Bekasi</option>
                                 <option value="Tangerang">Tangerang</option>
+                                <option value="Tangerang">Luar Jabodetabek</option>
+                                <option value="Tangerang">Luar Negri</option>
                             </select>
                         </div>
                         <div className="row mb-3">
                             <label className="form-label modal-form">Total: </label>
-                            <input 
+                            <input
                                 type="number" 
                                 className="form-control rounded-pill" 
                                 id="total_qty" onChange={(e) => setOrder({...order, total_qty: e.target.value, subtotal: productPrice * e.target.value})}
