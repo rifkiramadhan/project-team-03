@@ -264,6 +264,42 @@ function ProductDetails({ login }) {
         );
     };
 
+    // Fungsi untuk menerima data dari field data API untuk form user profile
+    const [ user, setUser ] = useState({
+        name: '',
+        type: ''
+    });
+    
+
+    // Fungsi untuk menerima data dari url API user profile
+    useEffect(() => {
+        getUserById();
+    }, []);
+
+    // Fungsi untuk menjalankan api dari url API user profile
+    const getUserById = async () => {
+
+        // Jika user yang sign in tersedia
+        try {
+            const access_token = localStorage.getItem('access_token');
+
+            let result = await axios({
+                method: 'GET',
+                url: `${URL}/users/profile`,
+                
+                headers: {
+                    access_token
+                }
+            });
+
+            // maka tampilkan data user yang sedang sign in
+            setUser(result.data);
+        } catch(err){
+            console.log(err);
+        };
+    };
+
+
     // Fungsi untuk menjalankan tanggal expired product
     let tempExp = product.expire_date.slice().split('T');
     let exp_date = tempExp[0];
@@ -342,12 +378,12 @@ function ProductDetails({ login }) {
                                 <div className="d-flex gap-2 m-3">
                                     {/* Logic aktif */}
                                     {
-                                        login ?
+                                        login && user.type === 'admin' ?
                                         <Link 
                                             to={`/products/edit/${id}`} 
                                             className="btn btn-info fw-bold rounded-pill"
                                         >
-                                            Edit
+                                            <i class="fa-solid fa-pen-to-square"></i>{' '}Edit
                                         </Link>
                                         : 
                                         <Link 
@@ -358,12 +394,12 @@ function ProductDetails({ login }) {
                                     }
                                     
                                     {
-                                        login ?    
+                                        login && user.type === 'admin' ?    
                                             <button 
                                                 onClick={() => deleteProductHandler(id)} 
                                                 className="btn btn-sm btn-danger fw-bold rounded-pill"
                                             >
-                                                Delete
+                                                <i class="fa-solid fa-trash-can"></i>{' '}Delete
                                             </button>
                                         :
                                             <button 
@@ -377,7 +413,7 @@ function ProductDetails({ login }) {
                                 {/* Logic aktif */}
                                 <form>
                                 {
-                                    login ?
+                                    login && user.type === 'admin' ?
                                     <div className="">
                                             <input 
                                                 type="file" 
@@ -393,7 +429,7 @@ function ProductDetails({ login }) {
                                                 className="btn btn-lg btn-primary w-100 fw-bold rounded-pill" 
                                                 onClick={(e) => submitHandler(e)}
                                             >
-                                                Submit
+                                                <i class="fa-solid fa-floppy-disk"></i>{' '}Submit
                                             </button>
                                     </div>
                                     :
@@ -431,11 +467,11 @@ function ProductDetails({ login }) {
                                 }
                                 <div id="btn-buy" className="">
                                     <button 
-                                        className="btn btn-lg btn-success fw-bold rounded-pill w-100 openModal" 
+                                        className="btn btn-lg btn-success fw-bold rounded-pill openModal" 
                                         onClick={() => setOpenModal(true)}
                                         key={id}
                                     >
-                                        Order
+                                        <i class="fa-solid  fa-cart-shopping"></i>{' '}Order
                                     </button>
                                 </div>
                             </ul>

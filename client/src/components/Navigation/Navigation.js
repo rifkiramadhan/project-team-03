@@ -35,9 +35,6 @@ function Navigation({ login, userLogin }) {
     // Fungsi untuk menerima data dari field data API untuk form user profile
     const [ user, setUser ] = useState({
         name: '',
-        birthdate: '',
-        gender: '',
-        avatar: '',
         type: ''
     });
     
@@ -138,14 +135,14 @@ function Navigation({ login, userLogin }) {
                                     <>
                                         <li class="nav-item">                                            
                                             <Link 
-                                                className="nav-link text-dark fw-medium text-uppercase" 
+                                                className="nav-link text-dark fw-medium text-uppercase"
                                                 to="/users/register"
                                             > Sign Up
                                             </Link>
                                         </li>
                                         <li class="nav-item">
                                             <Link 
-                                                className="btn btn-primary fw-bold w-100 text-uppercase rounded-pill" 
+                                                className="btn btn-primary fw-bold w-100 text-uppercase rounded-pill"
                                                 to="/users/login"
                                             > Sign In
                                             </Link>
@@ -156,14 +153,33 @@ function Navigation({ login, userLogin }) {
                                     {
                                         login ?
                                         <Link 
-                                            className="nav-link text-dark text-uppercase" 
+                                            className="nav-link text-dark text-uppercase"
                                             to="/cart"
                                         > Cart
                                         </Link>
                                         :
-                                        <Link className="nav-link text-dark d-none text-uppercase" to="#"
-                                        onClick={e => actionHandler(e)}>
-                                            Cart
+                                        <Link 
+                                            className="nav-link text-dark text-uppercase d-none" 
+                                            onClick={e => actionHandler(e)}
+                                        >Cart
+                                        </Link>
+                                    }
+                                </li>
+
+                                <li className="nav-item">
+                                    {
+                                        login && user.type === 'admin' ?
+                                        <Link 
+                                            className="nav-link text-dark text-uppercase" 
+                                            to="/line-item"
+                                        >Line Item
+                                        </Link>
+                                        :
+                                        <Link 
+                                            className="nav-link text-dark text-uppercase d-none" 
+                                            to="/"
+                                            onClick={e => actionHandler(e)}
+                                        >Line Item
                                         </Link>
                                     }
                                 </li>
@@ -171,23 +187,16 @@ function Navigation({ login, userLogin }) {
                                 <li className="nav-item">
                                     {
                                         login ?
-                                        <Link className="nav-link text-dark text-uppercase" to="/line-item">Line Item</Link>
-                                        :
-                                        <Link className="nav-link text-dark d-none text-uppercase" to="#"
-                                        onClick={e => actionHandler(e)}>
-                                            Line Item
+                                        <Link className="nav-link text-dark text-uppercase" 
+                                              to="/order"
+                                        >Order
                                         </Link>
-                                    }
-                                </li>
-
-                                <li className="nav-item">
-                                    {
-                                        login ?
-                                        <Link className="nav-link text-dark text-uppercase" to="/order">Order</Link>
                                         :
-                                        <Link className="nav-link text-dark d-none text-uppercase" to="/#"
-                                        onClick={e => actionHandler(e)}>
-                                            Order
+                                        <Link 
+                                            className="nav-link text-dark d-none text-uppercase" 
+                                            to="/#"
+                                            onClick={e => actionHandler(e)}
+                                        >Order
                                         </Link>
                                     }
                                 </li>

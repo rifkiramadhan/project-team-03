@@ -50,6 +50,40 @@ function Home({ login }) {
         );
     };
 
+    // Fungsi untuk menerima data dari field data API untuk form user profile
+    const [ user, setUser ] = useState({
+        type: ''
+    });
+    
+
+    // Fungsi untuk menerima data dari url API user profile
+    useEffect(() => {
+        getUserById();
+    }, []);
+
+    // Fungsi untuk menjalankan api dari url API user profile
+    const getUserById = async () => {
+
+        // Jika user yang sign in tersedia
+        try {
+            const access_token = localStorage.getItem('access_token');
+
+            let result = await axios({
+                method: 'GET',
+                url: `${URL}/users/profile`,
+                
+                headers: {
+                    access_token
+                }
+            });
+
+            // maka tampilkan data user yang sedang sign in
+            setUser(result.data);
+        } catch(err){
+            console.log(err);
+        };
+    };
+    
     // Fungsi untuk menjalankan spiner setiap kali ada loading
     const loadingProducts = () => {
         return (
@@ -84,12 +118,12 @@ function Home({ login }) {
             <div className="container-fluid d-flex justify-content-start mt-20 ">
                 {/* Jika user nya sign in maka tampilkan link untuk menambahkan produk baru ke dalam home page */}
                 {
-                    login ?
+                    login && user.type === 'admin' ?
                     <Link 
                         to="/products/add" 
                         className="btn btn-primary fw-bold rounded-pill"
                     >
-                        Tambah Produk
+                        <i class="fa-solid fa-plus"></i>{' '}Tambah Produk
                     </Link>
                     :
                     // Jika user nya tidak sign in maka link untuk menambahkan produk baru tidak akan ditampilkan ke home page

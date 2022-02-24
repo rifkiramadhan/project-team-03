@@ -28,7 +28,7 @@
 }
 
 .jumbotron .display-4 {
-    color: var(--violet-color);
+    color: var(--gray-color);
     margin-top: 150px;
     font-weight: 200;
     text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.8);
@@ -44,7 +44,8 @@
 }
 
 .telusuri:hover {
-    background: var(--light-blue-color);
+    background: var(--gray-color);
+    color: var(--white-color);
 }
 
 /* Desktop Display */

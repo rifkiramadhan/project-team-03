@@ -176,6 +176,52 @@ function LineItem() {
         };
     };
     
+// Fungsi untuk menerima data dari field data API untuk form user profile
+    const [ user, setUser ] = useState({
+        name: '',
+        birthdate: '',
+        gender: '',
+        avatar: '',
+        type: ''
+    });
+    
+    // Fungsi untuk menonaktifkan form modal
+    const [openModal, setOpenModal] = useState(false);
+
+    // Fungsi untuk menerima data dari url API user profile
+    useEffect(() => {
+        getUserById();
+    }, []);
+
+    // Fungsi untuk menjalankan api dari url API user profile
+    const getUserById = async () => {
+
+        // Jika user yang sign in tersedia
+        try {
+            const access_token = localStorage.getItem('access_token');
+
+            let result = await axios({
+                method: 'GET',
+                url: `${URL}/users/profile`,
+                
+                headers: {
+                    access_token
+                }
+            });
+
+            // maka tampilkan data user yang sedang sign in
+            setUser(result.data);
+        } catch(err){
+
+            // Jika usernya tidak melakukan sign in, maka tampilkan pesan gagal melihat profile
+            Swal.fire(
+                'Gagal Melihat Profile!',
+                `Anda gagal melihat halaman Profile!`,
+                'error'
+            );
+        };
+    };
+
     return (
         <div className="container table-responsive mt-20 mb-5">
             <button 
@@ -190,11 +236,7 @@ function LineItem() {
                 <thead>
                     <tr>
                     <th className="table-light" scope="col">Line ID</th>
-                    <th className="table-light" scope="col">Qty</th>
                     <th className="table-light" scope="col">Status</th>
-                    <th className="table-light" scope="col">Product ID</th>
-                    <th className="table-light" scope="col">Shop ID</th>
-                    <th className="table-light" scope="col">Order Name</th>
                     <th className="table-light" scope="col">Action</th>
                     </tr>
                 </thead>
@@ -204,7 +246,6 @@ function LineItem() {
                             return (
                                 <tr>
                                     <td className="table-light">{lineItem.id}</td>
-                                    <td className="table-light">{lineItem.qty}</td>
                                     <td>
                                             { lineItem.status === 'Pending' ?
                                                 <span className="badge bg-warning rounded-pill">
@@ -220,9 +261,6 @@ function LineItem() {
                                                 </span>
                                             }
                                     </td>
-                                    <td className="table-light">{lineItem.ProductId}</td>
-                                    <td className="table-light">{lineItem.Shopping_CartId}</td>
-                                    <td className="table-light">{lineItem.order_name}</td>
                                     <td className="table-light d-flex gap-2">
                                         <form>
                                             <Link className="btn btn-danger btn-sm rounded-pill">

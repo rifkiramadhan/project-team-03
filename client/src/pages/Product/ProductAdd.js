@@ -188,7 +188,7 @@ function ProductAdd() {
                                 className="btn btn-lg btn-success fw-bold rounded-pill w-100" 
                                 onClick={(e) => 
                                 submitHandler(e)}
-                            >Tambahkan
+                            ><i class="fa-solid fa-plus"></i>{' '}Tambahkan
                             </button>
                         </div>
                     </div>
