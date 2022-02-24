@@ -70,13 +70,13 @@ function UserProfile() {
                         <div className="card-body">
                             <h5 className="card-title text-center">{user.name}</h5>
                                 <ul className="list-group list-group-flush">
-                                    <li className="list-group-item middle">Gender: {user.gender}</li>
-                                    <li className="list-group-item middle">Birthdate: {birthdate}</li>
-                                    <li className="list-group-item middle">Type: {user.type}</li>
+                                    <li className="list-group-item">Gender: {user.gender}</li>
+                                    <li className="list-group-item">Birthdate: {birthdate}</li>
+                                    <li className="list-group-item">Type: {user.type}</li>
                                 </ul>
                             {/* Jika button edit profile di klik, maka tampilkan form modal untuk edit prile */}
                             <Link 
-                                className="btn p-2 w-100 mt-5 btn-success btn-sm fw-bold rounded-pill openModal" 
+                                className="btn btn-lg  w-100 mt-5 btn-success fw-bold rounded-pill openModal" 
                                 onClick={() => setOpenModal(true)}
                             >
                                 Edit Profile

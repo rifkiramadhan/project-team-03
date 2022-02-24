@@ -83,7 +83,7 @@ function ModalUserEdit({ setOpenModal, username, gender, birthdate, type, avatar
                 </div>
                 
                 <div className="title">
-                    <h2>Edit {username} Profile</h2>
+                    <h2>Edit Profile: <small>{username}</small></h2>
                 </div>
                 
                 <div className="body">
@@ -101,53 +101,54 @@ function ModalUserEdit({ setOpenModal, username, gender, birthdate, type, avatar
                             <input type="text" className="form-control rounded-pill" id="address" onChange={(e) => setUser({...user, gender: e.target.value})} value={user.gender}/>
                         </div>
                         <div className="row mb-3">
-                            <label className=" col-sm-2 col-form-label">Type: </label>
-                            <div className="col-sm-10" onChange={(e) => setUser({...user, type: e.target.value})}>
+                            <div className="d-flex modal-form" onChange={(e) => setUser({...user, type: e.target.value})}>
+                            <label className="form-label">Type: </label>
                                 {
                                     user.type === 'admin' ?
                                     <>
-                                        <div className="form-check">
-                                            <input 
-                                                className="form-check-input rounded-pill" 
-                                                type="radio" 
-                                                id="type" 
-                                                name="type" 
-                                                value="admin" 
-                                                checked={user.type === 'admin'}
-                                            />Admin
-                                        </div>
+                                        <p 
+                                            className="badge bg-success p-2 rounded-pill modal-form" 
+                                            id="type" 
+                                            name="type" 
+                                            value="admin" 
+                                            checked={user.type === 'admin'}
+                                        >
+                                            <i className="fas fa-check"></i>
+                                            {' '}
+                                            {user.type}
+                                        </p>
                                     </>
                                     :
                                     <>
-                                        <div className="form-check">
-                                            <input 
-                                                className="form-check-input rounded-pill" 
-                                                type="radio" 
-                                                id="type" 
-                                                name="type" 
-                                                value="user" 
-                                                checked={user.type === 'user'}
-                                            />User
-                                        </div>
+                                        <p 
+                                            className="badge bg-primary p-2 rounded-pill modal-form" 
+                                            type="radio" 
+                                            id="type" 
+                                            name="type" 
+                                            value="user" 
+                                            checked={user.type === 'user'}
+                                        >
+                                            <i className="fas fa-check"></i>
+                                            {' '}
+                                            {user.type}
+                                        </p>
                                     </>
                                 }
                             </div>
                         </div>
                         <div className="row mb-3">
-                            <label className=" col-sm-2 col-form-label wrap">Avatar: </label>
-                            <div className="col-sm-10">
-                                <input type="file" className="form-control rounded-pill" id="avatar" name="avatar" onChange={(e) => setUser({...user, avatar: e.target.files[0]})} accept="image/*"/>
-                            </div>
+                            <label className="form-label modal-form">Avatar: </label>
+                            <input type="file" className="form-control rounded-pill" id="avatar" name="avatar" onChange={(e) => setUser({...user, avatar: e.target.files[0]})} accept="image/*"/>
                         </div>
-                        <div className="footer">
+                        <div className="row mb-3 gap-3">
                             <button 
-                                className="btn btn-success fw-bold rounded-pill"
+                                className="btn btn-lg btn-success fw-bold rounded-pill"
                                 onClick={(e) => submitHandler(e)}
                             >
                                 Submit
                             </button>
                             <button
-                                className="btn btn-danger fw-bold rounded-pill"
+                                className="btn btn-lg btn-danger fw-bold rounded-pill"
                                 onClick={() => setOpenModal(false)}id="cancelBtn"
                             >
                                 Cancel

@@ -160,7 +160,7 @@ function ModalOrder({ setOpenModal, productName, productId, productPrice, produc
                     </button>
                 </div>
                 <div className="title">
-                    <h2>Order Produk {productName}</h2>
+                    <h5>Order Produk {productName}</h5>
                     <p>IDR. {productPrice}</p>
                 </div>
                 <div className="body">
@@ -198,15 +198,15 @@ function ModalOrder({ setOpenModal, productName, productId, productPrice, produc
                             />
                             <div className="form-text modal-form">Produk Stock: {productStock}</div>
                         </div>
-                        <div className="footer">
+                        <div className="row mb-3 gap-3">
                             <button 
-                                className="btn btn-sm btn-success fw-bold rounded-pill"
+                                className="btn btn-lg btn-success fw-bold rounded-pill"
                                 onClick={(e) => orderHandler(e)}
                             >
                                 Order
                             </button>
                             <button
-                                className="btn btn-sm btn-danger fw-bold rounded-pill" 
+                                className="btn btn-lg btn-danger fw-bold rounded-pill" 
                                 onClick={() => setOpenModal(false)}
                                 id="cancelBtn"
                             >

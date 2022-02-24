@@ -340,7 +340,7 @@ function ProductDetails({ login }) {
                                 </div>
                         
                                 <div className="d-flex gap-2 m-3">
-                                    {/* Logic belum aktif */}
+                                    {/* Logic aktif */}
                                     {
                                         login ?
                                         <Link 
@@ -374,7 +374,7 @@ function ProductDetails({ login }) {
                                     }
 
                                 </div>
-                                {/* Logic belum aktif */}
+                                {/* Logic aktif */}
                                 <form>
                                 {
                                     login ?
