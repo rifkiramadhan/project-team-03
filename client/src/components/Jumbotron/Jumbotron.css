@@ -1,0 +1,65 @@
+/* Jumbotron */
+.jumbotron {
+    background-image: url('../../assets/jumbotron-bg.jpg');
+    background-size: cover;
+    text-align: center;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    object-fit: cover;
+    border-radius: 28px 28px 28px 28px;
+    -moz-border-radius: 28px 28px 28px 28px;
+    -webkit-border-radius: 28px 28px 28px 28px;
+    border: 0px solid var(--black-color);
+}
+
+.jumbotron .container {
+    z-index: 1;
+    position: relative;
+}
+
+.jumbotron::after {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 80%;
+    position: absolute;
+    bottom: 0;
+}
+
+.jumbotron .display-4 {
+    color: var(--gray-color);
+    margin-top: 150px;
+    font-weight: 200;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.8);
+    font-size: 32px;
+    margin-bottom: 30px;
+    opacity: 0.8;
+    font-family: 'Dongle', sans-serif;
+    font-family: 'Fredoka One', cursive;
+}
+
+.jumbotron .display-4 span {
+    font-weight: 500;
+}
+
+.telusuri {
+    font-family: fantasy;
+}
+
+.telusuri:hover {
+    background: var(--gray-color);
+    color: var(--white-color);
+}
+
+/* Desktop Display */
+@media (min-width: 992px) {
+    .jumbotron {
+        margin-top: -65px;
+        height: 550px;
+    }
+
+    .jumbotron .display-4 {
+        font-size: 62px;
+    }
+}

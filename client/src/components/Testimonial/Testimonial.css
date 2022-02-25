@@ -1,0 +1,47 @@
+/* Testimonial */
+.testimonial {
+    margin-top: 100px;
+}
+
+.testimonial h5 {
+    text-align: center;
+    font-weight: 200;
+    font-style: italic;
+    font-size: 24px;
+}
+
+.testimonial figure img {
+    width: 60px;
+    margin: 20px 10px 10px;
+    opacity: 0.6;
+}
+
+.testimonial figure img.utama {
+    width: 90px;
+    opacity: 1;
+    margin-top: 5px;
+}
+
+.testimonial figure h5 {
+    font-size: 16px;
+    font-weight: bold;
+    font-style: normal;
+    color: #1c2c5d;
+}
+
+.testimonial figure p {
+    font-size: 12px;
+    color: #acacaa;
+    margin-top: -5px !important;
+}
+
+.testimonial figcaption {
+    text-align: center;
+}
+
+/* Desktop Display */
+@media (min-width: 992px) {
+    .testimonial h5 {
+        font-size: 32px;
+    }
+}

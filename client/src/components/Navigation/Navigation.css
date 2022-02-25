@@ -1,0 +1,37 @@
+/* Navbar */
+.navbar {
+    position: sticky;
+    background-color: var(--light-blue-color-basic);
+}
+
+.navbar-brand {
+    font-family: Viga;
+    font-size: 30px;
+}
+
+.tombol {
+    text-transform: uppercase;
+}
+
+/* Desktop Display */
+@media (min-width: 992px) {
+    .navbar-brand, .nav-link {
+        color: var(--light-blue-color) !important;
+        text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.7);
+    }
+
+    .nav-link {
+        text-transform: uppercase;
+        margin-right: 30px;
+    }
+
+    .nav-link:hover::after {
+        content: '';
+        display: block;
+        border-bottom: 3px solid var(--violet-color);
+        width: 50%;
+        margin: auto;
+        padding-bottom: 5px;
+        margin-bottom: -8px;
+    }
+}

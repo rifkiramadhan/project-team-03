@@ -1,0 +1,40 @@
+/* Card Login */
+.card-form-user {
+    border-radius: 25px 25px 25px 25px;
+    -moz-border-radius: 25px 25px 25px 25px;
+    -webkit-border-radius: 25px 25px 25px 25px;
+    border: 0px solid var(--black-color);
+    background-color: var(--white-color);
+}
+
+.card-profile {
+  width: 28rem;
+  border-radius: 25px 25px 25px 25px;
+  -moz-border-radius: 25px 25px 25px 25px;
+  -webkit-border-radius: 25px 25px 25px 25px;
+  border: 0px solid #000000;
+}
+
+.image-profile {
+  border-radius: 50%;
+  width: 150px;
+  top: 0;
+  bottom: 100px;
+}
+
+.card-details {
+  margin: 0 auto;
+  float: none;
+  margin-bottom: 10px;
+}
+
+/* Container */
+.container-form {
+  margin-top: 50px;
+  max-width: 500px;
+}
+
+.form-control {
+  height: 50px;
+  display: block;
+}

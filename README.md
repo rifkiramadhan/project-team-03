@@ -10,12 +10,21 @@
 
 ### Rancangan Data
 
-1. [ERD]('./ERD.png)
-2. [API Documentation](/)
+1. [Master ERD](./ERD.png)
+2. [Codi Health ERD](https://drive.google.com/file/d/1XuzjOnnxaLr4-qrTdQCUhfajD7aFDJHW/view?usp=sharing)
+3. [API Documentation](https://documenter.getpostman.com/view/10749611/UVkpNFWQ)
 
 ### Deskripsi
 
-``` CodiHealth adalah sebuah Toko Online berbasis website untuk menjual produk obat-obatan kesehatan berdasarkan resep dokter dan juga menyediakan fasilitas untuk konsultasi masalah kesehatan secara daring dengan para dokter specialist. ```
+- [Codi Health](/)
+
+```CodiHealth adalah sebuah Toko Online berbasis website untuk menjual produk obat-obatan kesehatan berdasarkan resep dokter dan juga menyediakan fasilitas untuk konsultasi masalah kesehatan secara daring dengan para dokter specialist.```
+
+### Aplikasi Dukungan
+
+- [Codigram](https://codigram.netlify.app)
+
+```Codigram adalah aplikasi sistem informasi berbasis website yang bertujuan untuk mendukung platform Codi Health sebagai fasilitas komunikasi dan konsultasi antara pasien dan dokter specialist yang kemudian akan diberikan solusi dan rekomendasi obat-obatan sesuai resep dokter yang dapat di beli melalui aplikasi Codi Health.```
 
 ### Copyright  
 
@@ -26,15 +35,15 @@
 1. UI / UX (Membuat Desain Aplikasi dari Figma / Adobe XD)
     - Tidak perlu, Karena sudah ada Website [Dribbble](https://dribble.com/) untuk mencari Referensi Desain
 2. UI Engineer (Mentranslate Desain aplikasi dari Figma / Adobe XD ke HTML & CSS)
-    - In the process
+    - Selesai
 3. Fullstack Developer (Convert HTML & CSS ke Framework REACT JS, Integrasi API & Deploy App)
-    - In the process
+    - Selesai
 4. Power Point (Presentation)
     - In the process
 
 ### Tools Development
 
-``` Adalah tools menarik untuk Web Developer ketika membuat sebuah project dengan cara yang lebih cepat. ```
+```Adalah tools menarik untuk Web Developer ketika membuat sebuah project dengan cara yang lebih cepat.```
 
 1. [CSS Matic](https://www.cssmatic.com/)
     - Suatu Generator yang akan membantu kita dalam pembuatan Box Shadow, Noise, Gradient, dan Border Radius.
