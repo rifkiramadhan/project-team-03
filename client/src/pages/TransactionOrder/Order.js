@@ -81,18 +81,19 @@ function Order() {
                                         <td className="table-light">{order.address}</td>
                                         <td className="table-light">{order_date}</td>
                                         <td>
-                                            { order.status === 'Pending' ?
-                                                <span className="badge bg-warning rounded-pill">
-                                                   {order.status}
-                                                </span>
-                                            : order.status === 'Success' ?
-                                                <span className="badge bg-success rounded-pill">
-                                                    {order.status}                   
-                                                </span>
-                                            : 
-                                                <span className="badge bg-danger rounded-pill">
-                                                    {order.status}                      
-                                                </span>
+                                            { 
+                                                order.status === 'Pending' ?
+                                                    <span className="badge bg-warning rounded-pill">
+                                                        {order.status}
+                                                    </span>
+                                                : order.status === 'Success' ?
+                                                    <span className="badge bg-success rounded-pill">
+                                                        {order.status}                   
+                                                    </span>
+                                                : 
+                                                    <span className="badge bg-danger rounded-pill">
+                                                        {order.status}                      
+                                                    </span>
                                             }
                                         </td>
                                     </tr>

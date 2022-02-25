@@ -196,7 +196,8 @@ function ModalOrder({ setOpenModal, productName, productId, productPrice, produc
                             <input
                                 type="number" 
                                 className="form-control rounded-pill" 
-                                id="total_qty" onChange={(e) => setOrder({...order, total_qty: e.target.value, subtotal: productPrice * e.target.value})}
+                                id="total_qty" 
+                                onChange={(e) => setOrder({...order, total_qty: e.target.value, subtotal: productPrice * e.target.value})}
                             />
                             <div className="form-text modal-form">Produk Stock: {productStock}</div>
                         </div>

@@ -6,7 +6,7 @@ import img3 from '../../assets/security.png';
 
 function Information() {
   return (
-    <div className="container mt-5">
+    <div className="container mt-5 pt-4">
       <div className="row justify-content-center">
         <div className="col-10 info-panel">
 

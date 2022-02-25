@@ -90,19 +90,30 @@ function ModalUserEdit({ setOpenModal, username, gender, birthdate, type, avatar
                     <form>
                         <div className="row mb-3">
                             <label className="form-label modal-form">Name: </label>
-                            <input type="text" className="form-control rounded-pill" id="address" onChange={(e) => setUser({...user, name: e.target.value})} value={user.name}/>
+                            <input type="text" 
+                                className="form-control rounded-pill" 
+                                id="address" 
+                                onChange={(e) => setUser({...user, name: e.target.value})} 
+                                value={user.name}
+                            />
                         </div>
                         <div className="row mb-3">
                             <label className="form-label modal-form">Birth date: </label>
-                            <input type="date" className="form-control rounded-pill" id="total_qty" onChange={(e) => setUser({...user, birthdate: e.target.value})} value={user.birthdate}/>
+                            <input 
+                                type="date" 
+                                className="form-control rounded-pill" 
+                                id="total_qty" 
+                                onChange={(e) => setUser({...user, birthdate: e.target.value})} 
+                                value={user.birthdate}
+                            />
                         </div>
-                        {/* <div className="row mb-3">
-                            <label className="form-label modal-form">Gender: </label>
-                            <input type="text" className="form-control rounded-pill" id="address" onChange={(e) => setUser({...user, gender: e.target.value})} value={user.gender}/>
-                        </div> */}
-
                         <div className="row mb-3">    
-                            <select className="form-select rounded-pill" id="address" onChange={(e) => setUser({...user, gender: e.target.value})} value={user.gender}>
+                            <select 
+                                className="form-select rounded-pill" 
+                                id="address" 
+                                onChange={(e) => setUser({...user, gender: e.target.value})} 
+                                value={user.gender}
+                            >
                                 <option selected>-- Select Gender --</option>
                                 <option value="Male">Male</option>
                                 <option value="Female">Female</option>

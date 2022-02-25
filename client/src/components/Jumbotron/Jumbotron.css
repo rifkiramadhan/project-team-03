@@ -2,10 +2,7 @@
 .jumbotron {
     background-image: url('../../assets/jumbotron-bg.jpg');
     background-size: cover;
-    text-align: center;
     position: relative;
-    display: flex;
-    justify-content: center;
     object-fit: cover;
     border-radius: 28px 28px 28px 28px;
     -moz-border-radius: 28px 28px 28px 28px;
@@ -13,9 +10,18 @@
     border: 0px solid var(--black-color);
 }
 
-.jumbotron .container {
+.jumbotron .card-jumbotron {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+
+.jumbotron .card-telusuri {
     z-index: 1;
     position: relative;
+    display: flex;
+    justify-content: center;
 }
 
 .jumbotron::after {
@@ -61,5 +67,11 @@
 
     .jumbotron .display-4 {
         font-size: 62px;
+    }
+}
+
+@media (max-width: 992px) {
+    .telusuri {
+        display: none;
     }
 }
