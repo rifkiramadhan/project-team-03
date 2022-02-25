@@ -194,7 +194,12 @@ function Navigation({ login, userLogin }) {
                             </ul>
                                 {
                                     login ?
-                                    <DropdownButton className="text-uppercase" title={`Hello, ${user.name}`} variant="light" menuVariant="light">
+                                    <DropdownButton 
+                                        className="text-uppercase" 
+                                        title={`Hello, ${user.name}`} 
+                                        variant="light" 
+                                        menuVariant="light"
+                                    >
                                         <>
                                             <Dropdown.Item>
                                                 <Link 

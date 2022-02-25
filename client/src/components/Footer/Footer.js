@@ -5,7 +5,7 @@ function Footer() {
   return (
     <div className="row footer">
       <div className="col text-center">
-        <p>2022 All Right Reseverd by Team ke-3.</p>
+        <p>2022 All Right Reseverd by Team ke-3 Code.id.</p>
       </div>
     </div>
   );

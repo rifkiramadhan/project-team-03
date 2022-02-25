@@ -104,18 +104,19 @@ function Cart() {
                                     <td className="table-light">{cart.id}</td>
                                     <td className="table-light">{cart_date}</td>
                                     <td>
-                                            { cart.status === 'Pending' ?
-                                                <span className="badge bg-warning rounded-pill">
-                                                   {cart.status}
-                                                </span>
-                                            : cart.status === 'Success' ?
-                                            <span className="badge bg-success rounded-pill">
-                                                    {cart.status}                   
-                                                </span>
-                                            : 
-                                            <span className="badge bg-danger rounded-pill">
-                                                    {cart.status}                      
-                                                </span>
+                                            { 
+                                                cart.status === 'Pending' ?
+                                                    <span className="badge bg-warning rounded-pill">
+                                                    {cart.status}
+                                                    </span>
+                                                : cart.status === 'Success' ?
+                                                    <span className="badge bg-success rounded-pill">
+                                                        {cart.status}                   
+                                                    </span>
+                                                : 
+                                                    <span className="badge bg-danger rounded-pill">
+                                                        {cart.status}                      
+                                                    </span>
                                             }
                                     </td>      
                                 </tr>

@@ -21,7 +21,7 @@ function CardHome(props) {
         <div className="card-skeleton row col-lg-3 col-md-4 col-sm-6 p-5 d-block">
             <Link to={`/products/details/${id}`} className="text-decoration-none">
                 <div className="animated-background card card-radius mr-2 ml-2">
-                <div class="card-skeleton-img">
+                <div className="card-skeleton-img">
                         <img 
                             src = {
                                     Products_Images.map(image => {

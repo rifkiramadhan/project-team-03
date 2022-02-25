@@ -247,7 +247,7 @@ function ProductEdit() {
                                 onClick={(e) => 
                                 submitHandler(e)}
                             >
-                                <i class="fa-solid fa-floppy-disk"></i>{' '}Simpan
+                                <i className="fa-solid fa-floppy-disk"></i>{' '}Simpan
                             </button>
                         </div>
                     </div>

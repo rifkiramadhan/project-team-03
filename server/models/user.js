@@ -23,7 +23,7 @@ module.exports = (sequelize, DataTypes) => {
       type : DataTypes.STRING,
       validate:{
         notEmpty : {
-          message : "TIDAK BOLEH KOSONG"
+          message : 'TIDAK BOLEH KOSONG'
         }
       }
     },
@@ -31,7 +31,7 @@ module.exports = (sequelize, DataTypes) => {
       type : DataTypes.STRING,
       validate:{
         notEmpty : {
-          message : "TIDAK BOLEH KOSONG"
+          message : 'TIDAK BOLEH KOSONG'
         }
       }
     },
@@ -39,7 +39,7 @@ module.exports = (sequelize, DataTypes) => {
       type : DataTypes.STRING,
       validate:{
         notEmpty : {
-          message : "TIDAK BOLEH KOSONG"
+          message : 'TIDAK BOLEH KOSONG'
         }
       }
     },
@@ -49,7 +49,7 @@ module.exports = (sequelize, DataTypes) => {
       type : DataTypes.STRING,
       validate:{
         notEmpty : {
-          message : "TIDAK BOLEH KOSONG"
+          message : 'TIDAK BOLEH KOSONG'
         }
       }
     },
@@ -57,7 +57,7 @@ module.exports = (sequelize, DataTypes) => {
       type : DataTypes.STRING,
       validate:{
         notEmpty : {
-          message : "TIDAK BOLEH KOSONG"
+          message : 'TIDAK BOLEH KOSONG'
         }
       }
     },

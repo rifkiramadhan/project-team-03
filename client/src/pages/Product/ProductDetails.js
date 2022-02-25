@@ -323,7 +323,7 @@ function ProductDetails({ login }) {
                              <ul className="list-group list-group-flush mt-20">
                                 <li className="list-group-item">
                                         <h4 className="card-title mb-4 fw-bold">{product.name}</h4>
-                                       <small><i class="fa-solid fa-user-check"></i> Dijual Oleh: {product.User.name}</small>
+                                       <small><i className="fa-solid fa-user-check"></i> Dijual Oleh: {product.User.name}</small>
                                 </li>
                                 <li className="list-group-item fw-medium">
                                     {' '}
@@ -331,7 +331,7 @@ function ProductDetails({ login }) {
                                 </li>
                                 <li className="list-group-item fw-medium">
                                     <div className="d-flex gap-4">
-                                        <span><i class="fa-solid fa-folder-minus"></i> {product.total_sold} Unit terjual</span>
+                                        <span><i className="fa-solid fa-folder-minus"></i> {product.total_sold} Unit terjual</span>
                                         <span><i className="fa-solid fa-business-time"></i> {product.stock} Unit tersisa</span>
                                     </div>
                                 </li>
@@ -383,7 +383,7 @@ function ProductDetails({ login }) {
                                             to={`/products/edit/${id}`} 
                                             className="btn btn-info fw-bold rounded-pill"
                                         >
-                                            <i class="fa-solid fa-pen-to-square"></i>{' '}Edit
+                                            <i className="fa-solid fa-pen-to-square"></i>{' '}Edit
                                         </Link>
                                         : 
                                         <Link 
@@ -399,13 +399,12 @@ function ProductDetails({ login }) {
                                                 onClick={() => deleteProductHandler(id)} 
                                                 className="btn btn-sm btn-danger fw-bold rounded-pill"
                                             >
-                                                <i class="fa-solid fa-trash-can"></i>{' '}Delete
+                                                <i className="fa-solid fa-trash-can"></i>{' '}Delete
                                             </button>
                                         :
                                             <button 
                                                 className="btn btn-sm btn-danger fw-bold rounded-pill d-none"
                                             >
-                                                Delete
                                             </button>
                                     }
 
