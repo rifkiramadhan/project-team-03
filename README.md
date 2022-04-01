@@ -39,7 +39,7 @@
 3. Fullstack Developer (Convert HTML & CSS ke Framework REACT JS, Integrasi API & Deploy App)
     - Selesai
 4. Power Point (Presentation)
-    - In the process
+    - Selesai
 
 ### Tools Development
 
