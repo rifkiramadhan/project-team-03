@@ -126,16 +126,16 @@ function Navigation({ login, userLogin }) {
                                     <div className="d-flex gap-3">
                                         <li class="nav-item">                                            
                                             <Link 
-                                                className="text-dark btn btn-light w-100 fw-bold border border-primary rounded-pill text-uppercase"
-                                                to="/users/register"
-                                            > Sign Up
+                                                className="btn border-primary fw-bold w-100 text-uppercase rounded-pill"
+                                                to="/users/login"
+                                            > Sign In
                                             </Link>
                                         </li>
                                         <li class="nav-item">
                                             <Link 
-                                                className="btn btn-primary fw-bold w-100 text-uppercase rounded-pill"
-                                                to="/users/login"
-                                            > Sign In
+                                                className="btn btn-primary w-100 fw-bold border rounded-pill text-uppercase"
+                                                to="/users/register"
+                                            > Sign Up
                                             </Link>
                                         </li>
                                     </div> 

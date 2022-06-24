@@ -143,7 +143,7 @@ function ModalOrder({ setOpenModal, productName, productId, productPrice, produc
             // Jika gagal maka akan menampilkan pesan order gagal ditambahkan
             Swal.fire(
                 'Order Gagal Ditambahkan!',
-                `Anda gagal menambahkan order pembelian!`,
+                `Silahkan login terlebih dahulu`,
                 'error'
             );
         };
